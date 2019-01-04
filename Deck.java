@@ -13,6 +13,16 @@ public class Deck{
     }
   }
 
+  public void shuffle(){
+
+  }
+
+  public void swap(int idx1, int idx2){
+    Card temp = data.get(idx1);
+    data.set(idx1, data.get(idx2));
+    data.set(idx2, temp);
+  }
+
   public String toString(){
     String output = "[";
     for (int idx = 0; idx < data.size(); idx ++){
