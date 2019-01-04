@@ -14,17 +14,17 @@ public class Deck{
         data.add(new Card(idx2, current));
       }
     }
-    shuffle(data);
+    shuffle();
   }
 
-  public void shuffle(ArrayList<Card> ary){
-    for (int idx = 0; idx < 52; idx ++){
-      int idxToSwapWith = r.nextInt(52);
-      swap(ary, idx, idxToSwapWith);
+  public void shuffle(){
+    for (int idx = 0; idx < data.size(); idx ++){
+      int idxToSwapWith = r.nextInt(data.size());
+      swap(idx, idxToSwapWith);
     }
   }
 
-  public void swap(ArrayList<Card> ary, int idx1, int idx2){
+  public void swap(int idx1, int idx2){
     Card temp = data.get(idx1);
     data.set(idx1, data.get(idx2));
     data.set(idx2, temp);
