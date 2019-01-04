@@ -23,4 +23,12 @@ public class Card{
   public char suit() {return suit;}
   public void setVal(int newVal) {val = newVal;}
 
+  public String toString(){
+    if (num == 1) return "A" + suit;
+    else if (num < 11) return "" + num + suit;
+    else if (num == 11) return "J" + suit;
+    else if (num == 12) return "Q" + suit;
+    else return "K" + suit;
+  }
+
 }
