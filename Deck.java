@@ -1,0 +1,23 @@
+import java.util.ArrayList;
+public class Deck{
+  private ArrayList<Card> data;
+
+  public Deck(){
+    data = new ArrayList<Card>();
+    String suits = "CDHS";
+    for (int idx = 0; idx < 4; idx ++){
+      char current = suits.charAt(idx);
+      for (int idx2 = 1; idx2 < 14; idx2 ++){
+        data.add(new Card(idx2, current));
+      }
+    }
+  }
+
+  public String toString(){
+    String output = "[";
+    for (int idx = 0; idx < data.size(); idx ++){
+      output += data.get(idx) + ", ";
+    }
+    return output.substring(0, output.length() - 2) + "]";
+  }
+}
