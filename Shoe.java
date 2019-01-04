@@ -47,4 +47,12 @@ public class Shoe{
     }
   }
 
+  public String toString(){
+    String output = "[";
+    for (int idx = 0; idx < cards.size(); idx ++){
+      output += cards.get(idx) + ", ";
+    }
+    return output.substring(0, output.length() - 2) + "]";
+  }
+
 }
