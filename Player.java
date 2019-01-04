@@ -13,4 +13,7 @@ public class Player {
   public void decreaseBal(int losses) {
     balance -= losses;
   }
+  public int getBal() {
+    return balance;
+  }
 }
