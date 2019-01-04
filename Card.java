@@ -8,5 +8,7 @@ public class Card{
     suit = startSuit;
   }
 
+  public int getValue() {return val;}
+  public char suit() {return suit;}
 
 }
