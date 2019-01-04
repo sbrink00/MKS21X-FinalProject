@@ -10,5 +10,7 @@ public class Player {
   public void increaseBal(int winnings) {
     balance += winnings;
   }
-  
+  public void decreaseBal(int losses) {
+    balance -= losses;
+  }
 }
