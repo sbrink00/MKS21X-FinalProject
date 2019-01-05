@@ -15,8 +15,10 @@ public class Shoe{
 
   private ArrayList<Deck> tempData;
   private ArrayList<Card> cards;
+  private Random r;
 
   public Shoe(int numDecks){
+    r = new Random();
     tempData = new ArrayList<Deck>();
     cards = new ArrayList<Card>();
     for (int idx = 0; idx < numDecks; idx ++){
@@ -27,11 +29,13 @@ public class Shoe{
   }
 
   public void convertToOneArray(){
+    System.out.println(tempData.size());
     for (int idx = 0; idx < tempData.size(); idx ++){
-      for (int idx2 = 0; idx2 < tempData.get(idx).size(); idx ++){
-        cards.add(tempData.get(idx).get(idx2));
+      for (int idx2 = 0; idx2 < tempData.get(idx).data().size(); idx2 ++){
+        cards.add(tempData.get(idx).data().get(idx2));
       }
     }
+    System.out.println(cards.size());
   }
 
   public void swap(int idx1, int idx2){

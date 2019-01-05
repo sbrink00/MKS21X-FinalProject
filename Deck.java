@@ -30,6 +30,9 @@ public class Deck{
     data.set(idx2, temp);
   }
 
+  public ArrayList<Card> data() {return data;}
+
+
   public String toString(){
     String output = "[";
     for (int idx = 0; idx < data.size(); idx ++){
