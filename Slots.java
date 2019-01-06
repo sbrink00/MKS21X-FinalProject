@@ -9,8 +9,6 @@ public class Slots {
   private char[] reel;
   public static void main(String[] args) {
     Slots test = new Slots(1.0);
-    System.out.println(toString(reel));
-
   }
   public Slots(double bet) {
     r = new Random();
@@ -23,11 +21,12 @@ public class Slots {
       else if (i > 9 && i < 20) reel[i] = 'D';
       else reel[i] = 'T';
     }
+    System.out.println(toString(reel));
   }
   public void spin() {
 
   }
-  private String toString(char[] input) {
+  private static String toString(char[] input) {
     String output = "";
     for (char element:input) {
       output += element;
