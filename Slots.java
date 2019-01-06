@@ -7,9 +7,16 @@ public class Slots {
   private double jackpot;
   private double payout;
   private char[] reel;
+  private char[] spinG;
   public static void main(String[] args) {
     Slots test = new Slots(1.0);
   }
+  /* J means Jackpot; one occurrence.
+  A has two occurrences per reel.
+  B has three occurrences per reel.
+  C has four occurrences per reel.
+  D has ten occurrences per reel.
+  T is worthless and has 25 occurrences per reel. */
   public Slots(double bet) {
     r = new Random();
     reel = new char[45];
@@ -24,7 +31,11 @@ public class Slots {
     System.out.println(toString(reel));
   }
   public void spin() {
-
+    char reel1 = Math.abs(r.nextInt()) % 45;
+    char reel2 = Math.abs(r.nextInt()) % 45;
+    char reel3 = Math.abs(r.nextInt()) % 45;
+    char[] spin = {reel1, reel2, reel3};
+    spinG = spin;
   }
   private static String toString(char[] input) {
     String output = "";
