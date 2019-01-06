@@ -6,6 +6,11 @@ public class Slots {
   private double jackpot;
   private double payout;
   private char[] reel;
+  public static void main(String[] args) {
+    Slots test = new Slots(1.0);
+    System.out.println(reel.toString());
+
+  }
   public Slots(double bet) {
     r = new Random();
     reel = new char[45];
@@ -15,7 +20,7 @@ public class Slots {
       else if (i > 2 && i < 6) reel[i] = 'B';
       else if (i > 5 && i < 10) reel[i] = 'C';
       else if (i > 9 && i < 20) reel[i] = 'D';
-      else reel[i] = 'T'; 
+      else reel[i] = 'T';
     }
   }
   public void spin() {
