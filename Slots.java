@@ -1,3 +1,4 @@
+import java.util.*;
 public class Slots {
   private Random r;
   private double prob;
@@ -8,7 +9,7 @@ public class Slots {
   private char[] reel;
   public static void main(String[] args) {
     Slots test = new Slots(1.0);
-    System.out.println(reel.toString());
+    System.out.println(toString(reel));
 
   }
   public Slots(double bet) {
@@ -25,5 +26,12 @@ public class Slots {
   }
   public void spin() {
 
+  }
+  private String toString(char[] input) {
+    String output = "";
+    for (char element:input) {
+      output += element;
+    }
+    return output;
   }
 }
