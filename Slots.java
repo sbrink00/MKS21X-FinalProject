@@ -44,6 +44,20 @@ public class Slots {
     char z = spinG[2];
     if (x == y && x == z) {
       if (x == 'J') payout = 2500 * bet;
+      else if (x == 'A') payout = 1750 * bet;
+      else if (x == 'B') payout = 750 * bet;
+      else if (x == 'C') payout = 400 * bet;
+      else if (x == 'D') payout = 5 * bet;
+      else if (x == 'T') payout = -1 * bet;
+    }
+    else if (x == y || y == z) {
+      if (y == 'J') payout = 100 * bet;
+      else if (y == 'A') payout = 50 * bet;
+      else if (y == 'B') payout = 25 * bet;
+      else if (y == 'T') payout = -1 * bet;
+    }
+    else {
+      payout = -1 * bet;
     }
   }
   private static String toString(char[] input) {
