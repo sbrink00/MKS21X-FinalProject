@@ -15,10 +15,10 @@ public class Shoe extends CardList{
 
   private ArrayList<Deck> tempData;
   private ArrayList<Card> cards;
-  private Random r;
+  //private Random r;
 
   public Shoe(int numDecks){
-    r = new Random();
+    initializeRandom();
     tempData = new ArrayList<Deck>();
     cards = new ArrayList<Card>();
     for (int idx = 0; idx < numDecks; idx ++){
