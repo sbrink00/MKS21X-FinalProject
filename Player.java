@@ -15,8 +15,8 @@ public class Player {
   //public void moveDown() {}
   //public void moveLeft() {}
   //public void moveRight() {}
-  public void increaseBal(int value) {
-    balance += winnings;
+  public void changeBal(int value) {
+    balance += value;
   }
   public int getBal() {
     return balance;
