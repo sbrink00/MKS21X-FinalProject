@@ -6,8 +6,13 @@ public class Blackjack{
       hand = new Hand();
     }
     public Hand get(){return hand;}
-    public 
+    public
   }
 
+  private Dealer dealer;
+  private Player player;
+
+  public void run(){}
+  
 
 }
