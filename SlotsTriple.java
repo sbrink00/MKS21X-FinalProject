@@ -27,9 +27,8 @@ public class SlotsTriple {
       else if (i > 9 && i < 20) reel[i] = 'D';
       else reel[i] = 'T';
     }
-    System.out.println(toString(reel));
   }
-  public void spin(double bet) {
+  public void spin(double betInput) {
     bet = betInput;
     jackpot = 2500 * bet;
     int reel1 = Math.abs(r.nextInt()) % 45;
@@ -39,9 +38,9 @@ public class SlotsTriple {
     spinG = spin;
   }
   public void interpretSpin() {
-    char x = spinG[0];
-    char y = spinG[1];
-    char z = spinG[2];
+    char x = reel[spinG[0]];
+    char y = reel[spinG[1]];
+    char z = reel[spinG[2]];
     if (x == y && x == z) {
       if (x == 'J') payout = 2500 * bet;
       else if (x == 'A') payout = 1750 * bet;
@@ -59,8 +58,9 @@ public class SlotsTriple {
     else {
       payout = -1 * bet;
     }
-    System.out.println("Your account balance has been changed by: $" + payout);
-    Player.changeBal(payout);
+  }
+  public double getPayout() {
+    return payout;
   }
   private static String toString(char[] input) {
     String output = "";
