@@ -16,7 +16,7 @@ public class SlotsTriple {
   C has four occurrences per reel.
   D has ten occurrences per reel.
   T is worthless and has 25 occurrences per reel. */
-  public SlotsTriple(double betInput) {
+  public SlotsTriple() {
     r = new Random();
     reel = new char[45];
     for (int i = 0; i < 45; i++) {
@@ -27,11 +27,11 @@ public class SlotsTriple {
       else if (i > 9 && i < 20) reel[i] = 'D';
       else reel[i] = 'T';
     }
-    bet = betInput;
-    jackpot = 2500 * bet;
     System.out.println(toString(reel));
   }
-  public void spin() {
+  public void spin(double bet) {
+    bet = betInput;
+    jackpot = 2500 * bet;
     char reel1 = Math.abs(r.nextInt()) % 45;
     char reel2 = Math.abs(r.nextInt()) % 45;
     char reel3 = Math.abs(r.nextInt()) % 45;
@@ -59,6 +59,8 @@ public class SlotsTriple {
     else {
       payout = -1 * bet;
     }
+    System.out.println("Your account balance has been changed by: $" + payout);
+    Player.changeBal(payout);
   }
   private static String toString(char[] input) {
     String output = "";
