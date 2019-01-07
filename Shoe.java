@@ -29,11 +29,13 @@ public class Shoe extends CardList{
   }
 
   public void convertToOneArray(){
+    System.out.println(tempData.size());
     for (int idx = 0; idx < tempData.size(); idx ++){
       for (int idx2 = 0; idx2 < tempData.get(idx).data().size(); idx2 ++){
         cards.add(tempData.get(idx).data().get(idx2));
       }
     }
+    System.out.println(cards.size());
   }
 
   public void swap(int idx1, int idx2){
