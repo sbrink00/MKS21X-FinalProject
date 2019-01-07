@@ -1,8 +1,8 @@
 public class Player {
-  private int balance;
+  private double balance;
   //private int xpos;
   //private int ypos;
-  public Player(int startingBal) {
+  public Player(double startingBal) {
     if (startingBal < 1000) {
       balance = 1000;
     }
@@ -15,10 +15,10 @@ public class Player {
   //public void moveDown() {}
   //public void moveLeft() {}
   //public void moveRight() {}
-  public void changeBal(int value) {
+  public void changeBal(double value) {
     balance += value;
   }
-  public int getBal() {
+  public double getBal() {
     return balance;
   }
 }
