@@ -1,9 +1,10 @@
 import java.util.*;
 public class Slots {
+  //This slots is designed to return, on average, 99% of the bet input.
   private Random r;
   private double prob;
   private double returnPerc;
-  private double cost;
+  private double bet;
   private double jackpot;
   private double payout;
   private char[] reel;
@@ -17,7 +18,7 @@ public class Slots {
   C has four occurrences per reel.
   D has ten occurrences per reel.
   T is worthless and has 25 occurrences per reel. */
-  public Slots(double bet) {
+  public Slots(double betInput) {
     r = new Random();
     reel = new char[45];
     for (int i = 0; i < 45; i++) {
@@ -36,6 +37,14 @@ public class Slots {
     char reel3 = Math.abs(r.nextInt()) % 45;
     char[] spin = {reel1, reel2, reel3};
     spinG = spin;
+  }
+  public void interpretSpin() {
+    char x = spinG[0];
+    char y = spinG[1];
+    char z = spinG[2];
+    if (x == y && x == z) {
+      if (x == 'J') payout = 2500 * bet;
+    }
   }
   private static String toString(char[] input) {
     String output = "";
