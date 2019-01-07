@@ -11,7 +11,7 @@ will actually use to draw cards from*/
 
 import java.util.ArrayList;
 import java.util.Random;
-public class Shoe{
+public class Shoe extends CardList{
 
   private ArrayList<Deck> tempData;
   private ArrayList<Card> cards;
@@ -51,12 +51,14 @@ public class Shoe{
     }
   }
 
-  public String toString(){
+
+
+  /*public String toString(){
     String output = "[";
     for (int idx = 0; idx < cards.size(); idx ++){
       output += cards.get(idx) + ", ";
     }
     return output.substring(0, output.length() - 2) + "]";
-  }
+  }*/
 
 }
