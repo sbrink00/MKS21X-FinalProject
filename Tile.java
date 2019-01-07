@@ -7,4 +7,13 @@ public class Tile {
     color = inCol;
     odd = inOdd;
   }
+  public int getVal() {
+    return val;
+  }
+  public char getCol() {
+    return color;
+  }
+  public boolean isOdd() {
+    return odd;
+  }
 }
