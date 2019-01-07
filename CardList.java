@@ -16,7 +16,7 @@ public abstract class CardList{
     for (int idx = 0; idx < cards.size(); idx ++){
       output += cards.get(idx) + ", ";
     }
-    return output.substring(0, output.legnth() - 2) + "]";
+    return output.substring(0, output.length() - 2) + "]";
   }
 
 
