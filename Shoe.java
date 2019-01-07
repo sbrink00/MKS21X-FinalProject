@@ -20,7 +20,7 @@ public class Shoe extends CardList{
   public Shoe(int numDecks){
     initializeRandom();
     tempData = new ArrayList<Deck>();
-    cards = new ArrayList<Card>();
+    initializeCards();
     for (int idx = 0; idx < numDecks; idx ++){
       tempData.add(new Deck());
     }
@@ -38,7 +38,7 @@ public class Shoe extends CardList{
     System.out.println(cards.size());
   }
 
-  public void swap(int idx1, int idx2){
+  /*public void swap(int idx1, int idx2){
     Card temp = cards.get(idx1);
     cards.set(idx1, cards.get(idx2));
     cards.set(idx2, temp);
@@ -49,7 +49,7 @@ public class Shoe extends CardList{
       int idxToSwapWith = r.nextInt(cards.size());
       swap(idx, idxToSwapWith);
     }
-  }
+  }*/
 
 
 
