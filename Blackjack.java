@@ -1,6 +1,13 @@
 public class Blackjack{
 
-  private Shoe shoe;
-  
+  private class Dealer{
+    private Hand hand;
+    public Dealer(){
+      hand = new Hand();
+    }
+    public Hand get(){return hand;}
+    public 
+  }
+
 
 }
