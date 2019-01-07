@@ -14,8 +14,6 @@ import java.util.Random;
 public class Shoe extends CardList{
 
   private ArrayList<Deck> tempData;
-  //private ArrayList<Card> cards;
-  //private Random r;
 
   public Shoe(int numDecks){
     initializeCards();
@@ -30,33 +28,9 @@ public class Shoe extends CardList{
 
   public void convertToOneArray(){
     for (int idx = 0; idx < tempData.size(); idx ++){
-      for (int idx2 = 0; idx2 < tempData.get(idx).data().size(); idx2 ++){
+      for (int idx2 = 0; idx2 < tempData.get(idx).size(); idx2 ++){
         add(tempData.get(idx).get(idx2));
       }
     }
   }
-
-  /*public void swap(int idx1, int idx2){
-    Card temp = cards.get(idx1);
-    cards.set(idx1, cards.get(idx2));
-    cards.set(idx2, temp);
-  }
-
-  public void shuffle(){
-    for (int idx = 0; idx < cards.size(); idx ++){
-      int idxToSwapWith = r.nextInt(cards.size());
-      swap(idx, idxToSwapWith);
-    }
-  }*/
-
-
-
-  /*public String toString(){
-    String output = "[";
-    for (int idx = 0; idx < cards.size(); idx ++){
-      output += cards.get(idx) + ", ";
-    }
-    return output.substring(0, output.length() - 2) + "]";
-  }*/
-
 }
