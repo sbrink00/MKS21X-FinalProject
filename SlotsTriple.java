@@ -6,7 +6,7 @@ public class SlotsTriple {
   private double jackpot;
   private double payout;
   private char[] reel;
-  private char[] spinG;
+  private int[] spinG;
   public static void main(String[] args) {
     Slots test = new Slots(1.0);
   }
@@ -32,10 +32,10 @@ public class SlotsTriple {
   public void spin(double bet) {
     bet = betInput;
     jackpot = 2500 * bet;
-    char reel1 = Math.abs(r.nextInt()) % 45;
-    char reel2 = Math.abs(r.nextInt()) % 45;
-    char reel3 = Math.abs(r.nextInt()) % 45;
-    char[] spin = {reel1, reel2, reel3};
+    int reel1 = Math.abs(r.nextInt()) % 45;
+    int reel2 = Math.abs(r.nextInt()) % 45;
+    int reel3 = Math.abs(r.nextInt()) % 45;
+    int[] spin = {reel1, reel2, reel3};
     spinG = spin;
   }
   public void interpretSpin() {
