@@ -48,6 +48,11 @@ public class Blackjack{
     Card c2 = shoe.getRandomCard();
     player.getHand().add(shoe.remove(c2));
     System.out.println(player.getHand());
+    Card c3 = shoe.getRandomCard();
+    dealer.hand.add(shoe.remove(c3));
+    Card c4 = shoe.getRandomCard();
+    dealer.hand.add(shoe.remove(c4));
+    System.out.println(dealer.hand);
   }
 
 
