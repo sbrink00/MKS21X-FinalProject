@@ -13,6 +13,8 @@ public class Blackjack{
   private double bet;
   private Shoe shoe;
   private Scanner in;
+  public int playerSum;
+  public int dealerSum;
   //the following strings are going to be used in the run function.
   //they are acronyms and will be explained with comments after the string
   private String EB = "Please enter your bet: "; //Enter Bet
@@ -31,7 +33,7 @@ public class Blackjack{
   public void run(){
     bet();
     deal();
-    //playerPlay();
+    playerPlay();
     //dealerPlay();
   }
 
@@ -47,13 +49,38 @@ public class Blackjack{
     player.getHand().add(shoe.remove(c1));
     Card c2 = shoe.getRandomCard();
     player.getHand().add(shoe.remove(c2));
-    System.out.println(player.getHand());
+    System.out.println("your hand is: " + player.getHand());
     Card c3 = shoe.getRandomCard();
     dealer.hand.add(shoe.remove(c3));
     Card c4 = shoe.getRandomCard();
     dealer.hand.add(shoe.remove(c4));
     c4.setHidden(true);
-    System.out.println(dealer.hand);
+    System.out.println("the dealers hand is: " + dealer.hand);
+  }
+
+  public boolean playerPlay(){
+    boolean stand = false;
+    boolean blackjack = false;
+    boolean bust = false;
+    if (player.getHand().sumValues() == 21){
+      System.out.println("You got blackjack, congrats!!");
+      return true;
+    }
+    while (!stand && !blackjack && !bust){
+      System.out.println(HS);
+      String hos = in.nextLine();
+      if (hos.equals("hit")){
+        player.getHand().add(shoe.remove(shoe.getRandomCard()));
+        System.out.println("Your new hand is: " + player.getHand());
+        playerSum = player.getHand().sumValues();
+        if (playerSum > 21) bust = true;
+        if (playerSum == 21) stand = true;
+      }
+      else if (hos.equals("stand")) stand = true;
+    }
+    System.out.println("Your final hand is: " + player.getHand());
+    if (bust) System.out.println("You busted cause you're trash");
+    return false;
   }
 
 
