@@ -5,8 +5,6 @@ public class Blackjack{
     public Dealer(){
       hand = new Hand();
     }
-    public Hand get(){return hand;}
-
   }
 
   private Dealer dealer;
@@ -21,13 +19,13 @@ public class Blackjack{
 
 
   public Blackjack(){
-    player = new Player();
+    player = new Player(1000);
     dealer = new Dealer();
-
   }
 
   public void run(){
-
+    dealer.hand.add(new Card(3, 'S'));
+    System.out.println(dealer.hand);
   }
 
 
