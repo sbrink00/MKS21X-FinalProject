@@ -10,6 +10,7 @@ public class Blackjack{
   private Dealer dealer;
   private Player player;
   private double bet;
+  private Shoe shoe;
   //the following strings are going to be used in the run function.
   //they are acronyms and will be explained with comments after the string
   private String EB = "Please enter your bet: "; //Enter Bet
@@ -21,11 +22,18 @@ public class Blackjack{
   public Blackjack(){
     player = new Player(1000);
     dealer = new Dealer();
+    shoe = new Shoe(6);
   }
 
   public void run(){
-    dealer.hand.add(new Card(3, 'S'));
-    System.out.println(dealer.hand);
+    bet();
+    //deal();
+    //playerPlay();
+    //dealerPlay();
+  }
+
+  public double bet(){
+    System.out.println(EB);
   }
 
 
