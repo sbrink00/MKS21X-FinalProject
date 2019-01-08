@@ -52,6 +52,7 @@ public class Blackjack{
     dealer.hand.add(shoe.remove(c3));
     Card c4 = shoe.getRandomCard();
     dealer.hand.add(shoe.remove(c4));
+    c4.setHidden(true);
     System.out.println(dealer.hand);
   }
 
