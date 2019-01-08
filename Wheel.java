@@ -1,4 +1,4 @@
-public class Wheel extends Tile {
+public class Wheel {
   private char[] colors;
   private int[] values;
   private boolean[] odds;
@@ -12,7 +12,15 @@ public class Wheel extends Tile {
         if (values[i] % 2 == 0) odds[i] = false;
         else if (values[i] % 2 == 1) odds[i] = true;
       }
+      else if (values[i] == 0) {
+        colors[i] = 'G';
+      }
+      if (i != 0) {
+        if (i % 2 == 0) {
+          colors[i] = 'B';
+        }
+        else colors[i] = 'R';
+      }
     }
-
   }
 }

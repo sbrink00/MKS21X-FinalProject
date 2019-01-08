@@ -4,7 +4,7 @@ public class DriverSlots {
     Player me = new Player(1000000);
     System.out.println(me.getBal());
     SlotsTriple test3 = new SlotsTriple();
-    for (int i = 0; i < 10000; i++) {
+    for (int i = 0; i < 100; i++) {
       test3.spin(1000);
       test3.interpretSpin();
       net += test3.getPayout();
