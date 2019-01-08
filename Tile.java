@@ -16,4 +16,5 @@ public class Tile {
   public boolean isOdd() {
     return odd;
   }
+  //Irrelevant class.
 }
