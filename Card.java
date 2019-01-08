@@ -24,7 +24,7 @@ public class Card{
   public char suit() {return suit;}
   public void setVal(int newVal) {val = newVal;}
   public boolean isHidden() {return hidden;}
-  public boolean setHidden(boolean arg) {hidden = arg;}
+  public void setHidden(boolean arg) {hidden = arg;}
 
 
   public String toString(){
