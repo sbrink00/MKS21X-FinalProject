@@ -8,9 +8,9 @@ public class RBoard {
               1, 20, 14, 31, 9, 22, 18, 29, 7, 28, 12, 35,
               3, 26}; */
     for (int i = 0; i < 4; i++) {
-      board.add(new ArrayList<Tile>(0, 'G'));
+      board.add(new ArrayList<Tile>());
     }
-    board.get(0).add(0);
+    board.get(0).add(new Tile(0, 'G'));
     int counter = 1;
     while (counter < 37) {
       for (int i = 1; i < 4; i++) {
@@ -25,9 +25,10 @@ public class RBoard {
     }
   }
   public String toString() {
-    output = "";
+    String output = "";
     for (ArrayList elem:board) {
       output += elem.ArrayList.toString();
     }
+    return output;
   }
 }
