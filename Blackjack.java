@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class Blackjack{
 
   private class Dealer{
@@ -11,6 +12,7 @@ public class Blackjack{
   private Player player;
   private double bet;
   private Shoe shoe;
+  private Scanner in;
   //the following strings are going to be used in the run function.
   //they are acronyms and will be explained with comments after the string
   private String EB = "Please enter your bet: "; //Enter Bet
@@ -23,17 +25,25 @@ public class Blackjack{
     player = new Player(1000);
     dealer = new Dealer();
     shoe = new Shoe(6);
+    in = new Scanner(System.in);
   }
 
   public void run(){
     bet();
-    //deal();
+    deal();
     //playerPlay();
     //dealerPlay();
   }
 
-  public double bet(){
+  public void bet(){
     System.out.println(EB);
+    double terminalBet = Double.parseDouble(in.nextLine());
+    bet = terminalBet;
+    player.changeBal(-1 * bet);
+  }
+
+  public void deal(){
+    
   }
 
 
