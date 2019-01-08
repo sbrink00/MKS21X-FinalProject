@@ -3,7 +3,11 @@
 //used in the final version.
 public class driver{
   public static void main(String[]args){
-    Shoe s1 = new Shoe(3);
-    System.out.println(s1);
+    Blackjack b1 = new Blackjack();
+    b1.run();
+    Card test = new Card(3, 'H');
+    System.out.println(test);
+    test.setHidden(true);
+    System.out.println(test);
   }
 }
