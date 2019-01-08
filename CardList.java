@@ -40,6 +40,11 @@ public abstract class CardList{
     }
   }
 
+  public Card getRandomCard(){
+    int idx = r.nextInt(size());
+    return get(idx);
+  }
+
   public String toString(){
     String output = "[";
     for (int idx = 0; idx < cards.size(); idx ++){
