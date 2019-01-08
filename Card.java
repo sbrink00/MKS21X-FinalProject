@@ -8,6 +8,7 @@ public class Card{
   //changing its identity from an ace.
   private int num, val;
   private char suit;
+  private boolean hidden;
 
   public Card(int number, char startSuit){
     num = number;
@@ -15,15 +16,19 @@ public class Card{
     if (num == 1) val = 11;
     else if (num <= 10) val = num;
     else val = 10;
-
+    hidden = false;
   }
 
   public int getNum() {return num;}
   public int getValue() {return val;}
   public char suit() {return suit;}
   public void setVal(int newVal) {val = newVal;}
+  public boolean isHidden() {return hidden;}
+  public boolean setHidden(boolean arg) {hidden = arg;}
+
 
   public String toString(){
+    if (hidden) return "turned over";
     if (num == 1) return "A" + suit;
     else if (num < 11) return "" + num + suit;
     else if (num == 11) return "J" + suit;
