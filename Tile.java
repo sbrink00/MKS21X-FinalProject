@@ -1,11 +1,9 @@
 public class Tile {
   private int val;
   private char color;
-  private boolean odd;
-  public Tile(int inVal, char inCol, boolean inOdd) {
+  public Tile(int inVal, char inCol) {
     val = inVal;
     color = inCol;
-    odd = inOdd;
   }
   public int getVal() {
     return val;
@@ -13,8 +11,4 @@ public class Tile {
   public char getCol() {
     return color;
   }
-  public boolean isOdd() {
-    return odd;
-  }
-  //Irrelevant class.
 }
