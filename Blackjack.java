@@ -28,6 +28,8 @@ public class Blackjack{
     dealer = new Dealer();
     shoe = new Shoe(6);
     in = new Scanner(System.in);
+    dealerBlackjack = false;
+    playerBlackjack = false;
   }
 
   public void run(){
@@ -84,7 +86,24 @@ public class Blackjack{
     return false;
   }
 
-  public boolean
+  public boolean dealerPlay(){
+    boolean stand = false;
+    if (dealer.hand.sumValues() == 21){
+      dealerBlackjack = true;
+      System.out.println("The dealer got blackjack");
+      return true;
+    }
+    while (!stand && dealer.hand.sumValues() < 17){
+      dealer.hand.add(shoe.remove(shoe.getRandomCard()));
+      System.out.println("The dealer's new hand is: " + dealer.hand);
+      if (dealer.hand.sumValues() > 21) System.out.println("The dealer busted");
+    }
+    System.out.println("The dealer's final hand is: " + dealer.hand);
+    System.out.println("Your final hand is: " + player.getHand());
+    System.out.println("The dealer's final total is: " + dealer.hand.sumValues());
+    System.out.println("Your final total is: " + player.getHand().sumValues());
+    return false;
+  }
 
 
 }
