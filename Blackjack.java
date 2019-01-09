@@ -13,8 +13,8 @@ public class Blackjack{
   private double bet;
   private Shoe shoe;
   private Scanner in;
-  public int playerSum;
-  public int dealerSum;
+  public int playerSum, dealerSum;
+  public boolean playerBlackjack, dealerBlackjack;
   //the following strings are going to be used in the run function.
   //they are acronyms and will be explained with comments after the string
   private String EB = "Please enter your bet: "; //Enter Bet
@@ -28,13 +28,15 @@ public class Blackjack{
     dealer = new Dealer();
     shoe = new Shoe(6);
     in = new Scanner(System.in);
+    dealerBlackjack = false;
+    playerBlackjack = false;
   }
 
   public void run(){
     bet();
     deal();
     playerPlay();
-    //dealerPlay();
+    dealerPlay();
   }
 
   public void bet(){
@@ -64,6 +66,7 @@ public class Blackjack{
     boolean bust = false;
     if (player.getHand().sumValues() == 21){
       System.out.println("You got blackjack, congrats!!");
+      playerBlackjack = true;
       return true;
     }
     while (!stand && !blackjack && !bust){
@@ -80,6 +83,25 @@ public class Blackjack{
     }
     System.out.println("Your final hand is: " + player.getHand());
     if (bust) System.out.println("You busted cause you're trash");
+    return false;
+  }
+
+  public boolean dealerPlay(){
+    boolean stand = false;
+    if (dealer.hand.sumValues() == 21){
+      dealerBlackjack = true;
+      System.out.println("The dealer got blackjack");
+      return true;
+    }
+    while (!stand && dealer.hand.sumValues() < 17){
+      dealer.hand.add(shoe.remove(shoe.getRandomCard()));
+      System.out.println("The dealer's new hand is: " + dealer.hand);
+      if (dealer.hand.sumValues() > 21) System.out.println("The dealer busted");
+    }
+    System.out.println("The dealer's final hand is: " + dealer.hand);
+    System.out.println("Your final hand is: " + player.getHand());
+    System.out.println("The dealer's final total is: " + dealer.hand.sumValues());
+    System.out.println("Your final total is: " + player.getHand().sumValues());
     return false;
   }
 
