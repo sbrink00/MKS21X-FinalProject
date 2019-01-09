@@ -2,9 +2,10 @@ import java.util.*;
 public class Roulette {
   private Random r;
   private ArrayList<ArrayList<Tile>> board;
-  private ArrayList<ArrayList<Tile>> spinBoard;
+  private ArrayList<Tile> spinBoard;
   public Roulette() {
     board = new ArrayList<ArrayList<Tile>>();
+    spinBoard = new ArrayList<Tile>();
     for (int i = 0; i < 4; i++) {
       board.add(new ArrayList<Tile>());
     }
@@ -15,7 +16,7 @@ public class Roulette {
       for (int i = 1; i < 4; i++) {
         if (counter % 2 == 0) {
           board.get(i).add(new Tile (counter, 'B'));
-          spinBoard.add(new Tile(couter, 'B'));
+          spinBoard.add(new Tile(counter, 'B'));
         }
         else if (counter % 2 == 1) {
           board.get(i).add(new Tile (counter, 'R'));
