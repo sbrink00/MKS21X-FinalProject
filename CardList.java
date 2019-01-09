@@ -45,6 +45,14 @@ public abstract class CardList{
     return get(idx);
   }
 
+  public int sumValues(){
+    int sum = 0;
+    for (int idx = 0; idx < size(); idx ++){
+      sum += get(idx).getValue();
+    }
+    return sum;
+  }
+
   public String toString(){
     String output = "[";
     for (int idx = 0; idx < cards.size(); idx ++){
