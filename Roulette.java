@@ -22,7 +22,7 @@ public class Roulette {
     }
     r = new Random();
   }
-  public int spin() {
+  public Tile spin() {
     return (Math.abs(r.nextInt()) % 37);
   }
   public String printBoard() {
