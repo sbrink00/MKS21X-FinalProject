@@ -3,6 +3,7 @@ public class Roulette {
   private Random r;
   private ArrayList<ArrayList<Tile>> board;
   private ArrayList<Tile> spinBoard;
+  private double bet;
   public Roulette() {
     board = new ArrayList<ArrayList<Tile>>();
     spinBoard = new ArrayList<Tile>();
@@ -30,6 +31,9 @@ public class Roulette {
   public Tile spin() {
     int rando = r.nextInt(37);
     return spinBoard.get(rando);
+  }
+  public double interpretSpin() {
+    double output = 0;
   }
   public String printBoard() {
     String output = "";
