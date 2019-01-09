@@ -3,6 +3,7 @@ public class Roulette {
   private Random r;
   private ArrayList<ArrayList<Tile>> board;
   public Roulette() {
+    board = new ArrayList<ArrayList<Tile>>();
     for (int i = 0; i < 4; i++) {
       board.add(new ArrayList<Tile>());
     }
@@ -23,6 +24,17 @@ public class Roulette {
   }
   public int spin() {
     return (Math.abs(r.nextInt()) % 37);
-
+  }
+  public String printBoard() {
+    String output = "";
+    for (int i = 0; i < 4; i++) {
+      output += "[";
+      for (Tile elem:board.get(i)) {
+        output += elem.toString();
+        output += ", ";
+      }
+      output += "]";
+    }
+    return output;
   }
 }
