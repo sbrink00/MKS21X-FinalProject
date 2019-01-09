@@ -37,6 +37,7 @@ public class Blackjack{
     deal();
     playerPlay();
     dealerPlay();
+    payout();
   }
 
   public void bet(){
@@ -94,6 +95,8 @@ public class Blackjack{
       return true;
     }
     while (!stand && dealer.hand.sumValues() < 17){
+      System.out.println("Hit enter when you are ready for the dealer to hit again");
+      String dealerHit = in.nextLine();
       dealer.hand.add(shoe.remove(shoe.getRandomCard()));
       System.out.println("The dealer's new hand is: " + dealer.hand);
       if (dealer.hand.sumValues() > 21) System.out.println("The dealer busted");
@@ -103,6 +106,13 @@ public class Blackjack{
     System.out.println("The dealer's final total is: " + dealer.hand.sumValues());
     System.out.println("Your final total is: " + player.getHand().sumValues());
     return false;
+  }
+
+  public void payout(){
+    if (playerBlackjack && dealerBlackjack) player.changeBal(bet);
+    else if (playerBlackjack && !dealerBlackjack) player.changeBal(bet * 2.5);
+    else if (playerSum < 22 && playerSum > dealerSum) player.changeBal(bet * 2);
+    System.out.println("Your new balance is: " + player.getBal());
   }
 
 
