@@ -14,7 +14,7 @@ public class Blackjack{
   private Shoe shoe;
   private Scanner in;
   public int playerSum, dealerSum;
-  public boolean playerBlackjack, dealerBlackjack;
+  public boolean playerBlackjack, dealerBlackjack, playerBust, dealerBust;
   //the following strings are going to be used in the run function.
   //they are acronyms and will be explained with comments after the string
   private String EB = "Please enter your bet: "; //Enter Bet
@@ -30,6 +30,8 @@ public class Blackjack{
     in = new Scanner(System.in);
     dealerBlackjack = false;
     playerBlackjack = false;
+    dealerBust = false;
+    playerBust = false;
   }
 
   public void run(){
@@ -52,25 +54,22 @@ public class Blackjack{
     player.getHand().add(shoe.remove(c1));
     Card c2 = shoe.getRandomCard();
     player.getHand().add(shoe.remove(c2));
-    System.out.println("your hand is: " + player.getHand());
+    System.out.println("your starting hand is: " + player.getHand());
     Card c3 = shoe.getRandomCard();
     dealer.hand.add(shoe.remove(c3));
     Card c4 = shoe.getRandomCard();
     dealer.hand.add(shoe.remove(c4));
     c4.setHidden(true);
-    System.out.println("the dealers hand is: " + dealer.hand);
+    System.out.println("the dealers starting hand is: " + dealer.hand);
   }
 
-  public boolean playerPlay(){
+  public void playerPlay(){
     boolean stand = false;
-    boolean blackjack = false;
-    boolean bust = false;
     if (player.getHand().sumValues() == 21){
       System.out.println("You got blackjack, congrats!!");
       playerBlackjack = true;
-      return true;
     }
-    while (!stand && !blackjack && !bust){
+    while (!stand && !playerBlackjack && !playerBust){
       System.out.println(HS);
       String hos = in.nextLine();
       if (hos.equals("hit")){
@@ -86,41 +85,57 @@ public class Blackjack{
             playerSum = player.getHand().sumValues();
           }
         }
-        if (playerSum > 21) bust = true;
+        if (playerSum > 21) playerBust = true;
         if (playerSum == 21) stand = true;
       }
       else if (hos.equals("stand")) stand = true;
     }
     System.out.println("Your final hand is: " + player.getHand());
-    if (bust) System.out.println("You busted cause you're trash");
-    return false;
+    if (playerBust) System.out.println("You busted cause you're trash");
   }
 
   public boolean dealerPlay(){
+    for (int idx = 0; idx < dealer.hand.size(); idx ++){
+      dealer.hand.get(idx).setHidden(false);
+    }
+    System.out.println("type and enter anything to reveal the dealers other card");
+    String reveal = in.next();
+    System.out.println(dealer.hand);
     boolean stand = false;
     if (dealer.hand.sumValues() == 21){
       dealerBlackjack = true;
       System.out.println("The dealer got blackjack");
-      return true;
     }
     while (!stand && dealer.hand.sumValues() < 17){
-      System.out.println("Hit enter when you are ready for the dealer to hit again");
+      System.out.println("Type anything when you are ready for the dealer to hit again");
       String dealerHit = in.nextLine();
       dealer.hand.add(shoe.remove(shoe.getRandomCard()));
+      dealerSum = dealer.hand.sumValues();
       System.out.println("The dealer's new hand is: " + dealer.hand);
-      if (dealer.hand.sumValues() > 21) System.out.println("The dealer busted");
+      if (dealerSum > 21){
+        for (int idx = 0; idx < dealer.hand.size() && dealerSum > 21; idx ++){
+          Card temp = new Card(1, 'S');
+          if (dealer.hand.get(idx).equalsNumber(temp)){
+            dealer.hand.get(idx).setVal(1);
+          }
+          dealerSum = dealer.hand.sumValues();
+        }
+      }
+      if (dealerSum > 21){
+        System.out.println("The dealer busted");
+        dealerBust = true;
+      }
     }
+    System.out.println("--------------------------------------------------------------");
     System.out.println("The dealer's final hand is: " + dealer.hand);
     System.out.println("Your final hand is: " + player.getHand());
-    System.out.println("The dealer's final total is: " + dealer.hand.sumValues());
-    System.out.println("Your final total is: " + player.getHand().sumValues());
-    return false;
   }
 
   public void payout(){
     if (playerBlackjack && dealerBlackjack) player.changeBal(bet);
     else if (playerBlackjack) player.changeBal(bet * 2.5);
-    else if (playerSum == dealerSum && !dealerBlackjack) player.changeBal(bet * 2.5);
+    else if (playerSum == dealerSum && !dealerBlackjack) player.changeBal(bet);
+    else if (playerSum < 22 && dealerSum > 21) player.changeBal(bet * 2);
     else if (playerSum < 22 && playerSum > dealerSum) player.changeBal(bet * 2);
     System.out.println("Your new balance is: " + player.getBal());
   }
