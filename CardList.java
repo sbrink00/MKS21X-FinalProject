@@ -23,9 +23,23 @@ public abstract class CardList{
     return false;
   }
 
+  public boolean containsNumber(Card other) {
+    for (int idx = 0; idx < size(); idx ++){
+      if (other.equalsNumber(cards.get(idx))) return true;
+    }
+    return false;
+  }
+
   public int indexOf(Card other) {
     for (int idx = 0; idx < size(); idx ++){
       if (other.equals(cards.get(idx))) return idx;
+    }
+    return -1;
+  }
+
+  public int indexOfNumber(Card other) {
+    for (int idx = 0; idx < size(); idx ++){
+      if (other.equalsNumber(cards.get(idx))) return idx;
     }
     return -1;
   }
