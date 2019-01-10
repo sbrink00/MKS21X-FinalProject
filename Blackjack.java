@@ -77,6 +77,15 @@ public class Blackjack{
         player.getHand().add(shoe.remove(shoe.getRandomCard()));
         System.out.println("Your new hand is: " + player.getHand());
         playerSum = player.getHand().sumValues();
+        if (playerSum > 21){
+          for (int idx = 0; idx < player.getHand().size() && playerSum > 21; idx ++){
+            Card temp = new Card(1, 'S');
+            if (player.getHand().get(idx).equalsNumber(temp)){
+              player.getHand().get(idx).setVal(1);
+            }
+            playerSum = player.getHand().sumValues();
+          }
+        }
         if (playerSum > 21) bust = true;
         if (playerSum == 21) stand = true;
       }
@@ -110,7 +119,8 @@ public class Blackjack{
 
   public void payout(){
     if (playerBlackjack && dealerBlackjack) player.changeBal(bet);
-    else if (playerBlackjack && !dealerBlackjack) player.changeBal(bet * 2.5);
+    else if (playerBlackjack) player.changeBal(bet * 2.5);
+    else if (playerSum == dealerSum && !dealerBlackjack) player.changeBal(bet * 2.5);
     else if (playerSum < 22 && playerSum > dealerSum) player.changeBal(bet * 2);
     System.out.println("Your new balance is: " + player.getBal());
   }
