@@ -25,6 +25,9 @@ public class Card{
   public void setVal(int newVal) {val = newVal;}
   public boolean isHidden() {return hidden;}
   public void setHidden(boolean arg) {hidden = arg;}
+  public boolean equals(Card other){
+    return this.suit == other.suit && this.num == other.num;
+  }
 
 
   public String toString(){
