@@ -34,6 +34,8 @@ public class Roulette {
   }
   public double interpretSpin() {
     double output = 0;
+    
+    return output;
   }
   public String printBoard() {
     String output = "";
