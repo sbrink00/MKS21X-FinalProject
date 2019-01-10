@@ -5,9 +5,5 @@ public class driver{
   public static void main(String[]args){
     Blackjack b1 = new Blackjack();
     b1.run();
-    Card test = new Card(3, 'H');
-    System.out.println(test);
-    test.setHidden(true);
-    System.out.println(test);
   }
 }
