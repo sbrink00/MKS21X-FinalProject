@@ -28,6 +28,9 @@ public class Card{
   public boolean equals(Card other){
     return this.suit == other.suit && this.num == other.num;
   }
+  public boolean equalsNumber(Card other){
+    return this.num == other.num;
+  }
 
 
   public String toString(){
