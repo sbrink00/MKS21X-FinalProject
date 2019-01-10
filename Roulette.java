@@ -3,8 +3,15 @@ public class Roulette {
   private Random r;
   private ArrayList<ArrayList<Tile>> board;
   private ArrayList<Tile> spinBoard;
-  private double bet;
+  private String[] betInfo;
+  private Scanner in;
   public Roulette() {
+    in = new Scanner(System.in);
+    betInfo = new String[2];
+    int counter = 0;
+    while (in.hasNext() && counter < 2) {
+      betInfo[counter] = in.next();
+    }
     board = new ArrayList<ArrayList<Tile>>();
     spinBoard = new ArrayList<Tile>();
     for (int i = 0; i < 4; i++) {
@@ -34,6 +41,7 @@ public class Roulette {
   }
   public void displayOptions() {
     String output = "Here are your betting options for Roulette and how to Bet (Please input the bet exactly as shown, ignoring angle brackets): \n";
+    output += "Please enter your bet value first, followed by what you are betting on, separated by a space.\n";
     output += "Straight (1 Number): Returns 36x your bet. Input: <number>\n";
     output += "Split (2 Numbers): Returns 18x your bet. Input: <number1, number2>\n";
     output += "Street (3 Numbers): Returns 12x your bet. Input: <number1, number2, number3>\n";
@@ -46,6 +54,7 @@ public class Roulette {
     output += "Columns (12 Numbers): Returns 3x your bet. columnIDs are (Column starting at 1 is 0, column starting at 2 is 1, Column starting at 3 is 2.) Input: <COLUMNcolumnID>\n";
     System.out.println(output);
   }
+
   public double interpretSpin() {
     double output = 0;
 
