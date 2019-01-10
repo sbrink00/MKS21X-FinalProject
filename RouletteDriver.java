@@ -4,5 +4,6 @@ public class RouletteDriver {
     System.out.println(test.printBoard());
     Tile output = test.spin();
     System.out.println(output.toString());
+    displayOptions();
   }
 }
