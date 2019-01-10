@@ -54,7 +54,9 @@ public class Roulette {
     output += "Columns (12 Numbers): Returns 3x your bet. columnIDs are (Column starting at 1 is 0, column starting at 2 is 1, Column starting at 3 is 2.) Input: <COLUMNcolumnID>\n";
     System.out.println(output);
   }
-
+  public String betType() {
+    
+  }
   public double interpretSpin() {
     double output = 0;
 
