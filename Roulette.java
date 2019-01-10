@@ -32,9 +32,23 @@ public class Roulette {
     int rando = r.nextInt(37);
     return spinBoard.get(rando);
   }
+  public void displayOptions() {
+    String output = "Here are your betting options for Roulette and how to Bet (Please input the bet exactly as shown, ignoring angle brackets): \n";
+    output += "Straight (1 Number): Returns 36x your bet. Input: <number>\n";
+    output += "Split (2 Numbers): Returns 18x your bet. Input: <number1, number2>\n";
+    output += "Street (3 Numbers): Returns 12x your bet. Input: <number1, number2, number3>\n";
+    output += "Square (4 Numbers): Returns 9x your bet. Input: <number1, number2, number3, number4>\n";
+    output += "Six Line (6 Numbers): Returns 6x. Input: <number1, number2, number3, number4, number5, number6>\n";
+    output += "Colors (18 Numbers): Returns 2x your bet. Input: <color>\n";
+    output += "Dozens (12 Numbers): Returns 3x your bet. DozenIDs are (1-12 is 0, 13-24 is 1, 25-36 is 2). Input: <DOZENdozenID>\n";
+    output += "Highs/Lows (18 Numbers): Returns 2x your bet. Preferences are (high, low). Input: <Preference>\n";
+    output += "Odds/Evens (18 Numbers): Returns 2x your bet. Preferences are (odd, even). Input: <Preference>\n";
+    output += "Columns (12 Numbers): Returns 3x your bet. columnIDs are (Column starting at 1 is 0, column starting at 2 is 1, Column starting at 3 is 2.) Input: <COLUMNcolumnID>\n";
+    System.out.println(output);
+  }
   public double interpretSpin() {
     double output = 0;
-    
+
     return output;
   }
   public String printBoard() {
