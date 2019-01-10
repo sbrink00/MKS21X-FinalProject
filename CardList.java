@@ -16,6 +16,20 @@ public abstract class CardList{
 
   public int size() {return cards.size();}
 
+  public boolean contains(Card other) {
+    for (int idx = 0; idx < size(); idx ++){
+      if (other.equals(cards.get(idx))) return true;
+    }
+    return false;
+  }
+
+  public int indexOf(Card other) {
+    for (int idx = 0; idx < size(); idx ++){
+      if (other.equals(cards.get(idx))) return idx;
+    }
+    return -1;
+  }
+
   public Card set(int index, Card c){
     Card output = cards.get(index);
     cards.set(index, c);
