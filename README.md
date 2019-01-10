@@ -2,7 +2,6 @@
 Repo containing all the files for our final project
 
 The Developer Log:
-Elias Ferguson's Work:
 
 January 3:
 -Elias Ferguson: I figured out how to git branch and git merge, and then branched off from the master to a new branch called testPlayer to begin work on the Player class.
@@ -25,3 +24,5 @@ January 7:
 -Samuel Brink: I finished syncing up Hand, Deck, and Shoe with the CardList class. I also got deal in blackjack to give the player and dealer a hand.
 
 January 8: I am done with the Tile class and the construction of the roulette board in the Roulette class. The printBoard() works correctly and I will next write all the ways to bet and the spin() function, which will spit out a random Tile.
+
+January 9: I finished the spin() function which returns a random Tile. On the 10th I will start to write all of the bet returns and the bet options.
