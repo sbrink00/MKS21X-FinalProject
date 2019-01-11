@@ -48,11 +48,11 @@ public class Roulette {
     output += "Street (3 Numbers): Returns 12x your bet. Input: <number1, number2, number3>\n";
     output += "Square (4 Numbers): Returns 9x your bet. Input: <number1, number2, number3, number4>\n";
     output += "Six Line (6 Numbers): Returns 6x. Input: <number1, number2, number3, number4, number5, number6>\n";
-    output += "Colors (18 Numbers): Returns 2x your bet. Input: <color>\n";
+    output += "Colors (18 Numbers): Returns 2x your bet. Colors are (red, black, green). Input: <color>\n";
     output += "Dozens (12 Numbers): Returns 3x your bet. DozenIDs are (1-12 is 0, 13-24 is 1, 25-36 is 2). Input: <DOZEN dozenID>\n";
     output += "Highs/Lows (18 Numbers): Returns 2x your bet. Preferences are (high, low). Input: <Preference>\n";
     output += "Odds/Evens (18 Numbers): Returns 2x your bet. Preferences are (odd, even). Input: <Preference>\n";
-    output += "Columns (12 Numbers): Returns 3x your bet. columnIDs are (Column starting at 1 is 0, column starting at 2 is 1, Column starting at 3 is 2.) Input: <COLUMNcolumnID>\n";
+    output += "Columns (12 Numbers): Returns 3x your bet. columnIDs are (Column starting at 1 is 0, column starting at 2 is 1, Column starting at 3 is 2.) Input: <COLUMN columnID>\n";
     System.out.println(output);
   }
   public int[] betWinsPossibilites() {
@@ -60,9 +60,31 @@ public class Roulette {
     int[] output;
     if (betInfo.get(1).equals("high")) output = new int[]{19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36};
     else if (betInfo.get(1).equals("low")) output = new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18};
+    else if (betInfo.get(1).equals("red")) output = new int[]{1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36};
+    else if (betInfo.get(1).equals("black")) output = new int[]{2,4,6,8,10,11,13,15,17,20,22,24,26,28,29,31,33,35};
+    else if (betInfo.get(1).equals("odd")) output = new int[]{1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35};
+    else if (betInfo.get(1).equals("even")) output = new int[]{2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36};
+    else if (betInfo.get(1).equals("DOZEN")) {
+      if (betInfo.get(2).equals("0")) output = new int[]{1,2,3,4,5,6,7,8,9,10,11,12};
+      else if (betInfo.get(2).equals("1")) output = new int[]{13,14,15,16,17,18,19,20,21,22,23,24};
+      else if (betInfo.get(2).equals("2")) output = new int[]{25,26,27,28,29,30,31,32,33,34,35,36};
+    }
+    else if (betInfo.get(1).equals("COLUMN")) {
+      if (betInfo.get(2).equals("0")) output = new int[]{1,4,7,10,13,16,19,22,25,28,31,34};
+      else if (betInfo.get(2).equals("1")) output = new int[]{2,5,8,11,14,17,20,23,26,29,32,35};
+      else if (betInfo.get(2).equals("2")) output = new int[]{3,6,9,12,15,18,21,24,27,30,33,36};
+    }
+    else {
+      int counter = 1;
+      while (counter < 7 && betInfo.get(counter) != null) {
+        output = new int[betInfo.size() - 1];
+        output[counter - 1] = parseInt(betInfo.get(counter));
+      }
+    }
+    return output;
   }
   public double interpretSpin() {
-    double output = 0;
+    double output = betVal;
 
     return output;
   }
