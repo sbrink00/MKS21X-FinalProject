@@ -6,6 +6,7 @@ public class Roulette {
   private ArrayList<Tile> spinBoard;
   private ArrayList<String> betInfo;
   private Scanner in;
+  private int[] winners;
   public Roulette() {
     in = new Scanner(System.in);
     betInfo = new ArrayList<String>();
@@ -55,7 +56,7 @@ public class Roulette {
     output += "Columns (12 Numbers): Returns 3x your bet. columnIDs are (Column starting at 1 is 0, column starting at 2 is 1, Column starting at 3 is 2.) Input: <COLUMN columnID>\n";
     System.out.println(output);
   }
-  public int[] betWinsPossibilites() {
+  public void betWinsPossibilites() {
     betVal = parseFloat(betInfo.get(0));
     int[] output;
     if (betInfo.get(1).equals("high")) output = new int[]{19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36};
@@ -81,12 +82,15 @@ public class Roulette {
         output[counter - 1] = parseInt(betInfo.get(counter));
       }
     }
-    return output;
+    winners = output;
   }
-  public double interpretSpin() {
-    double output = betVal;
-
-    return output;
+  public double interpretSpin(Tile winner) {
+    if (winners.contains(winner.getVal())) {
+      return betVal * (36 / winners.length);
+    }
+    else {
+      return betVal * -1;
+    }
   }
   public String printBoard() {
     String output = "";
