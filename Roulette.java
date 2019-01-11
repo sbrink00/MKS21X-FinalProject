@@ -63,6 +63,7 @@ public class Roulette {
     else if (betInfo.get(1).equals("low")) output = new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18};
     else if (betInfo.get(1).equals("red")) output = new int[]{1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36};
     else if (betInfo.get(1).equals("black")) output = new int[]{2,4,6,8,10,11,13,15,17,20,22,24,26,28,29,31,33,35};
+    else if (betInfo.get(1).equals("green")) output = new int[]{0};
     else if (betInfo.get(1).equals("odd")) output = new int[]{1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35};
     else if (betInfo.get(1).equals("even")) output = new int[]{2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36};
     else if (betInfo.get(1).equals("DOZEN")) {
