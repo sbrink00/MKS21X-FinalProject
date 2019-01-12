@@ -12,7 +12,7 @@ public class Roulette {
   private String PA = "Do you want to play again? <y/n>";
 
   public Roulette() {
-    player = new Player();
+    player = new Player(1000);
     in = new Scanner(System.in);
     board = new ArrayList<ArrayList<Tile>>();
     spinBoard = new ArrayList<Tile>();
@@ -86,7 +86,11 @@ public class Roulette {
     winners = output;
   }
   public double interpretSpin(Tile winner) {
-    if (winners.contains(winner.getVal())) {
+    boolean contains = false;
+    for (int val:winners) {
+      if (winner.getVal() == val) contains = true;
+    }
+    if (contains) {
       return betVal * (36 / winners.length);
     }
     else {
