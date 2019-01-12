@@ -5,7 +5,6 @@ public class SlotsTriple {
   private Scanner in;
   private Player player;
   private double bet;
-  private double jackpot;
   private double payout;
   private char[] reel;
   private int[] spinG;
@@ -36,10 +35,9 @@ public class SlotsTriple {
     bet = Double.parseDouble(in.nextLine());
   }
   public void spin() {
-    jackpot = 2500 * bet;
-    int reel1 = Math.abs(r.nextInt()) % 45;
-    int reel2 = Math.abs(r.nextInt()) % 45;
-    int reel3 = Math.abs(r.nextInt()) % 45;
+    int reel1 = r.nextInt(45);
+    int reel2 = r.nextInt(45);
+    int reel3 = r.nextInt(45);
     int[] spin = {reel1, reel2, reel3};
     spinG = spin;
   }
@@ -77,9 +75,9 @@ public class SlotsTriple {
     while (!done) {
       bet();
       spin();
+      interpretSpin();
       System.out.println("This the is the spin result: " + printSpin());
       printSpin();
-      interpretSpin();
       System.out.println("Your balance has been changed by: " + payout);
       player.changeBal(payout);
       System.out.println("Your new balance is: " + player.getBal());
