@@ -36,11 +36,18 @@ public class Blackjack{
 
   public void run(){
     boolean done = false;
-    bet();
-    deal();
-    playerPlay();
-    if (!playerBlackjack) dealerPlay();
-    payout();
+    while(!done){
+      bet();
+      deal();
+      playerPlay();
+      if (!playerBlackjack) dealerPlay();
+      payout();
+      System.out.println("Do you want to continue playing blackjack?");
+      System.out.println("Enter y for yes and n for no");
+      String name = in.nextLine();
+      if (name.equals("n") || player.getBal() == 0) done = true;
+
+    }
   }
 
   public void bet(){
