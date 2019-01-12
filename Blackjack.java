@@ -42,11 +42,12 @@ public class Blackjack{
       playerPlay();
       if (!playerBlackjack) dealerPlay();
       payout();
+      player.getHand().clear();
+      dealer.hand.clear();
       System.out.println("Do you want to continue playing blackjack?");
       System.out.println("Enter y for yes and n for no");
       String name = in.nextLine();
       if (name.equals("n") || player.getBal() == 0) done = true;
-
     }
   }
 
