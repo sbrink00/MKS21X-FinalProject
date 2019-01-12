@@ -219,6 +219,7 @@ public class Blackjack{
 
   public String splitHandToString(){
     if (splitHand.size() == 0) return "[]";
+    if (splitHand.size() == 1) return splitHand.get(0).toString();
     String output = "[";
     for (int idx = 0; idx < splitHand.size(); idx ++){
       output += splitHand.get(idx) + ", ";
