@@ -36,7 +36,6 @@ public class SlotsTriple {
     bet = Double.parseDouble(in.nextLine());
   }
   public void spin() {
-    bet = betInput;
     jackpot = 2500 * bet;
     int reel1 = Math.abs(r.nextInt()) % 45;
     int reel2 = Math.abs(r.nextInt()) % 45;
@@ -45,7 +44,7 @@ public class SlotsTriple {
     spinG = spin;
   }
   public String printSpin() {
-    output = "";
+    String output = "";
     output += spinG[0];
     output += ", " + spinG[1];
     output += ", " + spinG[2];
@@ -89,7 +88,7 @@ public class SlotsTriple {
   }
   public boolean endgame() {
     System.out.println(PA);
-    boolean ouput = true;
+    boolean output = true;
     if (in.nextLine().equals("y")) output = false;
     return output;
   }
