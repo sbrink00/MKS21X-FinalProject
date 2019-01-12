@@ -11,4 +11,7 @@ public class Tile {
   public char getCol() {
     return color;
   }
+  public String toString() {
+    return val + "-" + color;
+  }
 }
