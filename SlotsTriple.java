@@ -74,14 +74,24 @@ public class SlotsTriple {
     }
   }
   public void run() {
-    bet();
-    spin();
-    System.out.println("This the is the spin result: ");
-    printSpin();
-    interpretSpin();
-    System.out.println("Your balance has been changed by: " + payout);
-    player.changeBal(payout);
-    System.out.println("Your new balance is: " + player.getBal());
+    boolean done = false;
+    while (!done) {
+      bet();
+      spin();
+      System.out.println("This the is the spin result: ");
+      printSpin();
+      interpretSpin();
+      System.out.println("Your balance has been changed by: " + payout);
+      player.changeBal(payout);
+      System.out.println("Your new balance is: " + player.getBal());
+      if (endgame()) done = true;
+    }
+  }
+  public boolean endgame() {
+    System.out.println(PA);
+    boolean ouput = true;
+    if (in.nextLine().equals("y")) output = false;
+    return output;
   }
   private static String toString(char[] input) {
     String output = "";
