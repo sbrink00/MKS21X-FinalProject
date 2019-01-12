@@ -8,7 +8,7 @@ public class Blackjack{
       hand = new Hand();
     }
   }
-  private ArrayList<Hand> splitHand;
+  private ArrayList<Hand> playerHands;
   private Dealer dealer;
   private Player player;
   private double bet;
@@ -35,7 +35,8 @@ public class Blackjack{
     playerBlackjack = false;
     dealerBust = false;
     playerBust = false;
-    splitHand = new ArrayList<Hand>();
+    playerHands = new ArrayList<Hand>();
+    playerHands.add(new Hand());
   }
 
   public void run(){
@@ -60,9 +61,9 @@ public class Blackjack{
 
   public void deal(){
     Card c1 = shoe.getRandomCard();
-    player.getHand().add(shoe.remove(c1));
+    playerHands.get(0).add(shoe.remove(c1));
     Card c2 = shoe.getRandomCard();
-    player.getHand().add(shoe.remove(c2));
+    playerHands.get(0).add(shoe.remove(c2));
     System.out.println("your starting hand is: " + player.getHand());
     Card c3 = shoe.getRandomCard();
     dealer.hand.add(shoe.remove(c3));
