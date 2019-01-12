@@ -61,6 +61,7 @@ public class Blackjack{
     dealer.hand.add(shoe.remove(c4));
     c4.setHidden(true);
     System.out.println("the dealers starting hand is: " + dealer.hand);
+    System.out.println("--------------------------------------------------------------");
   }
 
   public void playerPlay(){
@@ -94,7 +95,7 @@ public class Blackjack{
     if (playerBust) System.out.println("You busted cause you're trash");
   }
 
-  public boolean dealerPlay(){
+  public void dealerPlay(){
     for (int idx = 0; idx < dealer.hand.size(); idx ++){
       dealer.hand.get(idx).setHidden(false);
     }
