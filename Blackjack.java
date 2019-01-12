@@ -198,7 +198,7 @@ public class Blackjack{
     if (playerSum > 21) playerBust = true;
   }
 
-  public void splitTester(){
+  /*public void splitTester(){
     Hand other = new Hand();
     player.setHand(other);
     player.getHand().add(new Card(8, 'S'));
@@ -215,14 +215,14 @@ public class Blackjack{
     splitHand.get(1).add(player.getHand().get(1));
     splitHand.get(1).add(shoe.remove(shoe.getRandomCard()));
     System.out.println(splitHandToString());
-  }
+  }*/
 
-  public String splitHandToString(){
-    if (splitHand.size() == 0) return "[]";
-    if (splitHand.size() == 1) return splitHand.get(0).toString();
+  public String phToString(){ //player hand toString.
+    if (playerHands.size() == 0) return "[]";
+    if (playerHands.size() == 1) return playerHands.get(0).toString();
     String output = "[";
-    for (int idx = 0; idx < splitHand.size(); idx ++){
-      output += splitHand.get(idx) + ", ";
+    for (int idx = 0; idx < playerHands.size(); idx ++){
+      output += playerHands.get(idx) + ", ";
     }
     return output.substring(0, output.length() - 2) + "]";
   }
