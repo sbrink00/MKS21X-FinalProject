@@ -122,10 +122,8 @@ public class Roulette {
   public void bet() {
     System.out.println(EB);
     betInfo = new ArrayList<String>();
-    int counter = 0;
-    while (in.hasNext() && counter < 2) {
+    while (in.hasNext()) {
       betInfo.add(in.next());
-      counter++;
     }
   }
   public String printBoard() {
