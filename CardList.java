@@ -16,6 +16,8 @@ public abstract class CardList{
 
   public int size() {return cards.size();}
 
+  public void clear() {cards.clear();}
+
   public boolean contains(Card other) {
     for (int idx = 0; idx < size(); idx ++){
       if (other.equals(cards.get(idx))) return true;
@@ -82,6 +84,7 @@ public abstract class CardList{
   }
 
   public String toString(){
+    if (size() == 0) return "[]";
     String output = "[";
     for (int idx = 0; idx < cards.size(); idx ++){
       output += cards.get(idx) + ", ";
