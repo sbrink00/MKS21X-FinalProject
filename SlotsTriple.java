@@ -31,7 +31,11 @@ public class SlotsTriple {
       else reel[i] = 'T';
     }
   }
-  public void spin(double betInput) {
+  public void bet() {
+    System.out.println(EB);
+    bet = Double.parseDouble(in.nextLine());
+  }
+  public void spin() {
     bet = betInput;
     jackpot = 2500 * bet;
     int reel1 = Math.abs(r.nextInt()) % 45;
@@ -39,6 +43,13 @@ public class SlotsTriple {
     int reel3 = Math.abs(r.nextInt()) % 45;
     int[] spin = {reel1, reel2, reel3};
     spinG = spin;
+  }
+  public String printSpin() {
+    output = "";
+    output += spinG[0];
+    output += ", " + spinG[1];
+    output += ", " + spinG[2];
+    return output;
   }
   public void interpretSpin() {
     char x = reel[spinG[0]];
@@ -63,10 +74,14 @@ public class SlotsTriple {
     }
   }
   public void run() {
-
-  }
-  public double getPayout() {
-    return payout;
+    bet();
+    spin();
+    System.out.println("This the is the spin result: ");
+    printSpin();
+    interpretSpin();
+    System.out.println("Your balance has been changed by: " + payout);
+    player.changeBal(payout);
+    System.out.println("Your new balance is: " + player.getBal());
   }
   private static String toString(char[] input) {
     String output = "";
