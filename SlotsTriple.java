@@ -33,6 +33,7 @@ public class SlotsTriple {
   public void bet() {
     System.out.println(EB);
     bet = Double.parseDouble(in.nextLine());
+    if (bet > player.getBal()) bet = player.getBal();
   }
   public void spin() {
     int reel1 = r.nextInt(45);
@@ -87,7 +88,8 @@ public class SlotsTriple {
   public boolean endgame() {
     System.out.println(PA);
     boolean output = true;
-    if (in.nextLine().equals("y")) output = false;
+    if (player.getBal() == 0) output = true;
+    else if (in.nextLine().equals("y")) output = false;
     return output;
   }
   private static String toString(char[] input) {
