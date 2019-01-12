@@ -38,14 +38,14 @@ public class SlotsTriple {
     int reel1 = r.nextInt(45);
     int reel2 = r.nextInt(45);
     int reel3 = r.nextInt(45);
-    int[] spin = {reel1, reel2, reel3};
+    int[] spin = new int[]{reel1, reel2, reel3};
     spinG = spin;
   }
   public String printSpin() {
     String output = "";
-    output += reel[0];
-    output += ", " + reel[1];
-    output += ", " + reel[2];
+    output += reel[spinG[0]];
+    output += ", " + reel[spinG[1]];
+    output += ", " + reel[spinG[2]];
     return output;
   }
   public void interpretSpin() {
