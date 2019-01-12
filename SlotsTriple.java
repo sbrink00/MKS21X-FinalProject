@@ -77,7 +77,7 @@ public class SlotsTriple {
     while (!done) {
       bet();
       spin();
-      System.out.println("This the is the spin result: ");
+      System.out.println("This the is the spin result: " + printSpin());
       printSpin();
       interpretSpin();
       System.out.println("Your balance has been changed by: " + payout);
