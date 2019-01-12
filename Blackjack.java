@@ -165,5 +165,14 @@ public class Blackjack{
     return true;
   }
 
+  public void Double(){
+    player.changeBal(-1 * bet);
+    bet *= 2;
+    System.out.println("Type and enter anything to recieve your final card");
+    String finalCard = in.nextLine();
+    player.getHand().add(shoe.remove(shoe.getRandomCard()));
+    System.out.println("Your final hand is: " + player.getHand());
+  }
+
 
 }
