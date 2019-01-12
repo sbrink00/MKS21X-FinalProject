@@ -57,8 +57,8 @@ public class Roulette {
     System.out.println(output);
   }
   public void betWinsPossibilites() {
-    betVal = parseFloat(betInfo.get(0));
-    int[] output;
+    betVal = Float.parseFloat(betInfo.get(0));
+    int[] output = new int[0];
     if (betInfo.get(1).equals("high")) output = new int[]{19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36};
     else if (betInfo.get(1).equals("low")) output = new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18};
     else if (betInfo.get(1).equals("red")) output = new int[]{1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36};
@@ -80,7 +80,7 @@ public class Roulette {
       int counter = 1;
       while (counter < 7 && betInfo.get(counter) != null) {
         output = new int[betInfo.size() - 1];
-        output[counter - 1] = parseInt(betInfo.get(counter));
+        output[counter - 1] = Integer.parseInt(betInfo.get(counter));
       }
     }
     winners = output;
@@ -109,8 +109,8 @@ public class Roulette {
       player.changeBal(interpretSpin(winner));
       System.out.println("Your balance has been changed by: " + interpretSpin(winner));
       System.out.println("Your balance is now: " + player.getBal());
-      if (endgame()) done = true;
       counter++;
+      if (endgame()) done = true;
     }
   }
   public boolean endgame() {
