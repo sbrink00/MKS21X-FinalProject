@@ -42,12 +42,7 @@ public class Blackjack{
       playerPlay();
       if (!playerBlackjack) dealerPlay();
       payout();
-      player.getHand().clear();
-      dealer.hand.clear();
-      System.out.println("Do you want to continue playing blackjack?");
-      System.out.println("Enter y for yes and n for no");
-      String name = in.nextLine();
-      if (name.equals("n") || player.getBal() == 0) done = true;
+      if (!endGame()) done = true;
     }
   }
 
@@ -56,6 +51,7 @@ public class Blackjack{
     double terminalBet = Double.parseDouble(in.nextLine());
     bet = terminalBet;
     player.changeBal(-1 * bet);
+    System.out.println("Your balance is: " + player.getBal());
   }
 
   public void deal(){
@@ -149,7 +145,24 @@ public class Blackjack{
     else if (!playerBust && dealerBust) player.changeBal(bet * 2);
     else if (!playerBust && !dealerBust && playerSum > dealerSum) player.changeBal(bet * 2);
     else if (!playerBust && !dealerBust && playerSum == dealerSum) player.changeBal(bet);
+    else if (playerBust && dealerBust) player.changeBal(bet);
     System.out.println("Your new balance is: " + player.getBal());
+  }
+
+  public boolean endGame(){
+    player.getHand().clear();
+    dealer.hand.clear();
+    playerSum = 0;
+    dealerSum = 0;
+    playerBlackjack = false;
+    dealerBlackjack = false;
+    playerBust = false;
+    dealerBust = false;
+    System.out.println("Do you want to continue playing blackjack?");
+    System.out.println("Enter y for yes and n for no");
+    String name = in.nextLine();
+    if (name.equals("n") || player.getBal() == 0) return false;
+    return true;
   }
 
 
