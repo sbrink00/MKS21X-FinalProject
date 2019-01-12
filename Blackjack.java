@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 public class Blackjack{
 
@@ -7,7 +8,7 @@ public class Blackjack{
       hand = new Hand();
     }
   }
-  private ArrayList<ArrayList<Hand>> splitHand;
+  private ArrayList<Hand> splitHand;
   private Dealer dealer;
   private Player player;
   private double bet;
@@ -34,7 +35,7 @@ public class Blackjack{
     playerBlackjack = false;
     dealerBust = false;
     playerBust = false;
-    splitHand = new ArrayList<ArrayList<Hand>>();
+    splitHand = new ArrayList<Hand>();
   }
 
   public void run(){
@@ -194,6 +195,25 @@ public class Blackjack{
       }
     }
     if (playerSum > 21) playerBust = true;
+  }
+
+  public void splitTester(){
+    Hand other = new Hand();
+    player.setHand(other);
+    player.getHand().add(new Card(8, 'S'));
+    player.getHand().add(new Card(8, 'C'));
+    System.out.println(player.getHand());
+    split();
+  }
+
+  public void split(){
+    splitHand.add(new Hand());
+    splitHand.add(new Hand());
+    splitHand.get(0).add(player.getHand().get(0));
+    splitHand.get(0).add(shoe.remove(shoe.getRandomCard()));
+    splitHand.get(1).add(player.getHand().get(1));
+    splitHand.get(1).add(shoe.remove(shoe.getRandomCard()));
+    System.out.println(splitHandToString());
   }
 
   public String splitHandToString(){
