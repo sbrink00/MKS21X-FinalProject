@@ -35,11 +35,11 @@ public class Blackjack{
   }
 
   public void run(){
+    boolean done = false;
     bet();
     deal();
     playerPlay();
-
-    dealerPlay();
+    if (!playerBlackjack) dealerPlay();
     payout();
   }
 
@@ -130,15 +130,17 @@ public class Blackjack{
       }
     }
     System.out.println("--------------------------------------------------------------");
-    System.out.println("The dealer's final hand is: " + dealer.hand);
-    System.out.println("Your final hand is: " + player.getHand());
   }
 
   public void payout(){
+    System.out.println("Type anything when you are ready to reveal the final results");
+    String Final = in.nextLine();
+    System.out.println("The dealer's final hand is: " + dealer.hand);
+    System.out.println("Your final hand is: " + player.getHand());
     if (playerBlackjack) player.changeBal(bet * 2.5);
     else if (!playerBust && dealerBust) player.changeBal(bet * 2);
-    else if (!(playerBust && dealerBust) && playerSum > dealerSum) player.changeBal(bet * 2);
-    else if (!(playerBust && dealerBust) && playerSum == dealerSum) player.changeBal(bet);
+    else if (!playerBust && !dealerBust && playerSum > dealerSum) player.changeBal(bet * 2);
+    else if (!playerBust && !dealerBust && playerSum == dealerSum) player.changeBal(bet);
     System.out.println("Your new balance is: " + player.getBal());
   }
 
