@@ -24,4 +24,5 @@ public class Player {
     return balance;
   }
   public Hand getHand() {return hand;}
+  public void setHand(Hand other) {this = other;}
 }
