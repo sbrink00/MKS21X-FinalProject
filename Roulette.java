@@ -100,9 +100,10 @@ public class Roulette {
       if (counter == 0) displayOptions();
       bet();
       betWinsPossibilites();
-      spin();
-      player.changeBal(interpretSpin());
-      System.out.println("Your balance has been changed by: " + interpretSpin());
+      Tile winner = spin();
+      System.out.println("The winning Tile is: " + winner.toString());
+      player.changeBal(interpretSpin(winner));
+      System.out.println("Your balance has been changed by: " + interpretSpin(winner));
       System.out.println("Your balance is now: " + player.getBal());
       if (endgame()) done = true;
       counter++;
