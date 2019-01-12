@@ -18,7 +18,7 @@ public class Blackjack{
   //the following strings are going to be used in the run function.
   //they are acronyms and will be explained with comments after the string
   private String EB = "Please enter your bet: "; //Enter Bet
-  private String HS = "Do you want to hit or stand?";//Hit or Stand
+  private String HSD = "Do you want to hit, stand, or double?";//Hit or Stand
   private String CP = "Do you want to continue playing blackjack?";//Continue Playing
   private String YN = "Enter 'y' for yes and 'n' for no: ";//Yes or No
 
@@ -76,7 +76,7 @@ public class Blackjack{
       playerBlackjack = true;
     }
     while (!stand && !playerBlackjack && !playerBust){
-      System.out.println(HS);
+      System.out.println(HSD);
       String hos = in.nextLine();
       if (hos.equals("hit")){
         player.getHand().add(shoe.remove(shoe.getRandomCard()));
@@ -95,6 +95,10 @@ public class Blackjack{
         if (playerSum == 21) stand = true;
       }
       else if (hos.equals("stand")) stand = true;
+      else if (hos.equals("double")){
+        Double();
+        if (!playerBust) stand = true;
+      }
     }
     System.out.println("Your final hand is: " + player.getHand());
     if (playerBust) System.out.println("You busted cause you're trash");
@@ -168,10 +172,21 @@ public class Blackjack{
   public void Double(){
     player.changeBal(-1 * bet);
     bet *= 2;
+    System.out.println("Your new balance is: " + player.getBal());
     System.out.println("Type and enter anything to recieve your final card");
     String finalCard = in.nextLine();
     player.getHand().add(shoe.remove(shoe.getRandomCard()));
-    System.out.println("Your final hand is: " + player.getHand());
+    playerSum = player.getHand().sumValues();
+    if (playerSum > 21){
+      for (int idx = 0; idx < player.getHand().size() && playerSum > 21; idx ++){
+        Card temp = new Card(1, 'S');
+        if (player.getHand().get(idx).equalsNumber(temp)){
+          player.getHand().get(idx).setVal(1);
+        }
+        playerSum = player.getHand().sumValues();
+      }
+    }
+    if (playerSum > 21) playerBust = true;
   }
 
 
