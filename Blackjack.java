@@ -38,6 +38,7 @@ public class Blackjack{
     bet();
     deal();
     playerPlay();
+
     dealerPlay();
     payout();
   }
@@ -93,6 +94,7 @@ public class Blackjack{
     }
     System.out.println("Your final hand is: " + player.getHand());
     if (playerBust) System.out.println("You busted cause you're trash");
+    System.out.println("--------------------------------------------------------------");
   }
 
   public void dealerPlay(){
@@ -100,7 +102,7 @@ public class Blackjack{
       dealer.hand.get(idx).setHidden(false);
     }
     System.out.println("type and enter anything to reveal the dealers other card");
-    String reveal = in.next();
+    String reveal = in.nextLine();
     System.out.println(dealer.hand);
     boolean stand = false;
     if (dealer.hand.sumValues() == 21){
@@ -133,11 +135,10 @@ public class Blackjack{
   }
 
   public void payout(){
-    if (playerBlackjack && dealerBlackjack) player.changeBal(bet);
-    else if (playerBlackjack) player.changeBal(bet * 2.5);
-    else if (playerSum == dealerSum && !dealerBlackjack) player.changeBal(bet);
-    else if (playerSum < 22 && dealerSum > 21) player.changeBal(bet * 2);
-    else if (playerSum < 22 && playerSum > dealerSum) player.changeBal(bet * 2);
+    if (playerBlackjack) player.changeBal(bet * 2.5);
+    else if (!playerBust && dealerBust) player.changeBal(bet * 2);
+    else if (!(playerBust && dealerBust) && playerSum > dealerSum) player.changeBal(bet * 2);
+    else if (!(playerBust && dealerBust) && playerSum == dealerSum) player.changeBal(bet);
     System.out.println("Your new balance is: " + player.getBal());
   }
 
