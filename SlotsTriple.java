@@ -2,14 +2,14 @@ import java.util.*;
 public class SlotsTriple {
   //This slots is designed to return, on average, 99% of the bet input.
   private Random r;
+  private Scanner in;
+  private Player player;
   private double bet;
-  private double jackpot;
   private double payout;
   private char[] reel;
   private int[] spinG;
-  public static void main(String[] args) {
-    Slots test = new Slots(1.0);
-  }
+  private String EB = "Please enter your bet value: ";
+  private String PA = "Would you like to play again? <y/n>";
   /* J means Jackpot; one occurrence.
   A has two occurrences per reel.
   B has three occurrences per reel.
@@ -17,7 +17,9 @@ public class SlotsTriple {
   D has ten occurrences per reel.
   T is worthless and has 25 occurrences per reel. */
   public SlotsTriple() {
+    in = new Scanner(System.in);
     r = new Random();
+    player = new Player(1000);
     reel = new char[45];
     for (int i = 0; i < 45; i++) {
       if (i == 0) reel[i] = 'J';
@@ -28,14 +30,23 @@ public class SlotsTriple {
       else reel[i] = 'T';
     }
   }
-  public void spin(double betInput) {
-    bet = betInput;
-    jackpot = 2500 * bet;
-    int reel1 = Math.abs(r.nextInt()) % 45;
-    int reel2 = Math.abs(r.nextInt()) % 45;
-    int reel3 = Math.abs(r.nextInt()) % 45;
-    int[] spin = {reel1, reel2, reel3};
+  public void bet() {
+    System.out.println(EB);
+    bet = Double.parseDouble(in.nextLine());
+  }
+  public void spin() {
+    int reel1 = r.nextInt(45);
+    int reel2 = r.nextInt(45);
+    int reel3 = r.nextInt(45);
+    int[] spin = new int[]{reel1, reel2, reel3};
     spinG = spin;
+  }
+  public String printSpin() {
+    String output = "";
+    output += reel[spinG[0]];
+    output += ", " + reel[spinG[1]];
+    output += ", " + reel[spinG[2]];
+    return output;
   }
   public void interpretSpin() {
     char x = reel[spinG[0]];
@@ -59,8 +70,25 @@ public class SlotsTriple {
       payout = -1 * bet;
     }
   }
-  public double getPayout() {
-    return payout;
+  public void run() {
+    boolean done = false;
+    while (!done) {
+      bet();
+      spin();
+      interpretSpin();
+      System.out.println("This the is the spin result: " + printSpin());
+      printSpin();
+      System.out.println("Your balance has been changed by: " + payout);
+      player.changeBal(payout);
+      System.out.println("Your new balance is: " + player.getBal());
+      if (endgame()) done = true;
+    }
+  }
+  public boolean endgame() {
+    System.out.println(PA);
+    boolean output = true;
+    if (in.nextLine().equals("y")) output = false;
+    return output;
   }
   private static String toString(char[] input) {
     String output = "";
