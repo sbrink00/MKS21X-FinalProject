@@ -7,13 +7,11 @@ public class Roulette {
   private ArrayList<String> betInfo;
   private Scanner in;
   private int[] winners;
+  private String EB = "Enter your bet value and bet type";
+  private String PA = "Do you want to play again? <y/n>";
+
   public Roulette() {
     in = new Scanner(System.in);
-    betInfo = new ArrayList<String>();
-    int counter = 0;
-    while (in.hasNext() && counter < 2) {
-      betInfo.add(in.next());
-    }
     board = new ArrayList<ArrayList<Tile>>();
     spinBoard = new ArrayList<Tile>();
     for (int i = 0; i < 4; i++) {
@@ -49,7 +47,7 @@ public class Roulette {
     output += "Street (3 Numbers): Returns 12x your bet. Input: <number1, number2, number3>\n";
     output += "Square (4 Numbers): Returns 9x your bet. Input: <number1, number2, number3, number4>\n";
     output += "Six Line (6 Numbers): Returns 6x. Input: <number1, number2, number3, number4, number5, number6>\n";
-    output += "Colors (18 Numbers): Returns 2x your bet. Colors are (red, black, green). Input: <color>\n";
+    output += "Colors (18 Numbers): Returns 2x your bet, unless you bet green in which case it returns 36x your bet. Colors are (red, black, green). Input: <color>\n";
     output += "Dozens (12 Numbers): Returns 3x your bet. DozenIDs are (1-12 is 0, 13-24 is 1, 25-36 is 2). Input: <DOZEN dozenID>\n";
     output += "Highs/Lows (18 Numbers): Returns 2x your bet. Preferences are (high, low). Input: <Preference>\n";
     output += "Odds/Evens (18 Numbers): Returns 2x your bet. Preferences are (odd, even). Input: <Preference>\n";
@@ -91,6 +89,14 @@ public class Roulette {
     }
     else {
       return betVal * -1;
+    }
+  }
+  public void bet() {
+    System.out.println(EB);
+    betInfo = new ArrayList<String>();
+    int counter = 0;
+    while (in.hasNext() && counter < 2) {
+      betInfo.add(in.next());
     }
   }
   public String printBoard() {
