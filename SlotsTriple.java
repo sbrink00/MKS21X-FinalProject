@@ -2,14 +2,15 @@ import java.util.*;
 public class SlotsTriple {
   //This slots is designed to return, on average, 99% of the bet input.
   private Random r;
+  private Scanner in;
+  private Player player;
   private double bet;
   private double jackpot;
   private double payout;
   private char[] reel;
   private int[] spinG;
-  public static void main(String[] args) {
-    Slots test = new Slots(1.0);
-  }
+  private String EB = "Please enter your bet value: ";
+  private String PA = "Would you like to play again? <y/n>";
   /* J means Jackpot; one occurrence.
   A has two occurrences per reel.
   B has three occurrences per reel.
@@ -17,7 +18,9 @@ public class SlotsTriple {
   D has ten occurrences per reel.
   T is worthless and has 25 occurrences per reel. */
   public SlotsTriple() {
+    in = new Scanner(System.in);
     r = new Random();
+    player = new Player(1000);
     reel = new char[45];
     for (int i = 0; i < 45; i++) {
       if (i == 0) reel[i] = 'J';
@@ -58,6 +61,9 @@ public class SlotsTriple {
     else {
       payout = -1 * bet;
     }
+  }
+  public void run() {
+
   }
   public double getPayout() {
     return payout;
