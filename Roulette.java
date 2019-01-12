@@ -5,12 +5,14 @@ public class Roulette {
   private ArrayList<ArrayList<Tile>> board;
   private ArrayList<Tile> spinBoard;
   private ArrayList<String> betInfo;
+  private Player player;
   private Scanner in;
   private int[] winners;
   private String EB = "Enter your bet value and bet type";
   private String PA = "Do you want to play again? <y/n>";
 
   public Roulette() {
+    player = new Player();
     in = new Scanner(System.in);
     board = new ArrayList<ArrayList<Tile>>();
     spinBoard = new ArrayList<Tile>();
@@ -89,6 +91,19 @@ public class Roulette {
     }
     else {
       return betVal * -1;
+    }
+  }
+  public void run() {
+    boolean done = false;
+    int counter = 0;
+    while (!done) {
+      if (counter == 0) displayOptions();
+      bet();
+      betWinsPossibilites();
+      spin();
+      player.changeBal(interpretSpin());
+      System.out.println("Your balance has been changed by: " + interpretSpin());
+      System.out.println("Your balance is now: " + player.getBal());
     }
   }
   public void bet() {
