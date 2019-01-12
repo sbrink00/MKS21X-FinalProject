@@ -115,14 +115,15 @@ public class Roulette {
   }
   public boolean endgame() {
     System.out.println(PA);
-    String ans = in.next();
+    String ans = in.nextLine();
     if (ans.equals("y")) return false;
     return true;
   }
   public void bet() {
     System.out.println(EB);
     betInfo = new ArrayList<String>();
-    while (in.hasNext()) {
+    betInfo.add(System.in);
+    while (in.hasNext() && !(in.next().equals("done"))) {
       betInfo.add(in.next());
     }
   }
