@@ -77,10 +77,22 @@ public class Blackjack{
   }
 
   public void playerPlay(){
-    boolean stand = false;
     if (player.getHand().sumValues() == 21){
       System.out.println("You got blackjack, congrats!!");
       playerBlackjack = true;
+    }
+    if (playerHands.get(0).get(0).equalsNumber(playerHands.get(0).get(1))){
+      System.out.println("Do you want to split? Enter 'y' for yes and 'n' for no.");
+      String s = in.nextLine();
+      if (s.equals("y")){
+        playerHands.add(new Hand());
+        playerHands.get(1).add(playerHands.get(0).remove(1));
+        playerHands.get(0).add(shoe.remove(shoe.getRandomCard()));
+        playerHands.get(0).add(shoe.remove(shoe.getRandomCard()));
+        for (int idx = 0; idx < playerHands.size(); idx ++){
+          if
+        }
+      }
     }
     while (!stand && !playerBlackjack && !playerBust){
       System.out.println(HSD);
