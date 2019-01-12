@@ -45,9 +45,9 @@ public class SlotsTriple {
   }
   public String printSpin() {
     String output = "";
-    output += spinG[0];
-    output += ", " + spinG[1];
-    output += ", " + spinG[2];
+    output += reel[0];
+    output += ", " + reel[1];
+    output += ", " + reel[2];
     return output;
   }
   public void interpretSpin() {
