@@ -7,7 +7,7 @@ public class Blackjack{
       hand = new Hand();
     }
   }
-
+  private ArrayList<ArrayList<Hand>> splitHand;
   private Dealer dealer;
   private Player player;
   private double bet;
@@ -34,6 +34,7 @@ public class Blackjack{
     playerBlackjack = false;
     dealerBust = false;
     playerBust = false;
+    splitHand = new ArrayList<ArrayList<Hand>>();
   }
 
   public void run(){
@@ -193,6 +194,15 @@ public class Blackjack{
       }
     }
     if (playerSum > 21) playerBust = true;
+  }
+
+  public String splitHandToString(){
+    if (splitHand.size() == 0) return "[]";
+    String output = "[";
+    for (int idx = 0; idx < splitHand.size(); idx ++){
+      output += splitHand.get(idx) + ", ";
+    }
+    return output.substring(0, output.length() - 2) + "]";
   }
 
 
