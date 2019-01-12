@@ -104,7 +104,15 @@ public class Roulette {
       player.changeBal(interpretSpin());
       System.out.println("Your balance has been changed by: " + interpretSpin());
       System.out.println("Your balance is now: " + player.getBal());
+      if (endgame()) done = true;
+      counter++;
     }
+  }
+  public boolean endgame() {
+    System.out.println(PA);
+    String ans = in.next();
+    if (ans.equals("y")) return false;
+    return true;
   }
   public void bet() {
     System.out.println(EB);
