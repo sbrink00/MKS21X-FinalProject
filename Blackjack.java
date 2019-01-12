@@ -28,6 +28,8 @@ public class Blackjack{
     dealer = new Dealer();
     shoe = new Shoe(6);
     in = new Scanner(System.in);
+    playerSum =0;
+    dealerSum = 0;
     dealerBlackjack = false;
     playerBlackjack = false;
     dealerBust = false;
@@ -65,6 +67,8 @@ public class Blackjack{
     Card c4 = shoe.getRandomCard();
     dealer.hand.add(shoe.remove(c4));
     c4.setHidden(true);
+    playerSum = player.getHand().sumValues();
+    dealerSum = dealer.hand.sumValues();
     System.out.println("the dealers starting hand is: " + dealer.hand);
     System.out.println("--------------------------------------------------------------");
   }
@@ -113,7 +117,7 @@ public class Blackjack{
     String reveal = in.nextLine();
     System.out.println(dealer.hand);
     boolean stand = false;
-    if (dealer.hand.sumValues() == 21){
+    if (dealerSum == 21){
       dealerBlackjack = true;
       System.out.println("The dealer got blackjack");
     }
@@ -141,6 +145,8 @@ public class Blackjack{
   }
 
   public void payout(){
+    System.out.println("player total: " + player.getHand().sumValues());
+    System.out.println("dealer total: " + dealer.hand.sumValues());
     System.out.println("Type anything when you are ready to reveal the final results");
     String Final = in.nextLine();
     System.out.println("The dealer's final hand is: " + dealer.hand);
@@ -165,7 +171,7 @@ public class Blackjack{
     System.out.println("Do you want to continue playing blackjack?");
     System.out.println("Enter y for yes and n for no");
     String name = in.nextLine();
-    if (name.equals("n") || player.getBal() == 0) return false;
+    if (name.equals("n") || player.getBal() < 0) return false;
     return true;
   }
 
