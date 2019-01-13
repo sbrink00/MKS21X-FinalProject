@@ -18,11 +18,10 @@ public class Blackjack{
   public boolean playerBlackjack, dealerBlackjack, playerBust, dealerBust;
   //the following strings are going to be used in the run function.
   //they are acronyms and will be explained with comments after the string
-  private String EB = "Please enter your bet: "; //Enter Bet
-  private String HSD = "Do you want to hit, stand, or double?";//Hit or Stand
-  private String CP = "Do you want to continue playing blackjack?";//Continue Playing
-  private String YN = "Enter 'y' for yes and 'n' for no: ";//Yes or No
-
+  //private String EB = "Please enter your bet: "; //Enter Bet
+  //private String HSD = "Do you want to hit, stand, or double?";//Hit or Stand
+  //private String CP = "Do you want to continue playing blackjack?";//Continue Playing
+  //private String YN = "Enter 'y' for yes and 'n' for no: ";//Yes or No
 
   public Blackjack(){
     player = new Player(1000);
@@ -87,65 +86,59 @@ public class Blackjack{
   }
 
   public void playerPlay(){
-    if (playerHands.get(0).isBlackjack()){
-      System.out.println("You got blackjack, congrats!!");
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    if (playerHands.get(0).splittable()){
-      System.out.println("Do you want to split? Enter 'y' for yes and 'n' for no.");
-      String s = in.nextLine();
-      if (s.equals("y")){
-        playerHands.add(new Hand());
-        playerHands.get(1).add(playerHands.get(0).remove(1));
-        playerHands.get(0).add(shoe.remove(shoe.getRandomCard()));
-        playerHands.get(0).add(shoe.remove(shoe.getRandomCard()));
-        for (int idx = 0; idx < playerHands.size(); idx ++){
-          if
+    for (int idx = 0; idx < playerHands.size() && playerHands.size() < 5; idx ++){
+      if (playerHands.get(idx).splittable()){
+        System.out.println("Do you want to split? Enter 'y' for yes and 'n' for no.");
+        String s = in.nextLine();
+        if (s.equals("y")){
+          playerHands.add(new Hand());
+          playerHands.get(1).add(playerHands.get(0).remove(1));
+          playerHands.get(0).add(shoe.remove(shoe.getRandomCard()));
+          playerHands.get(1).add(shoe.remove(shoe.getRandomCard()));
+          idx = 0;
         }
       }
     }
-    while (!stand && !playerBlackjack && !playerBust){
-      System.out.println(HSD);
-      String hos = in.nextLine();
-      if (hos.equals("hit")){
-        player.getHand().add(shoe.remove(shoe.getRandomCard()));
-        System.out.println("Your new hand is: " + player.getHand());
-        playerSum = player.getHand().sumValues();
-        if (playerSum > 21){
-          for (int idx = 0; idx < player.getHand().size() && playerSum > 21; idx ++){
-            Card temp = new Card(1, 'S');
-            if (player.getHand().get(idx).equalsNumber(temp)){
-              player.getHand().get(idx).setVal(1);
+    for (int idx = 0; idx < playerHands.size(); idx ++){
+      Hand temp = playerHands.get(idx);
+      System.out.println("You are now playing on hand " + idx+1);
+      boolean stand = false;
+      boolean blackjack = false;
+      boolean bust = false;
+      if (temp.isBlackjack()){
+        blackjack = true;
+        System.out.println("You got blackjack, Congrats!");
+      }
+      while (!stand && !blackjack && bust){
+        boolean hasDoubled = false;
+        if (!hasDoubled) System.out.println("Do you want to hit, stand, or double");
+        else System.out.println("do you want to hit or stand");
+        String hos = in.nextLine();
+        if (hos.equals("hit")){
+          temp.add(shoe.remove(shoe.getRandomCard()));
+          System.out.println("Your new hand is: " + phToString());
+          if (temp.sum() > 21){
+            for (int index = 0; index < temp.size() && playerSum > 21; index ++){
+              Card ace = new Card(1, 'S');
+              if (temp.get(index).equalsNumber(ace)){
+                temp.get(index).setVal(1);
+              }
             }
-            playerSum = player.getHand().sumValues();
           }
+          if (temp.sum() > 21) bust = true;
+          if (temp.sum() == 21) stand = true;
         }
-        if (playerSum > 21) playerBust = true;
-        if (playerSum == 21) stand = true;
-      }
-      else if (hos.equals("stand")) stand = true;
-      else if (hos.equals("double")){
-        Double();
-        if (!playerBust) stand = true;
+        else if (hos.equals("stand")) stand = true;
+        else if (hos.equals("double")){
+          Double();
+          hasDoubled = true;
+          if (!temp.sum() > 21) stand = true;
+        }
       }
     }
-    System.out.println("Your final hand is: " + player.getHand());
-    if (playerBust) System.out.println("You busted cause you're trash");
-    System.out.println("--------------------------------------------------------------");
-  }
+      System.out.println("Your final hand is: " + phToString());
+      System.out.println("--------------------------------------------------------------");
+    }
 
   public void dealerPlay(){
     for (int idx = 0; idx < dealer.hand.size(); idx ++){
