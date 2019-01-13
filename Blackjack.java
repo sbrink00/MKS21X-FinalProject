@@ -84,16 +84,18 @@ public class Blackjack{
   }
 
   public void playerPlay(){
-    for (int idx = 0; idx < playerHands.size() && playerHands.size() < 5; idx ++){
+    for (int idx = 0; ((idx < playerHands.size()) && (playerHands.size() < 5)); idx ++){
       if (playerHands.get(idx).splittable()){
-        System.out.println("Do you want to split? Enter 'y' for yes and 'n' for no.");
+        System.out.println("Do you want to split hand " + (idx + 1) + "? Enter 'y' for yes and 'n' for no.");
         String s = in.nextLine();
         if (s.equals("y")){
-          playerHands.add(new Hand());
-          playerHands.get(1).add(playerHands.get(0).remove(1));
-          playerHands.get(0).add(shoe.remove(shoe.getRandomCard()));
-          playerHands.get(1).add(shoe.remove(shoe.getRandomCard()));
+          playerHands.add(idx+1, new Hand());
+          playerHands.get(idx + 1).add(playerHands.get(idx).remove(1));
+          playerHands.get(idx).add(new Card(5, 'H'));//shoe.remove(shoe.getRandomCard()));
+          playerHands.get(idx + 1).add(shoe.remove(shoe.getRandomCard()));
           idx = 0;
+          System.out.println(idx);
+          System.out.println(playerHands.size());
         }
         System.out.println("Your new hand is: " + phToString());
       }
@@ -110,8 +112,8 @@ public class Blackjack{
       }
       while (!stand && !blackjack && !bust){
         boolean hasDoubled = false;
-        if (!hasDoubled) System.out.println("Do you want to hit, stand, or double");
-        else System.out.println("do you want to hit or stand");
+        if (!hasDoubled) System.out.println("Do you want to hit, stand, or double?");
+        else System.out.println("Do you want to hit or stand?");
         String hos = in.nextLine();
         if (hos.equals("hit")){
           temp.add(shoe.remove(shoe.getRandomCard()));
