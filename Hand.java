@@ -12,6 +12,11 @@ public class Hand extends CardList{
     return false;
   }
 
+  public boolean bust(){
+    if (size() > 21)) return true;
+    return false;
+  }
+
   public boolean splittable(){
     if (size() == 2 && get(0).equalsNumber(get(1))) return true;
     return false;
