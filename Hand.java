@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 public class Hand extends CardList{
   //private ArrayList<Card> cards;
-  private boolean blackjack;
+
   public Hand(){
     initializeCards();
     blackjack = false;
@@ -12,8 +12,10 @@ public class Hand extends CardList{
     return false;
   }
 
+  public int sum() {return sumValues;}
+
   public boolean bust(){
-    if (size() > 21)) return true;
+    if (size() > 21) return true;
     return false;
   }
 
