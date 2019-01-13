@@ -53,7 +53,7 @@ public class Blackjack{
   }
 
   public void bet(){
-    System.out.println(EB);
+    System.out.println("Please enter your bet");
     double terminalBet = Double.parseDouble(in.nextLine());
     bet = terminalBet;
     player.changeBal(-1 * bet);
@@ -132,7 +132,8 @@ public class Blackjack{
         else if (hos.equals("double")){
           Double();
           hasDoubled = true;
-          if (!temp.sum() > 21) stand = true;
+          if (!(temp.sum() > 21)) stand = true;
+          else bust = true;
         }
       }
     }
