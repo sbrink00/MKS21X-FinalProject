@@ -129,17 +129,20 @@ public class Blackjack{
         }
         else if (hos.equals("stand")) stand = true;
         else if (hos.equals("double")){
-          Double();
+          playerHands.set(idx, temp);
+          Double(idx);
           hasDoubled = true;
+          temp = playerHands.get(idx);
           if (!(temp.sum() > 21)) stand = true;
           else bust = true;
         }
       }
       playerHands.set(idx, temp);
+      System.out.println("You have finished playing on Hand " + (idx + 1) + ". Your new hand is: " + phToString());
     }
       System.out.println("Your final hand is: " + phToString());
       System.out.println("--------------------------------------------------------------");
-    }
+  }
 
   public void dealerPlay(){
     for (int idx = 0; idx < dealer.hand.size(); idx ++){
@@ -214,15 +217,13 @@ public class Blackjack{
     String finalCard = in.nextLine();
     playerHands.get(index).add(shoe.remove(shoe.getRandomCard()));
     if (playerHands.get(index).sum() > 21){
-      for (int idx = 0; idx < player.getHand().size() && playerSum > 21; idx ++){
+      for (int idx = 0; idx < playerHands.get(index).size() && playerHands.get(index).sum() > 21; idx ++){
         Card temp = new Card(1, 'S');
-        if (player.getHand().get(idx).equalsNumber(temp)){
-          player.getHand().get(idx).setVal(1);
+        if (playerHands.get(index).get(idx).equalsNumber(temp)){
+          playerHands.get(index).get(idx).setVal(1);
         }
-        playerSum = player.getHand().sumValues();
       }
     }
-    if (playerSum > 21) playerBust = true;
   }
 
   /*public void splitTester(){
