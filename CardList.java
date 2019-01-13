@@ -18,6 +18,10 @@ public abstract class CardList{
 
   public void clear() {cards.clear();}
 
+  public Card remove(Card c){return cards.remove(c);}
+
+  public Card remove(int index){return cards.remove(index);}
+
   public boolean contains(Card other) {
     for (int idx = 0; idx < size(); idx ++){
       if (other.equals(cards.get(idx))) return true;
@@ -52,10 +56,6 @@ public abstract class CardList{
     return output;
   }
 
-  public Card remove(Card c){
-    cards.remove(c);
-    return c;
-  }
 
   public void swap(int idx1, int idx2){
     Card temp = get(idx1);
