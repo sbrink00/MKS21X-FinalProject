@@ -4,7 +4,6 @@ public class Hand extends CardList{
 
   public Hand(){
     initializeCards();
-    blackjack = false;
   }
 
   public boolean isBlackjack(){
@@ -12,7 +11,7 @@ public class Hand extends CardList{
     return false;
   }
 
-  public int sum() {return sumValues;}
+  public int sum() {return sumValues();}
 
   public boolean bust(){
     if (size() > 21) return true;
