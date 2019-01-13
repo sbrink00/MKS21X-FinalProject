@@ -12,6 +12,7 @@ public class Roulette {
   private String PA = "Do you want to play again? <y/n>";
 
   public Roulette() {
+    betInfo = new ArrayList<String>();
     player = new Player(1000);
     in = new Scanner(System.in);
     board = new ArrayList<ArrayList<Tile>>();
@@ -120,12 +121,16 @@ public class Roulette {
     return true;
   }
   public void bet() {
-    System.out.println(EB);
-    betInfo = new ArrayList<String>();
-    betInfo.add(System.in);
-    while (in.hasNext() && !(in.next().equals("done"))) {
-      betInfo.add(in.next());
-    }
+    System.out.println("Please enter your bet type");
+    String betType = in.nextLine();
+    betInfo.add(betType);
+    System.out.println("please enter the specifics for your bet");
+    String specifics = in.nextLine();
+    betInfo.add(specifics);
+    System.out.println("please enter the amount you want to bet");
+    String betAmount = in.nextLine();
+    betInfo.add(betAmount);
+    System.out.println(biString());
   }
   public String printBoard() {
     String output = "";
@@ -139,4 +144,15 @@ public class Roulette {
     }
     return output;
   }
+
+  public String biString(){
+    if (betInfo.size() == 0) return "[]";
+    String output ="[";
+    for (int idx = 0; idx < betInfo.size(); idx ++){
+      output += betInfo.get(idx) + ", ";
+    }
+    return output.substring(0, output.length() - 2) + "]";
+  }
+
+
 }
