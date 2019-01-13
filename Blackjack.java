@@ -61,18 +61,16 @@ public class Blackjack{
   }
 
   public void deal(){
-    Card c1 = shoe.getRandomCard();
+    Card c1 = new Card(5, 'S');//shoe.getRandomCard();
     playerHands.get(0).add(shoe.remove(c1));
-    Card c2 = shoe.getRandomCard();
+    Card c2 = new Card(5, 'C');//shoe.getRandomCard();
     playerHands.get(0).add(shoe.remove(c2));
-    System.out.println("your starting hand is: " + player.getHand());
+    System.out.println("your starting hand is: " + playerHands.get(0));
     Card c3 = shoe.getRandomCard();
     dealer.hand.add(shoe.remove(c3));
     Card c4 = shoe.getRandomCard();
     dealer.hand.add(shoe.remove(c4));
     c4.setHidden(true);
-    playerSum = player.getHand().sumValues();
-    dealerSum = dealer.hand.sumValues();
     System.out.println("the dealers starting hand is: " + dealer.hand);
     System.out.println("--------------------------------------------------------------");
   }
@@ -101,7 +99,7 @@ public class Blackjack{
     }
     for (int idx = 0; idx < playerHands.size(); idx ++){
       Hand temp = playerHands.get(idx);
-      System.out.println("You are now playing on hand " + idx+1);
+      System.out.println("You are now playing on hand " + (idx+1));
       boolean stand = false;
       boolean blackjack = false;
       boolean bust = false;
@@ -109,7 +107,7 @@ public class Blackjack{
         blackjack = true;
         System.out.println("You got blackjack, Congrats!");
       }
-      while (!stand && !blackjack && bust){
+      while (!stand && !blackjack && !bust){
         boolean hasDoubled = false;
         if (!hasDoubled) System.out.println("Do you want to hit, stand, or double");
         else System.out.println("do you want to hit or stand");
@@ -136,6 +134,7 @@ public class Blackjack{
           else bust = true;
         }
       }
+      playerHands.set(idx, temp);
     }
       System.out.println("Your final hand is: " + phToString());
       System.out.println("--------------------------------------------------------------");
@@ -177,12 +176,12 @@ public class Blackjack{
   }
 
   public void payout(){
-    System.out.println("player total: " + player.getHand().sumValues());
+    if (playerHands.size() == 1) System.out.println("player total: " + playerHands.get(0).sumValues());
     System.out.println("dealer total: " + dealer.hand.sumValues());
     System.out.println("Type anything when you are ready to reveal the final results");
     String Final = in.nextLine();
     System.out.println("The dealer's final hand is: " + dealer.hand);
-    System.out.println("Your final hand is: " + player.getHand());
+    System.out.println("Your final hand is: " + playerHands.get(0));
     if (playerBlackjack) player.changeBal(bet * 2.5);
     else if (!playerBust && dealerBust) player.changeBal(bet * 2);
     else if (!playerBust && !dealerBust && playerSum > dealerSum) player.changeBal(bet * 2);
@@ -192,18 +191,17 @@ public class Blackjack{
   }
 
   public boolean endGame(){
-    player.getHand().clear();
+    for (int idx = 0; idx < playerHands.size(); idx ++){
+      playerHands.get(idx).clear();
+    }
     dealer.hand.clear();
-    playerSum = 0;
     dealerSum = 0;
-    playerBlackjack = false;
     dealerBlackjack = false;
-    playerBust = false;
     dealerBust = false;
     System.out.println("Do you want to continue playing blackjack?");
     System.out.println("Enter y for yes and n for no");
-    String name = in.nextLine();
-    if (name.equals("n") || player.getBal() < 0) return false;
+    String continuE = in.nextLine();
+    if (continuE.equals("n") || player.getBal() < 0) return false;
     return true;
   }
 
