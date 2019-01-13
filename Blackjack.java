@@ -44,8 +44,10 @@ public class Blackjack{
     while(!done){
       bet();
       deal();
-      playerPlay();
-      if (!playerBlackjack) dealerPlay();
+      if (!playerBlackjack()){
+        playerPlay();
+        dealerPlay();
+      }
       payout();
       if (!endGame()) done = true;
     }
@@ -76,12 +78,33 @@ public class Blackjack{
     System.out.println("--------------------------------------------------------------");
   }
 
-  public void playerPlay(){
-    if (player.getHand().sumValues() == 21){
+  public boolean playerBlackjack(){
+    if (playerHands.get(0).isBlackjack()){
       System.out.println("You got blackjack, congrats!!");
-      playerBlackjack = true;
+      return true;
     }
-    if (playerHands.get(0).get(0).equalsNumber(playerHands.get(0).get(1))){
+    return false;
+  }
+
+  public void playerPlay(){
+    if (playerHands.get(0).isBlackjack()){
+      System.out.println("You got blackjack, congrats!!");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (playerHands.get(0).splittable()){
       System.out.println("Do you want to split? Enter 'y' for yes and 'n' for no.");
       String s = in.nextLine();
       if (s.equals("y")){
