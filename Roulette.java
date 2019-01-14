@@ -1,4 +1,5 @@
 import java.util.*;
+//Roulette
 public class Roulette {
   private Random r;
   private double betVal;
