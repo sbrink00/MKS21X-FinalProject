@@ -15,7 +15,7 @@ public class Roulette {
   private String EB = "Enter your bet value: ";
   private String PA = "Do you want to play again? <y/n>";
   private String BT = "Please enter your bet type: ";
-
+  private String GN = "Please enter a number you would like to bet on: ";
   public Roulette() {
     player = new Player(1000);
     in = new Scanner(System.in);
@@ -81,11 +81,14 @@ public class Roulette {
       else if (columnID == 1) winners = new int[]{2,5,8,11,14,17,20,23,26,29,32,35};
       else if (columnID == 2) winners = new int[]{3,6,9,12,15,18,21,24,27,30,33,36};
     }
-    else if (betType.equals("straight")) numberBetLength = 1;
-    else if (betType.equals("split")) numberBetLength = 2;
-    else if (betType.equals("street")) numberBetLength = 3;
-    else if (betType.equals("square")) numberBetLength = 4;
-    else if (betType.equals("sixline")) numberBetLength = 6;
+    else {
+      if (betType.equals("straight")) numberBetLength = 1;
+      else if (betType.equals("split")) numberBetLength = 2;
+      else if (betType.equals("street")) numberBetLength = 3;
+      else if (betType.equals("square")) numberBetLength = 4;
+      else if (betType.equals("six line")) numberBetLength = 6;
+      int counter = 0;
+    }
   }
   public double interpretSpin(Tile winner) {
     boolean contains = false;
@@ -105,6 +108,7 @@ public class Roulette {
     while (!done) {
       if (counter == 0) displayOptions();
       bet();
+      betType();
       betWinsPossibilites();
       Tile winner = spin();
       System.out.println("The winning Tile is: " + winner.toString());
@@ -120,6 +124,9 @@ public class Roulette {
     String ans = in.nextLine();
     if (ans.equals("y")) return false;
     return true;
+  }
+  public void getNumBet() {
+    System.out.println(GN);
   }
   public void bet() {
     System.out.println(EB);
