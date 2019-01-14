@@ -30,12 +30,12 @@ public class Roulette {
     while (counter < 37) {
       for (int i = 1; i < 4; i++) {
         if (counter % 2 == 0) {
-          board.get(i).add(new Tile (counter, 'B'));
-          spinBoard.add(new Tile(counter, 'B'));
-        }
-        else if (counter % 2 == 1) {
           board.get(i).add(new Tile (counter, 'R'));
           spinBoard.add(new Tile(counter, 'R'));
+        }
+        else if (counter % 2 == 1) {
+          board.get(i).add(new Tile (counter, 'B'));
+          spinBoard.add(new Tile(counter, 'B'));
         }
         counter++;
       }
