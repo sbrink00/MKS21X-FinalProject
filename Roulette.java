@@ -4,7 +4,6 @@ public class Roulette {
   private double betVal;
   private ArrayList<ArrayList<Tile>> board;
   private ArrayList<Tile> spinBoard;
-  private ArrayList<String> betInfo;
   private Player player;
   private Scanner in;
   private int[] winners;
