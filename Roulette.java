@@ -86,7 +86,7 @@ public class Roulette {
       else if (betType.equals("split")) numberBetLength = 2;
       else if (betType.equals("street")) numberBetLength = 3;
       else if (betType.equals("square")) numberBetLength = 4;
-      else if (betType.equals("six line")) numberBetLength = 6;
+      else if (betType.equals("sixline")) numberBetLength = 6;
       winners = new int[numberBetLength];
       int counter = 0;
       while (counter < numberBetLength) {
@@ -125,6 +125,7 @@ public class Roulette {
     }
   }
   public boolean endgame() {
+    if (player.getBal() == 0) return true;
     System.out.println(PA);
     String ans = in.nextLine();
     if (ans.equals("y")) return false;
@@ -137,6 +138,7 @@ public class Roulette {
   public void bet() {
     System.out.println(EB);
     betVal = Double.parseDouble(in.nextLine());
+    if (betVal > player.getBal()) betVal = player.getBal();
   }
   public void betType() {
     System.out.println(BT);
