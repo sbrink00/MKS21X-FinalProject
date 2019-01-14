@@ -18,7 +18,12 @@ public abstract class CardList{
 
   public void clear() {cards.clear();}
 
-  public Card remove(Card c){return cards.remove(c);}
+  public Card remove(Card c){
+    cards.remove(c);
+    return c;
+  }
+
+  public void add(int index, Card c) {cards.add(index, c);}
 
   public Card remove(int index){return cards.remove(index);}
 
