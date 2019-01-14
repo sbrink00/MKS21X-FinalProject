@@ -91,6 +91,7 @@ public class Roulette {
       int counter = 0;
       while (counter < numberBetLength) {
         winners[counter] = getNumBet();
+        counter++;
       }
     }
   }
