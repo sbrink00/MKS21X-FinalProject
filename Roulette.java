@@ -8,8 +8,10 @@ public class Roulette {
   private Player player;
   private Scanner in;
   private int[] winners;
-  private String EB = "Enter your bet value and bet type";
+  private String betType;
+  private String EB = "Enter your bet value: ";
   private String PA = "Do you want to play again? <y/n>";
+  private String BT = "Please enter your bet type: ";
 
   public Roulette() {
     player = new Player(1000);
@@ -121,11 +123,11 @@ public class Roulette {
   }
   public void bet() {
     System.out.println(EB);
-    betInfo = new ArrayList<String>();
-    betInfo.add(System.in);
-    while (in.hasNext() && !(in.next().equals("done"))) {
-      betInfo.add(in.next());
-    }
+    betVal = Double.parseDouble(in.nextLine());
+  }
+  public void betType() {
+    System.out.println(BT);
+    betType = in.nextLine().toLowerCase();
   }
   public String printBoard() {
     String output = "";
