@@ -32,3 +32,5 @@ January 10: I coded all of the betting types and options, and the ratio to which
 January 11: I did nothing, we had the APCS Test today.
 
 January 12: I completed the structure of Roulette without the aspect of user input. When I tried to integrate user input into the class, it broke. Therefore, it will not make an appearance in the demo. On the other hand, user input was fully integrated into slots.
+
+January 13: Completely overhauled user input in Roulette. It is now fully functional and works until the user no longer wants to play or runs out of money. It can be used in our demo tomorrow as well, I am about to make a new demo commit.
