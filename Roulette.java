@@ -4,13 +4,17 @@ public class Roulette {
   private double betVal;
   private ArrayList<ArrayList<Tile>> board;
   private ArrayList<Tile> spinBoard;
-  private ArrayList<String> betInfo;
   private Player player;
   private Scanner in;
   private int[] winners;
-  private String EB = "Enter your bet value and bet type";
+  private String betType;
+  private int dozenID;
+  private int columnID;
+  private int numberBetLength;
+  private String EB = "Enter your bet value: ";
   private String PA = "Do you want to play again? <y/n>";
-
+  private String BT = "Please enter your bet type: ";
+  private String GN = "Please enter a number you would like to bet on: ";
   public Roulette() {
     player = new Player(1000);
     in = new Scanner(System.in);
@@ -57,33 +61,39 @@ public class Roulette {
     System.out.println(output);
   }
   public void betWinsPossibilites() {
-    betVal = Double.parseDouble(betInfo.get(0));
-    int[] output = new int[0];
-    if (betInfo.get(1).equals("high")) output = new int[]{19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36};
-    else if (betInfo.get(1).equals("low")) output = new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18};
-    else if (betInfo.get(1).equals("red")) output = new int[]{1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36};
-    else if (betInfo.get(1).equals("black")) output = new int[]{2,4,6,8,10,11,13,15,17,20,22,24,26,28,29,31,33,35};
-    else if (betInfo.get(1).equals("green")) output = new int[]{0};
-    else if (betInfo.get(1).equals("odd")) output = new int[]{1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35};
-    else if (betInfo.get(1).equals("even")) output = new int[]{2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36};
-    else if (betInfo.get(1).equals("DOZEN")) {
-      if (betInfo.get(2).equals("0")) output = new int[]{1,2,3,4,5,6,7,8,9,10,11,12};
-      else if (betInfo.get(2).equals("1")) output = new int[]{13,14,15,16,17,18,19,20,21,22,23,24};
-      else if (betInfo.get(2).equals("2")) output = new int[]{25,26,27,28,29,30,31,32,33,34,35,36};
+    winners = new int[0];
+    if (betType.equals("high")) winners = new int[]{19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36};
+    else if (betType.equals("low")) winners = new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18};
+    else if (betType.equals("red")) winners = new int[]{1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36};
+    else if (betType.equals("black")) winners = new int[]{2,4,6,8,10,11,13,15,17,20,22,24,26,28,29,31,33,35};
+    else if (betType.equals("green")) winners = new int[]{0};
+    else if (betType.equals("odd")) winners = new int[]{1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35};
+    else if (betType.equals("even")) winners = new int[]{2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36};
+    else if (betType.equals("dozen")) {
+      dozenBet();
+      if (dozenID == 0) winners = new int[]{1,2,3,4,5,6,7,8,9,10,11,12};
+      else if (dozenID == 1) winners = new int[]{13,14,15,16,17,18,19,20,21,22,23,24};
+      else if (dozenID == 2) winners = new int[]{25,26,27,28,29,30,31,32,33,34,35,36};
     }
-    else if (betInfo.get(1).equals("COLUMN")) {
-      if (betInfo.get(2).equals("0")) output = new int[]{1,4,7,10,13,16,19,22,25,28,31,34};
-      else if (betInfo.get(2).equals("1")) output = new int[]{2,5,8,11,14,17,20,23,26,29,32,35};
-      else if (betInfo.get(2).equals("2")) output = new int[]{3,6,9,12,15,18,21,24,27,30,33,36};
+    else if (betType.equals("column")) {
+      columnBet();
+      if (columnID == 0) winners = new int[]{1,4,7,10,13,16,19,22,25,28,31,34};
+      else if (columnID == 1) winners = new int[]{2,5,8,11,14,17,20,23,26,29,32,35};
+      else if (columnID == 2) winners = new int[]{3,6,9,12,15,18,21,24,27,30,33,36};
     }
     else {
-      int counter = 1;
-      while (counter < 7 && betInfo.get(counter) != null) {
-        output = new int[betInfo.size() - 1];
-        output[counter - 1] = Integer.parseInt(betInfo.get(counter));
+      if (betType.equals("straight")) numberBetLength = 1;
+      else if (betType.equals("split")) numberBetLength = 2;
+      else if (betType.equals("street")) numberBetLength = 3;
+      else if (betType.equals("square")) numberBetLength = 4;
+      else if (betType.equals("sixline")) numberBetLength = 6;
+      winners = new int[numberBetLength];
+      int counter = 0;
+      while (counter < numberBetLength) {
+        winners[counter] = getNumBet();
+        counter++;
       }
     }
-    winners = output;
   }
   public double interpretSpin(Tile winner) {
     boolean contains = false;
@@ -103,6 +113,7 @@ public class Roulette {
     while (!done) {
       if (counter == 0) displayOptions();
       bet();
+      betType();
       betWinsPossibilites();
       Tile winner = spin();
       System.out.println("The winning Tile is: " + winner.toString());
@@ -114,18 +125,40 @@ public class Roulette {
     }
   }
   public boolean endgame() {
+    if (player.getBal() == 0) return true;
     System.out.println(PA);
     String ans = in.nextLine();
     if (ans.equals("y")) return false;
     return true;
   }
+  public int getNumBet() {
+    System.out.println(GN);
+    return Integer.parseInt(in.nextLine());
+  }
   public void bet() {
     System.out.println(EB);
+<<<<<<< HEAD
     betInfo = new ArrayList<String>();
     betInfo.add(in.next());
     while (in.hasNext() && !(in.next().equals("done"))) {
       betInfo.add(in.next());
     }
+=======
+    betVal = Double.parseDouble(in.nextLine());
+    if (betVal > player.getBal()) betVal = player.getBal();
+  }
+  public void betType() {
+    System.out.println(BT);
+    betType = in.nextLine().toLowerCase();
+  }
+  public void dozenBet() {
+    System.out.println("Which dozenID would you like to bet on?");
+    dozenID = Integer.parseInt(in.next());
+  }
+  public void columnBet() {
+    System.out.println("Which columnID would you like to bet on?");
+    columnID = Integer.parseInt(in.next());
+>>>>>>> roulette
   }
   public String printBoard() {
     String output = "";
