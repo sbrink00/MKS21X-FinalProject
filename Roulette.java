@@ -62,6 +62,7 @@ public class Roulette {
     System.out.println(output);
   }
   public void betWinsPossibilites() {
+    winners = new int[0];
     if (betType.equals("high")) winners = new int[]{19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36};
     else if (betType.equals("low")) winners = new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18};
     else if (betType.equals("red")) winners = new int[]{1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36};
@@ -87,7 +88,11 @@ public class Roulette {
       else if (betType.equals("street")) numberBetLength = 3;
       else if (betType.equals("square")) numberBetLength = 4;
       else if (betType.equals("six line")) numberBetLength = 6;
+      winners = new int[numberBetLength];
       int counter = 0;
+      while (counter < numberBetLength) {
+        winners[counter] = getNumBet();
+      }
     }
   }
   public double interpretSpin(Tile winner) {
@@ -125,8 +130,9 @@ public class Roulette {
     if (ans.equals("y")) return false;
     return true;
   }
-  public void getNumBet() {
+  public int getNumBet() {
     System.out.println(GN);
+    return Integer.parseInt(in.nextLine());
   }
   public void bet() {
     System.out.println(EB);
