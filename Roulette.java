@@ -132,6 +132,10 @@ public class Roulette {
     System.out.println("Which dozenID would you like to bet on?");
     dozenID = Integer.parseInt(in.next());
   }
+  public void columnBet() {
+    System.out.println("Which columnID would you like to bet on?");
+    columnID = Integer.parseInt(in.next());
+  }
   public String printBoard() {
     String output = "";
     for (int i = 0; i < 4; i++) {
