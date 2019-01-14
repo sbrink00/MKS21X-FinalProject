@@ -23,14 +23,26 @@ January 7:
 -Elias Ferguson: A larger driver verified the 99% rule in the SlotsTriple class. The skeleton of the Wheel, Tile and Roulette classes were added. The Tile class was written but may have been rendered irrelevant by the creation of the Wheel class, which does not utilize Tile at all.
 -Samuel Brink: I finished syncing up Hand, Deck, and Shoe with the CardList class. I also got deal in blackjack to give the player and dealer a hand.
 
-January 8: I am done with the Tile class and the construction of the roulette board in the Roulette class. The printBoard() works correctly and I will next write all the ways to bet and the spin() function, which will spit out a random Tile.
+January 8:
+-Elias Ferguson: I am done with the Tile class and the construction of the roulette board in the Roulette class. The printBoard() works correctly and I will next write all the ways to bet and the spin() function, which will spit out a random Tile.
+-Samuel Brink:
+
 
 January 9: I finished the spin() function which returns a random Tile. On the 10th I will start to write all of the bet returns and the bet options.
 
-January 10: I coded all of the betting types and options, and the ratio to which they payout. A method displayOptions() was added in case the user is unfamiliar with all of the betting options in roulette. interpretSpin() was also completed, along with betsWinsPossibilites(), which converts the bet type input into an array full of all possible results that will return money to the player.
+January 10:
+-Elias Ferguson: I coded all of the betting types and options, and the ratio to which they payout. A method displayOptions() was added in case the user is unfamiliar with all of the betting options in roulette. interpretSpin() was also completed, along with betsWinsPossibilites(), which converts the bet type input into an array full of all possible results that will return money to the player.
+-Samuel Brink: I added boolean playerBust and dealerBust instance variables to track whether or not the player and dealer busted. 
 
-January 11: I did nothing, we had the APCS Test today.
+January 11:
+-Elias Ferguson: I did nothing, we had the APCS Test today.
+-Samuel Brink: I updated some of the blackjack methods so that they had print statements that made it easier for the user to follow along. I also started the process of resetting the player's and dealers hands after each game.
 
-January 12: I completed the structure of Roulette without the aspect of user input. When I tried to integrate user input into the class, it broke. Therefore, it will not make an appearance in the demo. On the other hand, user input was fully integrated into slots.
 
-January 13: Completely overhauled user input in Roulette. It is now fully functional and works until the user no longer wants to play or runs out of money. It can be used in our demo tomorrow as well, I am about to make a new demo commit.
+January 12:
+-Elias Ferguson - I completed the structure of Roulette without the aspect of user input. When I tried to integrate user input into the class, it broke. Therefore, it will not make an appearance in the demo. On the other hand, user input was fully integrated into slots.
+-I spent the majority of this day updating blackjack so that splitting is possible. I deleted many instance variables from the blackjack class as they are no longer relevant as the player can have multiple hands.
+
+January 13:
+-Elias Ferguson: Completely overhauled user input in Roulette. It is now fully functional and works until the user no longer wants to play or runs out of money. It can be used in our demo tomorrow as well, I am about to make a new demo commit.
+-Samuel Brink: I updated the double method so that you can't double if your total is over 11. I also spent a lot of time working on the playerPlay method in Blackjack so that it allows for splitting.
