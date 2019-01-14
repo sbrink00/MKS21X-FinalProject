@@ -122,7 +122,7 @@ public class Roulette {
   public void bet() {
     System.out.println(EB);
     betInfo = new ArrayList<String>();
-    betInfo.add(System.in);
+    betInfo.add(in.next());
     while (in.hasNext() && !(in.next().equals("done"))) {
       betInfo.add(in.next());
     }
