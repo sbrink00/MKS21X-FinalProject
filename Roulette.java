@@ -1,4 +1,5 @@
 import java.util.*;
+//Roulette Game:
 public class Roulette {
   private Random r;
   private double betVal;
@@ -137,13 +138,6 @@ public class Roulette {
   }
   public void bet() {
     System.out.println(EB);
-<<<<<<< HEAD
-    betInfo = new ArrayList<String>();
-    betInfo.add(in.next());
-    while (in.hasNext() && !(in.next().equals("done"))) {
-      betInfo.add(in.next());
-    }
-=======
     betVal = Double.parseDouble(in.nextLine());
     if (betVal > player.getBal()) betVal = player.getBal();
   }
@@ -158,7 +152,6 @@ public class Roulette {
   public void columnBet() {
     System.out.println("Which columnID would you like to bet on?");
     columnID = Integer.parseInt(in.next());
->>>>>>> roulette
   }
   public String printBoard() {
     String output = "";
