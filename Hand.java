@@ -32,5 +32,6 @@ public class Hand extends CardList{
   public boolean wasDoubled() {return wasDoubled;}
   public void setWasDoubled(boolean arg) {wasDoubled = arg;}
   public void setBet(double newBal) {bet = newBal;}
+  public double bet() {return bet;}
 
 }
