@@ -3,10 +3,13 @@ public class Hand extends CardList{
   //private ArrayList<Card> cards;
 
   private boolean wasDoubled;
+  private double bet;
+
 
   public Hand(){
     initializeCards();
     wasDoubled = false;
+    bet = 0;
   }
 
   public boolean isBlackjack(){
@@ -28,5 +31,7 @@ public class Hand extends CardList{
 
   public boolean wasDoubled() {return wasDoubled;}
   public void setWasDoubled(boolean arg) {wasDoubled = arg;}
+  public void setBet(double newBal) {bet = newBal;}
+  public double bet() {return bet;}
 
 }
