@@ -26,3 +26,9 @@ January 7:
 January 8: I am done with the Tile class and the construction of the roulette board in the Roulette class. The printBoard() works correctly and I will next write all the ways to bet and the spin() function, which will spit out a random Tile.
 
 January 9: I finished the spin() function which returns a random Tile. On the 10th I will start to write all of the bet returns and the bet options.
+
+January 10: I coded all of the betting types and options, and the ratio to which they payout. A method displayOptions() was added in case the user is unfamiliar with all of the betting options in roulette. interpretSpin() was also completed, along with betsWinsPossibilites(), which converts the bet type input into an array full of all possible results that will return money to the player.
+
+January 11: I did nothing, we had the APCS Test today.
+
+January 12: 
