@@ -121,14 +121,7 @@ public class Blackjack{
         if (hos.equals("hit")){
           temp.add(shoe.remove(shoe.getRandomCard()));
           System.out.println("Your new hand is: " + phToString());
-          if (temp.sum() > 21){
-            for (int index = 0; index < temp.size() && playerSum > 21; index ++){
-              Card ace = new Card(1, 'S');
-              if (temp.get(index).equalsNumber(ace)){
-                temp.get(index).setVal(1);
-              }
-            }
-          }
+          setAces(idx);
           if (temp.sum() > 21) bust = true;
           if (temp.sum() == 21) stand = true;
         }
@@ -228,19 +221,26 @@ public class Blackjack{
       System.out.println("Type and enter anything to recieve your final card");
       String finalCard = in.nextLine();
       playerHands.get(index).add(shoe.remove(shoe.getRandomCard()));
-      if (playerHands.get(index).sum() > 21){
-        for (int idx = 0; idx < playerHands.get(index).size() && playerHands.get(index).sum() > 21; idx ++){
-          Card temp = new Card(1, 'S');
-          if (playerHands.get(index).get(idx).equalsNumber(temp)){
-            playerHands.get(index).get(idx).setVal(1);
-          }
-        }
-      }
+      setAces(index);
       return true;
     }
   }
 
-  /*public void splitTester(){
+  public void setAces(int index){
+    Hand temp = playerHands.get(index);
+    if (temp.sum() > 21){
+      for (int idx = 0; idx < temp.size() && temp.sum() > 21; idx ++){
+        Card ace = new Card(1, 'S');
+        if (temp.get(idx).equalsNumber(ace)){
+          temp.get(idx).setVal(1);
+        }
+      }
+      playerHands.set(index, temp);
+    }
+  }
+
+  /*
+  public void splitTester(){
     Hand other = new Hand();
     player.setHand(other);
     player.getHand().add(new Card(8, 'S'));
