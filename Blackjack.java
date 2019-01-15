@@ -18,8 +18,8 @@ public class Blackjack{
   private boolean dealerBlackjack, dealerBust;
 
 
-  public Blackjack(){
-    player = new Player(1000);
+  public Blackjack(double startingBalance){
+    player = new Player(startingBalance);
     dealer = new Dealer();
     shoe = new Shoe(6);
     in = new Scanner(System.in);
