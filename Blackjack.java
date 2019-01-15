@@ -103,6 +103,7 @@ public class Blackjack{
         }
       }
     }
+    setHandBets();
     for (int idx = 0; idx < playerHands.size(); idx ++){
       Hand temp = playerHands.get(idx);
       System.out.println("You are now playing on hand " + (idx+1));
@@ -186,11 +187,12 @@ public class Blackjack{
       Hand temp = playerHands.get(idx);
       boolean bj = temp.isBlackjack();
       int psum = temp.sum();
-      if (bj && dealerBlackjack) player.changeBal(bet);
-      else if (bj && !dealerBlackjack) player.changeBal(bet*2.5);
-      else if (dealerBust && psum > 21) player.changeBal(bet);
-      else if (dealerBust && !(psum > 21)) player.changeBal(bet*2);
-      else if (!dealerBust && !(psum > 21) && psum > dealerSum) player.changeBal(bet*2);
+      double tempBet = playerHands.get(idx).bet();
+      if (bj && dealerBlackjack) player.changeBal(tempBet);
+      else if (bj && !dealerBlackjack) player.changeBal(tempBet*2.5);
+      else if (dealerBust && psum > 21) player.changeBal(tempBet);
+      else if (dealerBust && !(psum > 21)) player.changeBal(tempBet*2);
+      else if (!dealerBust && !(psum > 21) && psum > dealerSum) player.changeBal(tempBet*2);
     }
     System.out.println("Your new total is: " + player.getBal());
   }
@@ -222,6 +224,8 @@ public class Blackjack{
       String finalCard = in.nextLine();
       playerHands.get(index).add(shoe.remove(shoe.getRandomCard()));
       setAces(index);
+      playerHands.get(index).setBet(2 * bet);
+      playerHands.get(index).setWasDoubled(true);
       return true;
     }
   }
@@ -236,6 +240,12 @@ public class Blackjack{
         }
       }
       playerHands.set(index, temp);
+    }
+  }
+
+  public void setHandBets(){
+    for (int idx = 0; idx < playerHands.size(); idx ++){
+      playerHands.get(idx).setBet(bet);
     }
   }
 
