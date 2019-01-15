@@ -198,7 +198,8 @@ public class Blackjack{
       double tempBet = playerHands.get(idx).bet();
       if (bj && dealerBlackjack) player.changeBal(tempBet);
       else if (bj && !dealerBlackjack) player.changeBal(tempBet*2.5);
-      else if (dealerBust && psum > 21) player.changeBal(tempBet);
+      else if (dealerBust && (psum > 21)) player.changeBal(tempBet);
+      else if (!dealerBust && !(psum > 21) && psum == dealerSum) player.changeBal(tempBet);
       else if (dealerBust && !(psum > 21)) player.changeBal(tempBet*2);
       else if (!dealerBust && !(psum > 21) && psum > dealerSum) player.changeBal(tempBet*2);
     }
