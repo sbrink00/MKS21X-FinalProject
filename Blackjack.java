@@ -249,25 +249,6 @@ public class Blackjack{
     }
   }
 
-  /*
-  public void splitTester(){
-    Hand other = new Hand();
-    player.setHand(other);
-    player.getHand().add(new Card(8, 'S'));
-    player.getHand().add(new Card(8, 'C'));
-    System.out.println(player.getHand());
-    split();
-  }
-
-  public void split(){
-    splitHand.add(new Hand());
-    splitHand.add(new Hand());
-    splitHand.get(0).add(player.getHand().get(0));
-    splitHand.get(0).add(shoe.remove(shoe.getRandomCard()));
-    splitHand.get(1).add(player.getHand().get(1));
-    splitHand.get(1).add(shoe.remove(shoe.getRandomCard()));
-    System.out.println(splitHandToString());
-  }*/
 
   public String phToString(){ //player hand toString.
     if (playerHands.size() == 0) return "[]";
