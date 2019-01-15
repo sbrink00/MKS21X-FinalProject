@@ -24,6 +24,7 @@ public class Blackjack{
     shoe = new Shoe(6);
     in = new Scanner(System.in);
     dealerSum = 0;
+    bet = 0;
     dealerBlackjack = false;
     dealerBust = false;
     playerHands = new ArrayList<Hand>();
@@ -45,9 +46,16 @@ public class Blackjack{
   }
 
   public void bet(){
-    System.out.println("Please enter your bet");
-    double terminalBet = Double.parseDouble(in.nextLine());
-    bet = terminalBet;
+    while (bet == 0){
+      System.out.println("Please enter your bet");
+      try {
+        double terminalBet = Double.parseDouble(in.nextLine());
+        bet = terminalBet;
+      }
+      catch (NumberFormatException e){
+        System.out.println("please enter a number with up to two decimal points.");
+      }
+    }
     player.changeBal(-1 * bet);
     System.out.println("Your balance is: " + player.getBal());
   }
@@ -205,6 +213,7 @@ public class Blackjack{
     dealerSum = 0;
     dealerBlackjack = false;
     dealerBust = false;
+    bet = 0;
     System.out.println("Do you want to continue playing blackjack?");
     System.out.println("Enter y for yes and n for no");
     String continuE = in.nextLine();
