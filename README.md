@@ -53,6 +53,10 @@ January 14:
 -Elias Ferguson
 -Samuel Brink: I added a bet instance variable to the Hand class so that the bets for the hands could be updated separately if one of them doubled and another didn't. I also wrote a setAces method in the Blackjack class so that I wouldn't have to have the same redundant for loop in many different methods.
 
+January 15:
+
+-Samuel Brink: I updated the payout method in Blackjack so that it pays the correct amount when the player and dealer tie but are both under 21. I also started working on the master Casino file that the user will use to run the casino.
+
 
 
 
