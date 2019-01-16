@@ -51,7 +51,7 @@ public class Blackjack{
 
   public void bet(){
     while (bet <= 0 || bet > player.getBal()){
-      System.out.println("Please enter your bet. It must be a positive number with up to two decimal points\nand must be less than your balance");
+      System.out.println("Please enter your bet. It must be a positive number with up to two decimal points\nand must be less than your balance ("+ player.getBal()+")");
       try {
         double terminalBet = Double.parseDouble(in.nextLine());
         bet = terminalBet;
