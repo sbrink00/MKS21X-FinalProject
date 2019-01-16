@@ -45,9 +45,13 @@ public class Blackjack{
     }
   }
 
+  public void replaceShoe(){
+    if (shoe.size() < 1) shoe = new Shoe(6);
+  }
+
   public void bet(){
-    while (bet == 0){
-      System.out.println("Please enter your bet");
+    while (bet <= 0 || bet > player.getBal()){
+      System.out.println("Please enter your bet. It must be a positive number with up to two decimal points\nand must be less than your balance");
       try {
         double terminalBet = Double.parseDouble(in.nextLine());
         bet = terminalBet;
