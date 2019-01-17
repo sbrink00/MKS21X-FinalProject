@@ -8,7 +8,9 @@ public class Hand extends CardList{
     initializeCards();
     wasDoubled = false;
   }
+  public boolean isFullHouse() {
 
+  }
   public boolean isBlackjack(){
     if (size() == 2 && sumValues() == 21) return true;
     return false;
