@@ -71,7 +71,10 @@ public class Poker {
         }
       }
     }
-    System.out.println(indexsToString(indexs));
+    for (int i = 0; i < indexs.size(); i ++){
+      hand.set(indexs.get(i), shoe.remove(shoe.getRandomCard()));
+    }
+    System.out.println("Your new hand is: " + hand);
   }
 
 
