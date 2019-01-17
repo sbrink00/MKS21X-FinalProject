@@ -12,7 +12,7 @@ public class Hand extends CardList{
     bet = 0;
   }
   public boolean isFullHouse() {
-
+    return false;
   }
   public boolean isBlackjack(){
     if (size() == 2 && sumValues() == 21) return true;

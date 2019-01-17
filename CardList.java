@@ -22,7 +22,7 @@ public abstract class CardList{
     cards.remove(c);
     return c;
   }
-  public void orderCards() {
+  /*public void orderCards() {
     Card switcher;
     for (int i = 1; i < this.size(); i++) {
       switcher = this.get(i);
@@ -33,7 +33,7 @@ public abstract class CardList{
       }
       this.get(i2) = switcher;
     }
-  }
+  }*/
   public void add(int index, Card c) {cards.add(index, c);}
 
   public Card remove(int index){return cards.remove(index);}
