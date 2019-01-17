@@ -11,7 +11,9 @@ public class Hand extends CardList{
     wasDoubled = false;
     bet = 0;
   }
+  public boolean isFullHouse() {
 
+  }
   public boolean isBlackjack(){
     if (size() == 2 && sumValues() == 21) return true;
     return false;

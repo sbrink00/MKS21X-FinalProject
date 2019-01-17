@@ -22,7 +22,18 @@ public abstract class CardList{
     cards.remove(c);
     return c;
   }
-
+  public void orderCards() {
+    Card switcher;
+    for (int i = 1; i < this.size(); i++) {
+      switcher = this.get(i);
+      int i2 = i;
+      while ((i2 > 0) && (switcher < this.get(i2 - 1)) {
+        this.get(i2) = this.get(i2 - 1);
+        i2--;
+      }
+      this.get(i2) = switcher;
+    }
+  }
   public void add(int index, Card c) {cards.add(index, c);}
 
   public Card remove(int index){return cards.remove(index);}
