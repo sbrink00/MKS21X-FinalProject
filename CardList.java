@@ -36,6 +36,11 @@ public abstract class CardList{
   }*/
 
   public void sort(){
+    //this loop sets the ace's numbers to 14 because they are high in poker
+    //and poker is the only game so far that requires the sort method.
+    for (int idx = 0; idx < size(); idx ++){
+      if (get(idx).getNum() == 1) get(idx).setNum(14);
+    }
     for (int idx = 0; idx < size(); idx ++){
       int index = idx;
       for (int idx2 = idx; idx2 < size(); idx2 ++){
