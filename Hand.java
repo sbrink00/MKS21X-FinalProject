@@ -10,10 +10,18 @@ public class Hand extends CardList{
   //hand contains/is the given pokerHand.
 
 
-  /*public boolean fullHouse(){
-    int index = 0;
-    for
-  }*/
+  public boolean fullHouse(){
+    if (subhand(0, 3).three()){
+      Hand tres = subhand(0, 3);
+      Hand dos = subhand(3, 5);
+      return tres.three() && dos.pair();
+    }
+    else{
+      Hand tres = subhand(2, 5);
+      Hand dos = subhand(0, 2);
+      return tres.three() && dos.pair();
+    }
+  }
 
   public boolean flush(){
     for (int idx = 0; idx < size() - 1; idx ++){
@@ -67,7 +75,7 @@ public class Hand extends CardList{
   }
 
 
-  public Hand subHand(int idx1, int idx2){//idx1 is inclusive, idx2 is exclusive.
+  public Hand subhand(int idx1, int idx2){//idx1 is inclusive, idx2 is exclusive.
     Hand output = new Hand();
     try{
       for (int idx = idx1; idx < idx2; idx ++){
