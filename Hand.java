@@ -5,6 +5,30 @@ public class Hand extends CardList{
   private boolean wasDoubled;
   private double bet;
 
+  //about to do poker hands. Will write functions
+  //that return booleans based on whether or not the
+  //hand contains/is the given pokerHand.
+
+  public boolean pair(){
+    for (int idx = 0; idx < size() - 1; idx ++){
+      if (get(idx).getNum() == get(idx + 1).getNum()) return true;
+    }
+    return false;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   public Hand(){
     initializeCards();
