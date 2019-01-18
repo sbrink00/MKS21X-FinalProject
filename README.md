@@ -57,6 +57,13 @@ January 15:
 
 -Samuel Brink: I updated the payout method in Blackjack so that it pays the correct amount when the player and dealer tie but are both under 21. I also started working on the master Casino file that the user will use to run the casino.
 
+January 16:
+
+-Samuel Brink: I built on Elias's work on the poker class by adding a bet method, a deal method, and most of the swap method. The bet method is error proof, it will just keep asking for a bet until the user inputs a valid one. The deal method is very similar to the blackjack deal method except it deals out five cards instead of two. The swap method asks the user to input the indices (starting with 0) of all the cards they want to swap out (up to all five). It then puts these indices in an ArrayList. The next thing I will implement is a way to replace the cards at the given indices with random cards from the shoe.
+
+January 17:
+
+-Samuel Brink: I wrote 9 methods in the hand class that check the hand to see if it is the hand specified by the method. For example, the fullHouse() method returns true if the hand that calls it is a full house, and false if it isn't. I did this for all nine poker hands, not including the high card hand, as that is the default if it isn't any other hand. I combined these methods into the determineHand() method in Poker, which checks the players hand against each possible poker hand starting from the top (royal flush) and going down (to a pair). This is because the way I wrote the checker methods means that a three of a kind is also a pair, so it is necessary to check from high to low, not low to high, or else a three of a kind could get marked as a pair.
 
 
 
