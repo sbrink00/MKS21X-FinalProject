@@ -17,6 +17,9 @@ public class Poker {
     bet();
     deal();
     swap();
+    hand.sort();
+    String outcome = determineHand();
+    System.out.println(outcome);
     //payout();
     //endgame();
   }
@@ -75,6 +78,19 @@ public class Poker {
       hand.set(indexs.get(i), shoe.remove(shoe.getRandomCard()));
     }
     System.out.println("Your new hand is: " + hand);
+  }
+
+  public String determineHand(){
+    if (hand.royalFlush()) return "royal flush";
+    else if (hand.straightFlush()) return "straight flush";
+    else if (hand.four()) return "four of a kind";
+    else if (hand.fullHouse()) return "full house";
+    else if (hand.flush()) return "flush";
+    else if (hand.straight()) return "straight";
+    else if (hand.three()) return "three of a kind";
+    else if (hand.twoPair()) return "two pair";
+    else if (hand.pair()) return "pair";
+    else return "high card";
   }
 
 

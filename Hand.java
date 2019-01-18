@@ -71,7 +71,7 @@ public class Hand extends CardList{
     boolean cond1 = false;
     boolean cond2 = false;
     boolean found  = false;
-    for (int idx = 0; idx < size() && !found; idx ++){
+    for (int idx = 0; idx < size() - 1 && !found; idx ++){
       if (get(idx).getNum() == get(idx + 1).getNum()){
         cond1 = true;
         index = idx + 2;
