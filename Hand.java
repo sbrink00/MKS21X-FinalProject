@@ -10,6 +10,11 @@ public class Hand extends CardList{
   //hand contains/is the given pokerHand.
 
 
+  /*public boolean fullHouse(){
+    int index = 0;
+    for
+  }*/
+
   public boolean flush(){
     for (int idx = 0; idx < size() - 1; idx ++){
       if (get(idx).suit() != get(idx + 1).suit()) return false;
@@ -62,6 +67,19 @@ public class Hand extends CardList{
   }
 
 
+  public Hand subHand(int idx1, int idx2){//idx1 is inclusive, idx2 is exclusive.
+    Hand output = new Hand();
+    try{
+      for (int idx = idx1; idx < idx2; idx ++){
+        output.add(get(idx));
+      }
+    }
+    catch (IndexOutOfBoundsException e){
+      System.out.println("idx1 has to be >= 0 and idx2 has to be <= size()");
+      e.printStackTrace();
+    }
+    return output;
+  }
 
 
 
