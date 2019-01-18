@@ -9,6 +9,28 @@ public class Hand extends CardList{
   //that return booleans based on whether or not the
   //hand contains/is the given pokerHand.
 
+
+
+  public boolean twoPair(){
+    int index = 0;
+    boolean cond1 = false;
+    boolean cond2 = false;
+    boolean found  = false;
+    for (int idx = 0; idx < size() && !found; idx ++){
+      if (get(idx).getNum() == get(idx + 1).getNum()){
+        cond1 = true;
+        index = idx + 2;
+        found = true;
+      }
+    }
+    if (index < size() - 1){
+      for (int idx2 = index; idx2 < size() - 1; idx2 ++){
+        if (get(idx2).getNum() == get(idx2 + 1).getNum()) cond2 = true;
+      }
+    }
+    return cond1 && cond2;
+  }
+
   public boolean pair(){
     for (int idx = 0; idx < size() - 1; idx ++){
       if (get(idx).getNum() == get(idx + 1).getNum()) return true;
