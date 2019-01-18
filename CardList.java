@@ -44,7 +44,6 @@ public abstract class CardList{
         }
       }
       swap(idx, index);
-      System.out.println(cards);
     }
   }
 
