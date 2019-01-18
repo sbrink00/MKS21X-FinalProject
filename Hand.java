@@ -10,6 +10,18 @@ public class Hand extends CardList{
   //hand contains/is the given pokerHand.
 
 
+
+  public boolean four(){
+    for (int idx = 0; idx < size() - 3; idx ++){
+      int val = get(idx).getNum();
+      int val2 = get(idx + 1).getNum();
+      int val3 = get(idx + 2).getNum();
+      int val4 = get(idx + 3).getNum();
+      if (val == val2 && val == val3 && val == val4) return true;
+    }
+    return false;
+  }
+
   public boolean fullHouse(){
     if (subhand(0, 3).three()){
       Hand tres = subhand(0, 3);
