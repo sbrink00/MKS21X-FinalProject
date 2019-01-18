@@ -34,6 +34,24 @@ public abstract class CardList{
       this.get(i2) = switcher;
     }
   }*/
+
+  public void sort(){
+    for (int idx = 0; idx < size(); idx ++){
+      int index = idx;
+      for (int idx2 = idx; idx2 < size(); idx2 ++){
+        if (get(idx2).getNum() < get(index).getNum()){
+          index = idx2;
+        }
+      }
+      swap(idx, index);
+      System.out.println(cards);
+    }
+  }
+
+
+
+
+
   public void add(int index, Card c) {cards.add(index, c);}
 
   public Card remove(int index){return cards.remove(index);}
