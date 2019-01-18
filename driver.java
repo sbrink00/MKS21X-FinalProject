@@ -6,8 +6,10 @@ public class driver{
     h1.add(new Card(5, 'S'));
     h1.add(new Card(6, 'S'));
     h1.add(new Card(7, 'S'));
-    h1.sort();
-    System.out.println(h1);
-    System.out.println(h1.royalFlush());
+    //h1.sort();
+    //System.out.println(h1);
+    //System.out.println(h1.royalFlush());
+    Poker p1 = new Poker();
+    p1.run();
   }
 }
