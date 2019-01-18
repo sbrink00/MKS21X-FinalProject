@@ -10,6 +10,13 @@ public class Hand extends CardList{
   //hand contains/is the given pokerHand.
 
 
+  public boolean three(){
+    for (int idx = 0; idx < size() - 2; idx ++){
+      int val = get(idx).getNum();
+      if (val == get(idx + 1).getNum() && val == get(idx + 2).getNum()) return true;
+    }
+    return false;
+  }
 
   public boolean twoPair(){
     int index = 0;
