@@ -10,6 +10,15 @@ public class Hand extends CardList{
   //hand contains/is the given pokerHand.
 
 
+  public boolean straight(){
+    for (int idx = 0; idx < size() - 1; idx ++){
+      int val = get(idx).getNum();
+      int next = get(idx + 1).getNum();
+      if (val != next - 1) return false;
+    }
+    return true;
+  }
+
   public boolean three(){
     for (int idx = 0; idx < size() - 2; idx ++){
       int val = get(idx).getNum();
