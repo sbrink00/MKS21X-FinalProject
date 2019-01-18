@@ -10,6 +10,13 @@ public class Hand extends CardList{
   //hand contains/is the given pokerHand.
 
 
+  public boolean royalFlush(){
+    return straightFlush() && get(0).getNum() == 10;
+  }
+
+  public boolean straightFlush(){
+    return flush() && straight();
+  }
 
   public boolean four(){
     for (int idx = 0; idx < size() - 3; idx ++){
