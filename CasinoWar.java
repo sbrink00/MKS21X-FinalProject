@@ -1,16 +1,11 @@
 import java.util.*;
 public class CasinoWar {
-<<<<<<< HEAD
   private Hand playerHand;
-=======
-  private ArrayList<Hand> playerHand;
->>>>>>> 629bcf6267ee900484dbb3ffab5e695489a75460
   private Dealer dealer;
   private Player player;
   private double bet;
   private Shoe shoe;
   private Scanner in;
-<<<<<<< HEAD
   private double payout;
   private class Dealer {
     private Hand dealerHand;
@@ -30,14 +25,13 @@ public class CasinoWar {
     dealer.dealerHand.add(shoe.remove(shoe.getRandomCard()));
   }
   public void interpretDeal() {
-    if playerHand.get(0).getValue()
+    int curP = playerHand.get(0).getwarV();
+    int curD = dealer.dealerHand.get(0).getwarV();
+    if (curP == curD) war();
+    else if (curP > curD) payout = bet;
+    else payout = bet * -1;
   }
-=======
-  private class Dealer {
-    private Hand hand;
-    public Dealer() {
-      hand = new Hand();
-    }
+  public void war() {
+    
   }
->>>>>>> 629bcf6267ee900484dbb3ffab5e695489a75460
 }
