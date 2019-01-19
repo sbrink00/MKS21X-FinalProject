@@ -7,6 +7,7 @@ public class CasinoWar {
   private Shoe shoe;
   private Scanner in;
   private double payout;
+  private String WAR = "Would you like to go to war (double your bet, but payout is only your original bet),  or surrender (forfeit half your bet) <war/surrender>: \n";
   private class Dealer {
     private Hand dealerHand;
     public Dealer() {
@@ -32,6 +33,12 @@ public class CasinoWar {
     else payout = bet * -1;
   }
   public void war() {
-    
+    System.out.println(WAR);
+    String answer = in.nextLine();
+    if (answer.equals("war")) {
+      for (int i = 0; i < 3; i++) {
+        System.out.println(shoe.remove(shoe.getRandomCard()).toString() + "was burned.");
+      }
+    }
   }
 }
