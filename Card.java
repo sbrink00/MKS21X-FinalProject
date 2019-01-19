@@ -22,7 +22,7 @@ public class Card{
     else if (num <= 10) warV = num;
     else warV = num;
   }
-
+  public int getwarV() {return warV;}
   public int getNum() {return num;}
   public void setNum(int newNum) {num = newNum;}//used for aces in poker.
   public int getValue() {return val;}
