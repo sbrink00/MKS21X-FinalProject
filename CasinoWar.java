@@ -81,11 +81,13 @@ public class CasinoWar {
       if (answer.equals("war")) {
         warBet = warBet + bet;
         for (int i = 0; i < 3; i++) {
-          System.out.println(shoe.remove(shoe.getRandomCard()).toString() + "was burned.");
+          System.out.println(shoe.remove(shoe.getRandomCard()).toString() + " was burned.");
         }
         playerHand.clear();
         dealer.dealerHand.clear();
         deal();
+        System.out.println("This is your new card: " + playerHand.toString());
+        System.out.println("This is the dealer's new card: " + dealer.dealerHand.toString());
         warDealInterpret();
       }
       else if (answer.equals("surrender")) {
