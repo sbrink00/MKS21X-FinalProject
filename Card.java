@@ -22,7 +22,7 @@ public class Card{
     else if (num <= 10) warV = num;
     else warV = num;
   }
-
+  public int getwarV() {return warV;}
   public int getNum() {return num;}
   public int getValue() {return val;}
   public char suit() {return suit;}
