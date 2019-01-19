@@ -6,6 +6,7 @@ public class CasinoWar {
   private double bet;
   private Shoe shoe;
   private Scanner in;
+  private double payout;
   private class Dealer {
     private Hand dealerHand;
     public Dealer() {
@@ -22,5 +23,8 @@ public class CasinoWar {
   public void deal() {
     playerHand.add(shoe.remove(shoe.getRandomCard()));
     dealer.dealerHand.add(shoe.remove(shoe.getRandomCard()));
+  }
+  public void interpretDeal() {
+    if playerHand.get(0).getValue()
   }
 }
