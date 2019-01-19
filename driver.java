@@ -9,7 +9,10 @@ public class driver{
     //h1.sort();
     //System.out.println(h1);
     //System.out.println(h1.royalFlush());
-    Poker p1 = new Poker();
-    p1.run();
+    //Poker p1 = new Poker();
+    //p1.run();
+    char c = '\u2665';
+    System.out.println(c);
+    //sbrink00@homer@stuy.edu
   }
 }
