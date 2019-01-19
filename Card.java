@@ -20,7 +20,6 @@ public class Card{
   }
 
   public int getNum() {return num;}
-  public void setNum(int newNum) {num = newNum;}
   public int getValue() {return val;}
   public char suit() {return suit;}
   public void setVal(int newVal) {val = newVal;}
@@ -35,8 +34,13 @@ public class Card{
 
 
   public String toString(){
+    char tempSuit;
+    if (suit == 'H') tempSuit = '\u2665';
+    else if (suit == 'S') tempSuit = '\u2660';
+    else if (suit == 'C') tempSuit = '\u2663';
+    else if (suit == 'D') tempSuit = '\u2666';
     if (hidden) return "turned over";
-    if (num == 1 || num == 14) return "A" + suit;
+    if (num == 1) return "A" + suit;
     else if (num < 11) return "" + num + suit;
     else if (num == 11) return "J" + suit;
     else if (num == 12) return "Q" + suit;
