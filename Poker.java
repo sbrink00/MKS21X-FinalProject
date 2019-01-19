@@ -5,6 +5,7 @@ public class Poker {
   private Shoe shoe;
   private Scanner in;
   private Hand hand;
+  private String finalHand;
 
   public Poker() {
     player = new Player(1000);
@@ -18,8 +19,8 @@ public class Poker {
     deal();
     swap();
     hand.sort();
-    String outcome = determineHand();
-    System.out.println(outcome);
+    determineHand();
+    System.out.println("Your final hand is: " + finalHand);
     //payout();
     //endgame();
   }
@@ -80,17 +81,17 @@ public class Poker {
     System.out.println("Your new hand is: " + hand);
   }
 
-  public String determineHand(){
-    if (hand.royalFlush()) return "royal flush";
-    else if (hand.straightFlush()) return "straight flush";
-    else if (hand.four()) return "four of a kind";
-    else if (hand.fullHouse()) return "full house";
-    else if (hand.flush()) return "flush";
-    else if (hand.straight()) return "straight";
-    else if (hand.three()) return "three of a kind";
-    else if (hand.twoPair()) return "two pair";
-    else if (hand.pair()) return "pair";
-    else return "high card";
+  public void determineHand(){
+    if (hand.royalFlush()) finalHand = "royal flush";
+    else if (hand.straightFlush()) finalHand = "straight flush";
+    else if (hand.four()) finalHand = "four of a kind";
+    else if (hand.fullHouse()) finalHand = "full house";
+    else if (hand.flush()) finalHand = "flush";
+    else if (hand.straight()) finalHand = "straight";
+    else if (hand.three()) finalHand = "three of a kind";
+    else if (hand.twoPair()) finalHand = "two pair";
+    else if (hand.pair()) finalHand = "pair";
+    else finalHand = "high card";
   }
 
 
