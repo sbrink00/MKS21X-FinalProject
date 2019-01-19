@@ -17,6 +17,22 @@ public class CasinoWar {
       dealerHand = new Hand();
     }
   }
+  public void run() {
+    boolean done = false;
+    while (!done) {
+      bet();
+      deal();
+      System.out.println("This is your card: " + playerHand.toString());
+      System.out.println("This is the dealer's card: " + dealer.dealerHand.toString());
+      interpretDeal();
+      if (payout > 0) System.out.println("You win!");
+      else System.out.println("The Dealer wins!");
+      System.out.println("Your balance has been changed by: " + payout);
+      player.changeBal(payout);
+      System.out.println("Your new balance is: " + player.getBal());
+      if (endgame()) done = true;
+    }
+  }
   public CasinoWar() {
     player = new Player(1000);
     dealer = new Dealer();
