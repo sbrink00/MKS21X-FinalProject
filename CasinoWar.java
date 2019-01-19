@@ -25,6 +25,8 @@ public class CasinoWar {
       System.out.println("This is your card: " + playerHand.toString());
       System.out.println("This is the dealer's card: " + dealer.dealerHand.toString());
       interpretDeal();
+      playerHand.clear();
+      dealer.dealerHand.clear();
       if (payout > 0) System.out.println("You win!");
       else System.out.println("The Dealer wins!");
       System.out.println("Your balance has been changed by: " + payout);
