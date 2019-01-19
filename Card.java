@@ -20,6 +20,7 @@ public class Card{
   }
 
   public int getNum() {return num;}
+  public void setNum(int newNum) {num = newNum;}//used for aces in poker.
   public int getValue() {return val;}
   public char suit() {return suit;}
   public void setVal(int newVal) {val = newVal;}
