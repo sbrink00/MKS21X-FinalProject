@@ -10,6 +10,7 @@ public class CasinoWar {
   private double payout = 0;
   private String WAR = "Would you like to go to war (double your bet, but payout is only your original bet),  or surrender (forfeit half your bet) <war/surrender>: \n";
   private String EB = "Please enter your bet value: ";
+  private String PA = "Would you like to play again? <y/n>";
   private class Dealer {
     private Hand dealerHand;
     public Dealer() {
@@ -31,6 +32,13 @@ public class CasinoWar {
     System.out.println(EB);
     bet = Double.parseDouble(in.nextLine());
     if (bet > player.getBal()) bet = player.getBal();
+  }
+  public boolean endgame() {
+    System.out.println(PA);
+    boolean output = true;
+    if (player.getBal() == 0) output = true;
+    else if (in.nextLine().equals("y")) output = false;
+    return output;
   }
   public void interpretDeal() {
     int curP = playerHand.get(0).getwarV();
