@@ -19,4 +19,8 @@ public class CasinoWar {
     in = new Scanner(System.in);
     playerHand = new Hand();
   }
+  public void deal() {
+    playerHand.add(shoe.remove(shoe.getRandomCard()));
+    dealer.dealerHand.add(shoe.remove(shoe.getRandomCard()));
+  }
 }
