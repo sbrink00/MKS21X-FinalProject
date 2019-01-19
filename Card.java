@@ -6,9 +6,10 @@ public class Card{
   //blackjack but they might not necessarily be the same card.
   //it also exists so that the value of aces can be altered without
   //changing its identity from an ace.
-  private int num, val;
+  private int num, val, warV;
   private char suit;
   private boolean hidden;
+
 
   public Card(int number, char startSuit){
     num = number;
@@ -17,6 +18,9 @@ public class Card{
     else if (num <= 10) val = num;
     else val = 10;
     hidden = false;
+    if (num == 1) warV = 14;
+    else if (num <= 10) warV = num;
+    else warV = num;
   }
 
   public int getNum() {return num;}
@@ -36,9 +40,9 @@ public class Card{
   public String toString(){
     char tempSuit;
     if (suit == 'H') tempSuit = '\u2665';
+    else if (suit == 'D') tempSuit = '\u2666';
     else if (suit == 'S') tempSuit = '\u2660';
     else if (suit == 'C') tempSuit = '\u2663';
-    else if (suit == 'D') tempSuit = '\u2666';
     if (hidden) return "turned over";
     if (num == 1) return "A" + suit;
     else if (num < 11) return "" + num + suit;
