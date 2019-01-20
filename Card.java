@@ -9,6 +9,7 @@ public class Card{
   private int num, val, warV;
   private char suit;
   private boolean hidden;
+  private char tempSuit;
 
 
   public Card(int number, char startSuit){
@@ -39,7 +40,6 @@ public class Card{
 
 
   public String toString(){
-    char tempSuit;
     if (suit == 'H') tempSuit = '\u2665';
     else if (suit == 'D') tempSuit = '\u2666';
     else if (suit == 'S') tempSuit = '\u2660';
