@@ -86,6 +86,16 @@ public class Hand extends CardList{
     return cond1 && cond2;
   }
 
+  public boolean pairJs(){
+    Card c = new Card(2, 'S');
+    for (int idx = 0; idx < size() - 1; idx ++){
+      if (get(idx).getNum() == get(idx + 1).getNum()){
+        c = get(idx);
+      }
+    }
+    return c.getNum() > 10;
+  }
+
   public boolean pair(){
     for (int idx = 0; idx < size() - 1; idx ++){
       if (get(idx).getNum() == get(idx + 1).getNum()) return true;
