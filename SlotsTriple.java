@@ -6,6 +6,7 @@ public class SlotsTriple {
   private Player player;
   private double bet;
   private double payout;
+  private String unicode;
   private char[] reel;
   private int[] spinG;
   private String EB = "Please enter your bet value: ";
@@ -44,9 +45,9 @@ public class SlotsTriple {
   }
   public String printSpin() {
     String output = "";
-    output += reel[spinG[0]];
-    output += ", " + reel[spinG[1]];
-    output += ", " + reel[spinG[2]];
+    output += toUnicode(reel[spinG[0]]);
+    output += ", " + toUnicode(reel[spinG[1]]);
+    output += ", " + toUnicode(reel[spinG[2]]);
     return output;
   }
   public void interpretSpin() {
@@ -92,10 +93,26 @@ public class SlotsTriple {
     else if (in.nextLine().equals("y")) output = false;
     return output;
   }
-  private static String toString(char[] input) {
+  public String toUnicode(char input) {
+    String unicode = "";
+    if (input == 'J') unicode = "\u1F4B0";
+    else if (input == 'A') unicode = "\u1F352";
+    else if (input == 'B') unicode = "\u1F34C";
+    else if (input == 'C') unicode = "\u1F351";
+    else if (input == 'D') unicode = "\u1F345";
+    else unicode = "\u1F4A9";
+    return unicode;
+  }
+  public String toString() {
     String output = "";
-    for (char element:input) {
-      output += element;
+    for (char input:reel) {
+      if (input == 'J') unicode = "\u1F4B0";
+      else if (input == 'A') unicode = "\u1F352";
+      else if (input == 'B') unicode = "\u1F34C";
+      else if (input == 'C') unicode = "\u1F351";
+      else if (input == 'D') unicode = "\u1F345";
+      else unicode = "\u1F4A9";
+      output += unicode;
     }
     return output;
   }
