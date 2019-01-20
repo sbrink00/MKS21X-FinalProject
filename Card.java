@@ -45,11 +45,11 @@ public class Card{
     else if (suit == 'S') tempSuit = '\u2660';
     else if (suit == 'C') tempSuit = '\u2663';
     if (hidden) return "turned over";
-    if (num == 1) return "A" + suit;
-    else if (num < 11) return "" + num + suit;
-    else if (num == 11) return "J" + suit;
-    else if (num == 12) return "Q" + suit;
-    else return "K" + suit;
+    if (num == 1) return "A" + tempSuit;
+    else if (num < 11) return "" + num + tempSuit;
+    else if (num == 11) return "J" + tempSuit;
+    else if (num == 12) return "Q" + tempSuit;
+    else return "K" + tempSuit;
   }
 
 }
