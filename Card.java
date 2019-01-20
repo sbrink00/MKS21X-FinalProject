@@ -1,4 +1,4 @@
-//This object represents an individual playing card used in a casino.
+import java.util.*;//This object represents an individual playing card used in a casino.
 public class Card{
   //the number field represents what card it is(4, 5, ace, king, etc...).
   //the val suit represents what the card's value is.
