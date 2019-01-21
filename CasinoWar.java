@@ -63,10 +63,13 @@ public class CasinoWar {
     }
   }
   public boolean endgame() {
+    if (player.getBal() == 0) {
+      System.out.println("You're out of money!");
+      return true;
+    }
     System.out.println(PA);
     boolean output = true;
-    if (player.getBal() == 0) output = true;
-    else if (in.nextLine().equals("y")) output = false;
+    if (in.nextLine().equals("y")) output = false;
     return output;
   }
   public void interpretDeal() {
