@@ -48,8 +48,17 @@ public class CasinoWar {
   }
   public void bet() {
     System.out.println(EB);
-    bet = Double.parseDouble(in.nextLine());
-    if (bet > player.getBal()) bet = player.getBal();
+    try {
+      double terminalBet = Double.parseDouble(in.nextLine());
+      bet = terminalBet;
+    }
+    catch (NumberFormatException e){
+      System.out.println("please enter a number with up to two decimal points.");
+    }
+    if (bet > player.getBal() || bet <= 0) {
+      bet = player.getBal();
+      System.out.println("You entered an invalid bet value, so now you're betting all your money. Good luck!");
+    }
   }
   public boolean endgame() {
     System.out.println(PA);
@@ -71,6 +80,10 @@ public class CasinoWar {
     if (curP == curD) war();
     else if (curP > curD) payout = bet;
     else payout = warBet * -1;
+  }
+  public void slowDown() {
+    System.out.println("Type anything to show the final results.");
+
   }
   public void war() {
     warBet = bet;
