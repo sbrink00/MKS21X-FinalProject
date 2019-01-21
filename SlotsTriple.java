@@ -49,6 +49,10 @@ public class SlotsTriple {
       System.out.println("You entered an invalid bet value, so now you're betting all your money. Good luck!");
     }
   }
+  public void slowDown() {
+    System.out.println("Type anything to spin!");
+    String check = in.nextLine();
+  }
   public void spin() {
     int reel1 = r.nextInt(45);
     int reel2 = r.nextInt(45);
@@ -98,10 +102,12 @@ public class SlotsTriple {
     }
     while (!done) {
       bet();
+      slowDown();
       spin();
       interpretSpin();
       System.out.println("This the is the spin result: " + printSpin());
       printSpin();
+      System.out.println("------------------------------------------------------");
       System.out.println("Your balance has been changed by: " + payout);
       player.changeBal(payout);
       System.out.println("Your new balance is: " + player.getBal());
@@ -111,7 +117,10 @@ public class SlotsTriple {
   public boolean endgame() {
     System.out.println(PA);
     boolean output = true;
-    if (player.getBal() == 0) output = true;
+    if (player.getBal() == 0) {
+      output = true;
+      System.out.println("You are out of money!");
+    }
     else if (in.nextLine().equals("y")) output = false;
     return output;
   }
