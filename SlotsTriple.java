@@ -33,8 +33,21 @@ public class SlotsTriple {
   }
   public void bet() {
     System.out.println(EB);
-    bet = Double.parseDouble(in.nextLine());
-    if (bet > player.getBal()) bet = player.getBal();
+    boolean done = false;
+    while (!done) {
+      try {
+        double terminalBet = Double.parseDouble(in.nextLine());
+        bet = terminalBet;
+        done = true;
+      }
+      catch (NumberFormatException e){
+        System.out.println("Please enter a number with up to two decimal points.");
+      }
+    }
+    if (bet > player.getBal() || bet <= 0) {
+      bet = player.getBal();
+      System.out.println("You entered an invalid bet value, so now you're betting all your money. Good luck!");
+    }
   }
   public void spin() {
     int reel1 = r.nextInt(45);
