@@ -50,36 +50,39 @@ January 13:
 -Samuel Brink: I updated the double method so that you can't double if your total is over 11. I also spent a lot of time working on the playerPlay method in Blackjack so that it allows for splitting.
 
 January 14:
--Elias Ferguson
+-Elias Ferguson: I added a couple fields to try and begin work on Poker. Most of the day was spent trying to figure out how video poker worked, and doing research on the various different types.
 -Samuel Brink: I added a bet instance variable to the Hand class so that the bets for the hands could be updated separately if one of them doubled and another didn't. I also wrote a setAces method in the Blackjack class so that I wouldn't have to have the same redundant for loop in many different methods.
 
 January 15:
-
+-Elias Ferguson: Sam will take over work on Poker because he is fully done with Blackjack. I am looking for a different game to code because we decided to end the possibility of us using any lanterna.
 -Samuel Brink: I updated the payout method in Blackjack so that it pays the correct amount when the player and dealer tie but are both under 21. I also started working on the master Casino file that the user will use to run the casino.
 
 January 16:
-
+-Elias Ferguson: I tried to do some work on Poker constructor because I am still unsure of what I should do, but Sam will be doing most of the Poker work. I pulled his work so far and tested out his game, there is still work to be done.
 -Samuel Brink: I built on Elias's work on the poker class by adding a bet method, a deal method, and most of the swap method. The bet method is error proof, it will just keep asking for a bet until the user inputs a valid one. The deal method is very similar to the blackjack deal method except it deals out five cards instead of two. The swap method asks the user to input the indices (starting with 0) of all the cards they want to swap out (up to all five). It then puts these indices in an ArrayList. The next thing I will implement is a way to replace the cards at the given indices with random cards from the shoe.
 
 January 17:
-
+-Elias Ferguson: I have decided upon Casino War, which will be the fifth game in our Casino. I did zero coding today, but I mathematically wrote a paytable for the Casino War game that will ensure that, on average, the game returns 99.27% of the users bets. War is obviously a simple game with not much leeway for the house, but the money will be made during the event of a war.
 -Samuel Brink: I wrote 9 methods in the hand class that check the hand to see if it is the hand specified by the method. For example, the fullHouse() method returns true if the hand that calls it is a full house, and false if it isn't. I did this for all nine poker hands, not including the high card hand, as that is the default if it isn't any other hand. I combined these methods into the determineHand() method in Poker, which checks the players hand against each possible poker hand starting from the top (royal flush) and going down (to a pair). This is because the way I wrote the checker methods means that a three of a kind is also a pair, so it is necessary to check from high to low, not low to high, or else a three of a kind could get marked as a pair.
 
 January 18:
+-Elias Ferguson: I implemented Unicode for the suits of cards. Additionally, I wrote the entire preliminary CasinoWar class, which is fully functional although lacking certain exception checks. It was relatively simple except for the war() method, which goes into effect when there is a tie. The hands of the player and dealer are only one card long, and they are just compared during normal play. However, when there is a war, special betting rules go into effect and three cards must be burned from the shoe before the hands are refreshed. The special betting rules implemented are the user must go to war by doubling his bet, or surrender by forfeiting half his bet. However, should the user win the war he only receives the amount of his original bet back.
 
 -Samuel Brink: I added a setNum method to the card class so that for poker aces could be set to the highest card instead of the lowest card.
 
 January 19:
+-Elias Ferguson: Casino War is now fully functional. I attempted to implement unicode into the Slots class, but it did not implement correctly and the characters make no sense. I will revisit that problem tomorrow and possible end up making the Slots characters similar to those of the suits of cards, because those are proven to work.
 
 -Samuel Brink: I created an string instance variable in poker to store what hand the player had.
 
 January 20:
+-Elias Ferguson: I did nothing, I had other work.
 
-Samuel Brink: I started writing the payout method in poker based on a 9-6 jacks or better payout table. I also wrote a method that checks for a pair of jacks or better as well as just a pair.
+-Samuel Brink: I started writing the payout method in poker based on a 9-6 jacks or better payout table. I also wrote a method that checks for a pair of jacks or better as well as just a pair.
 
 January 21:
 
--Samuel Brink: Almost everything was done by this point. I added all the other games to the casino file so that all the user needs to do is compile and run Casino.java and follow the directions in order to play any game they want. I also made each individual game take a player in their constructor so the player could remain consistent throughout the whole casino experience. Another thing I did is that I went through the games and added some print statements to make them more user friendly and to show the user their balance more often. In order to allow the user to test the splitting feature in blackjack without playing many hands in a row, I created the SplitTester class. When this class is compiled and run the user will be guaranteed a hand that is made up of two fives, so they can split it. 
+-Samuel Brink: Almost everything was done by this point. I added all the other games to the casino file so that all the user needs to do is compile and run Casino.java and follow the directions in order to play any game they want. I also made each individual game take a player in their constructor so the player could remain consistent throughout the whole casino experience. Another thing I did is that I went through the games and added some print statements to make them more user friendly and to show the user their balance more often. In order to allow the user to test the splitting feature in blackjack without playing many hands in a row, I created the SplitTester class. When this class is compiled and run the user will be guaranteed a hand that is made up of two fives, so they can split it.
 
 
 

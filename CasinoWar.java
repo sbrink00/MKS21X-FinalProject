@@ -25,17 +25,22 @@ public class CasinoWar {
     while (!done) {
       bet();
       deal();
+      slowDown();
+      System.out.println("------------------------------------------------");
       System.out.println("This is your card: " + playerHand.toString());
       System.out.println("This is the dealer's card: " + dealer.dealerHand.toString());
       interpretDeal();
       playerHand.clear();
       dealer.dealerHand.clear();
+      slowDown2();
+      System.out.println("------------------------------------------------");
       if (payout > 0) System.out.println("You win!");
       else System.out.println("The Dealer wins!");
       System.out.println("Your balance has been changed by: " + payout);
       player.changeBal(payout);
       System.out.println("Your new balance is: " + player.getBal());
       if (endgame()) done = true;
+      System.out.println("------------------------------------------------");
     }
   }
   public CasinoWar(Player p) {
@@ -51,14 +56,30 @@ public class CasinoWar {
   }
   public void bet() {
     System.out.println(EB);
-    bet = Double.parseDouble(in.nextLine());
-    if (bet > player.getBal()) bet = player.getBal();
+    boolean done = false;
+    while (!done) {
+      try {
+        double terminalBet = Double.parseDouble(in.nextLine());
+        bet = terminalBet;
+        done = true;
+      }
+      catch (NumberFormatException e){
+        System.out.println("Please enter a number with up to two decimal points.");
+      }
+    }
+    if (bet > player.getBal() || bet <= 0) {
+      bet = player.getBal();
+      System.out.println("You entered an invalid bet value, so now you're betting all your money. Good luck!");
+    }
   }
   public boolean endgame() {
+    if (player.getBal() == 0) {
+      System.out.println("You're out of money!");
+      return true;
+    }
     System.out.println(PA);
     boolean output = true;
-    if (player.getBal() == 0) output = true;
-    else if (in.nextLine().equals("y")) output = false;
+    if (in.nextLine().equals("y")) output = false;
     return output;
   }
   public void interpretDeal() {
@@ -74,6 +95,14 @@ public class CasinoWar {
     if (curP == curD) war();
     else if (curP > curD) payout = bet;
     else payout = warBet * -1;
+  }
+  public void slowDown() {
+    System.out.println("Type anything to be dealt a card.");
+    String check = in.nextLine();
+  }
+  public void slowDown2() {
+    System.out.println("Type anything to reveal the results.");
+    String check = in.nextLine();
   }
   public void war() {
     warBet = bet;
@@ -93,8 +122,9 @@ public class CasinoWar {
         System.out.println("This is the dealer's new card: " + dealer.dealerHand.toString());
         warDealInterpret();
       }
-      else if (answer.equals("surrender")) {
+      else {
         payout = bet * .5 * -1;
+        System.out.println("You surrendered!");
       }
       if (payout != 0) done = true;
     }

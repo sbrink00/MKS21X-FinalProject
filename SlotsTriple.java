@@ -6,8 +6,8 @@ public class SlotsTriple {
   private Player player;
   private double bet;
   private double payout;
-  private String unicode;
   private char[] reel;
+  private char unicode;
   private int[] spinG;
   private String EB = "Please enter your bet value: ";
   private String PA = "Would you like to play again? <y/n>";
@@ -33,8 +33,25 @@ public class SlotsTriple {
   }
   public void bet() {
     System.out.println(EB);
-    bet = Double.parseDouble(in.nextLine());
-    if (bet > player.getBal()) bet = player.getBal();
+    boolean done = false;
+    while (!done) {
+      try {
+        double terminalBet = Double.parseDouble(in.nextLine());
+        bet = terminalBet;
+        done = true;
+      }
+      catch (NumberFormatException e){
+        System.out.println("Please enter a number with up to two decimal points.");
+      }
+    }
+    if (bet > player.getBal() || bet <= 0) {
+      bet = player.getBal();
+      System.out.println("You entered an invalid bet value, so now you're betting all your money. Good luck!");
+    }
+  }
+  public void slowDown() {
+    System.out.println("Type anything to spin!");
+    String check = in.nextLine();
   }
   public void spin() {
     int reel1 = r.nextInt(45);
@@ -77,12 +94,20 @@ public class SlotsTriple {
     System.out.println("Your balance is: " + player.getBal());
     System.out.println("------------------------------------------------------");
     boolean done = false;
+    int count = 0;
+    while (count < 1) {
+      System.out.println("The descending order of value for each icon is : ");
+      System.out.println("\u265a, \u2660, \u2665, \u2663, \u2666, \u265f.");
+      count++;
+    }
     while (!done) {
       bet();
+      slowDown();
       spin();
       interpretSpin();
       System.out.println("This the is the spin result: " + printSpin());
       printSpin();
+      System.out.println("------------------------------------------------------");
       System.out.println("Your balance has been changed by: " + payout);
       player.changeBal(payout);
       System.out.println("Your new balance is: " + player.getBal());
@@ -92,29 +117,31 @@ public class SlotsTriple {
   public boolean endgame() {
     System.out.println(PA);
     boolean output = true;
-    if (player.getBal() == 0) output = true;
+    if (player.getBal() == 0) {
+      output = true;
+      System.out.println("You are out of money!");
+    }
     else if (in.nextLine().equals("y")) output = false;
     return output;
   }
-  public String toUnicode(char input) {
-    String unicode = "";
-    if (input == 'J') unicode = "\u1F4B0";
-    else if (input == 'A') unicode = "\u1F352";
-    else if (input == 'B') unicode = "\u1F34C";
-    else if (input == 'C') unicode = "\u1F351";
-    else if (input == 'D') unicode = "\u1F345";
-    else unicode = "\u1F4A9";
+  public char toUnicode(char input) {
+    if (input == 'J') unicode = '\u265a';
+    else if (input == 'A') unicode = '\u2660';
+    else if (input == 'B') unicode = '\u2665';
+    else if (input == 'C') unicode = '\u2663';
+    else if (input == 'D') unicode = '\u2666';
+    else unicode = '\u265f';
     return unicode;
   }
   public String toString() {
     String output = "";
     for (char input:reel) {
-      if (input == 'J') unicode = "\u1F4B0";
-      else if (input == 'A') unicode = "\u1F352";
-      else if (input == 'B') unicode = "\u1F34C";
-      else if (input == 'C') unicode = "\u1F351";
-      else if (input == 'D') unicode = "\u1F345";
-      else unicode = "\u1F4A9";
+      if (input == 'J') unicode = '\u265a';
+      else if (input == 'A') unicode = '\u2660';
+      else if (input == 'B') unicode = '\u2665';
+      else if (input == 'C') unicode = '\u2663';
+      else if (input == 'D') unicode = '\u2666';
+      else unicode = '\u265f';
       output += unicode;
     }
     return output;
