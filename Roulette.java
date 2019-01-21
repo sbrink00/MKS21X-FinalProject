@@ -109,6 +109,8 @@ public class Roulette {
     }
   }
   public void run() {
+    System.out.println("You are now playing roulette.");
+    System.out.println("------------------------------------------------------");
     boolean done = false;
     int counter = 0;
     while (!done) {

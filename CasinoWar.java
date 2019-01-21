@@ -18,6 +18,8 @@ public class CasinoWar {
     }
   }
   public void run() {
+    System.out.println("You are now playing war.");
+    System.out.println("------------------------------------------------------");
     boolean done = false;
     while (!done) {
       bet();

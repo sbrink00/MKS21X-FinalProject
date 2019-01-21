@@ -15,6 +15,8 @@ public class Poker {
   }
 
   public void run(){
+    System.out.println("You are now playing poker.");
+    System.out.println("------------------------------------------------------");
     boolean done = false;
     while (!done){
       bet();
