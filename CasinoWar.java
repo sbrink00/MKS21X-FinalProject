@@ -23,18 +23,21 @@ public class CasinoWar {
       bet();
       deal();
       slowDown();
+      System.out.println("------------------------------------------------");
       System.out.println("This is your card: " + playerHand.toString());
       System.out.println("This is the dealer's card: " + dealer.dealerHand.toString());
       interpretDeal();
       playerHand.clear();
       dealer.dealerHand.clear();
       slowDown2();
+      System.out.println("------------------------------------------------");
       if (payout > 0) System.out.println("You win!");
       else System.out.println("The Dealer wins!");
       System.out.println("Your balance has been changed by: " + payout);
       player.changeBal(payout);
       System.out.println("Your new balance is: " + player.getBal());
       if (endgame()) done = true;
+      System.out.println("------------------------------------------------");
     }
   }
   public CasinoWar() {
@@ -50,12 +53,16 @@ public class CasinoWar {
   }
   public void bet() {
     System.out.println(EB);
-    try {
-      double terminalBet = Double.parseDouble(in.nextLine());
-      bet = terminalBet;
-    }
-    catch (NumberFormatException e){
-      System.out.println("please enter a number with up to two decimal points.");
+    boolean done = false;
+    while (!done) {
+      try {
+        double terminalBet = Double.parseDouble(in.nextLine());
+        bet = terminalBet;
+        done = true;
+      }
+      catch (NumberFormatException e){
+        System.out.println("Please enter a number with up to two decimal points.");
+      }
     }
     if (bet > player.getBal() || bet <= 0) {
       bet = player.getBal();
@@ -112,8 +119,9 @@ public class CasinoWar {
         System.out.println("This is the dealer's new card: " + dealer.dealerHand.toString());
         warDealInterpret();
       }
-      else if (answer.equals("surrender")) {
+      else {
         payout = bet * .5 * -1;
+        System.out.println("You surrendered!");
       }
       if (payout != 0) done = true;
     }
