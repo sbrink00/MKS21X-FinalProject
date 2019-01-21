@@ -119,6 +119,7 @@ public class Roulette {
       bet();
       betType();
       betWinsPossibilites();
+      slowDown();
       Tile winner = spin();
       System.out.println("The winning Tile is: " + winner.toString());
       player.changeBal(interpretSpin(winner));
@@ -127,6 +128,10 @@ public class Roulette {
       counter++;
       if (endgame()) done = true;
     }
+  }
+  public void slowDown() {
+    System.out.println("Type anything to spin!");
+    String check = in.nextLine();
   }
   public boolean endgame() {
     if (player.getBal() == 0) {
@@ -140,7 +145,22 @@ public class Roulette {
   }
   public int getNumBet() {
     System.out.println(GN);
-    return Integer.parseInt(in.nextLine());
+    int output;
+    boolean done = false;
+    while (!done) {
+      try {
+        output = Integer.parseInt(in.nextLine());
+        done = true;
+      }
+      catch (NumberFormatException e) {
+        System.out.println("Please enter a number between 0 and 36 inclusive.");
+      }
+      if (output < 0 || output > 36) {
+        done = false;
+        System.out.println("Please enter a number between 0 and 36 inclusive.");
+      }
+    }
+    return output;
   }
   public void bet() {
     System.out.println(EB);
@@ -166,11 +186,41 @@ public class Roulette {
   }
   public void dozenBet() {
     System.out.println("Which dozenID would you like to bet on?");
-    dozenID = Integer.parseInt(in.nextLine());
+    int output;
+    boolean done = false;
+    while (!done) {
+      try {
+        output = Integer.parseInt(in.nextLine());
+        done = true;
+      }
+      catch (NumberFormatException e) {
+        System.out.println("Please enter either 0, 1 or 2.");
+      }
+      if (output < 0 || output > 2) {
+        done = false;
+        System.out.println("Please enter either 0, 1 or 2.");
+      }
+    }
+    dozenID = output;;
   }
   public void columnBet() {
     System.out.println("Which columnID would you like to bet on?");
-    columnID = Integer.parseInt(in.nextLine());
+    int output;
+    boolean done = false;
+    while (!done) {
+      try {
+        output = Integer.parseInt(in.nextLine());
+        done = true;
+      }
+      catch (NumberFormatException e) {
+        System.out.println("Please enter either 0, 1 or 2.");
+      }
+      if (output < 0 || output > 2) {
+        done = false;
+        System.out.println("Please enter either 0, 1 or 2.");
+      }
+    }
+    columnID = output;;
   }
   public String printBoard() {
     String output = "";
