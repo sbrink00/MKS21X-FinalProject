@@ -22,6 +22,7 @@ public class CasinoWar {
     while (!done) {
       bet();
       deal();
+      slowDown();
       System.out.println("This is your card: " + playerHand.toString());
       System.out.println("This is the dealer's card: " + dealer.dealerHand.toString());
       interpretDeal();
@@ -83,7 +84,7 @@ public class CasinoWar {
   }
   public void slowDown() {
     System.out.println("Type anything to show the final results.");
-
+    String check = in.nextLine();
   }
   public void war() {
     warBet = bet;
