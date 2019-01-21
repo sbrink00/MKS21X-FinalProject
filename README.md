@@ -65,7 +65,21 @@ January 17:
 
 -Samuel Brink: I wrote 9 methods in the hand class that check the hand to see if it is the hand specified by the method. For example, the fullHouse() method returns true if the hand that calls it is a full house, and false if it isn't. I did this for all nine poker hands, not including the high card hand, as that is the default if it isn't any other hand. I combined these methods into the determineHand() method in Poker, which checks the players hand against each possible poker hand starting from the top (royal flush) and going down (to a pair). This is because the way I wrote the checker methods means that a three of a kind is also a pair, so it is necessary to check from high to low, not low to high, or else a three of a kind could get marked as a pair.
 
+January 18:
 
+-Samuel Brink: I added a setNum method to the card class so that for poker aces could be set to the highest card instead of the lowest card.
+
+January 19:
+
+-Samuel Brink: I created an string instance variable in poker to store what hand the player had.
+
+January 20:
+
+Samuel Brink: I started writing the payout method in poker based on a 9-6 jacks or better payout table. I also wrote a method that checks for a pair of jacks or better as well as just a pair.
+
+January 21:
+
+-Samuel Brink: Almost everything was done by this point. I added all the other games to the casino file so that all the user needs to do is compile and run Casino.java and follow the directions in order to play any game they want. I also made each individual game take a player in their constructor so the player could remain consistent throughout the whole casino experience. Another thing I did is that I went through the games and added some print statements to make them more user friendly and to show the user their balance more often. In order to allow the user to test the splitting feature in blackjack without playing many hands in a row, I created the SplitTester class. When this class is compiled and run the user will be guaranteed a hand that is made up of two fives, so they can split it. 
 
 
 
