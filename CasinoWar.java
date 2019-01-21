@@ -28,6 +28,7 @@ public class CasinoWar {
       interpretDeal();
       playerHand.clear();
       dealer.dealerHand.clear();
+      slowDown2();
       if (payout > 0) System.out.println("You win!");
       else System.out.println("The Dealer wins!");
       System.out.println("Your balance has been changed by: " + payout);
@@ -83,7 +84,11 @@ public class CasinoWar {
     else payout = warBet * -1;
   }
   public void slowDown() {
-    System.out.println("Type anything to show the final results.");
+    System.out.println("Type anything to be dealt a card.");
+    String check = in.nextLine();
+  }
+  public void slowDown2() {
+    System.out.println("Type anything to reveal the results.");
     String check = in.nextLine();
   }
   public void war() {
