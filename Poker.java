@@ -2,27 +2,30 @@ import java.util.*;
 public class Poker {
   private Player player;
   private double bet;
-  private Shoe shoe;
+  private Deck deck;
   private Scanner in;
   private Hand hand;
   private String finalHand;
 
   public Poker() {
     player = new Player(1000);
-    shoe = new Shoe(6);
+    deck = new Deck();
     in = new Scanner(System.in);
     hand = new Hand();
   }
 
   public void run(){
-    bet();
-    deal();
-    swap();
-    hand.sort();
-    determineHand();
-    System.out.println("Your final hand is: " + finalHand);
-    //payout();
-    //endgame();
+    boolean done = false;
+    while (!done){
+      bet();
+      deal();
+      swap();
+      hand.sort();
+      determineHand();
+      System.out.println("Your final hand is: " + finalHand);
+      payout();
+      if (!endgame()) done = true;
+    }
   }
 
   public void bet(){
@@ -43,7 +46,7 @@ public class Poker {
 
   public void deal(){
     for (int idx = 0; idx < 5; idx ++){
-      hand.add(shoe.remove(shoe.getRandomCard()));
+      hand.add(deck.remove(deck.getRandomCard()));
     }
     System.out.println("Your new hand is: " + hand);
   }
@@ -76,7 +79,7 @@ public class Poker {
       }
     }
     for (int i = 0; i < indexs.size(); i ++){
-      hand.set(indexs.get(i), shoe.remove(shoe.getRandomCard()));
+      hand.set(indexs.get(i), deck.remove(deck.getRandomCard()));
     }
     System.out.println("Your new hand is: " + hand);
   }
@@ -90,10 +93,38 @@ public class Poker {
     else if (hand.straight()) finalHand = "straight";
     else if (hand.three()) finalHand = "three of a kind";
     else if (hand.twoPair()) finalHand = "two pair";
-    else if (hand.pair()) finalHand = "pair";
-    else finalHand = "high card";
+    else if (hand.pair()) finalHand = "jacks or better";
+    else finalHand = "nothing";
   }
 
+  /*this payout function uses a 9-6 jacks or better payout
+  table as its guide. This is one of the best pay tables you
+  will find in most casinos. If a player is using perfect strategy,
+  they can expect the machine to return 99.54% of what they put
+  into it. The values in this function are all adjusted up
+  by one because in the bet function it subtracts from the
+  player's balance.*/
+  public void payout(){
+    if (finalHand.equals("royal flush")) player.changeBal(801 * bet);
+    else if (finalHand.equals("straight flush")) player.changeBal(51 * bet);
+    else if (finalHand.equals("four of a kind")) player.changeBal(26 * bet);
+    else if (finalHand.equals("full house")) player.changeBal(10 * bet);
+    else if (finalHand.equals("flush")) player.changeBal(7 * bet);
+    else if (finalHand.equals("straight")) player.changeBal(5 * bet);
+    else if (finalHand.equals("three of a kind")) player.changeBal(4 * bet);
+    else if (finalHand.equals("two pair")) player.changeBal(3 * bet);
+    else if (finalHand.equals("jacks or better")) player.changeBal(2 * bet);
+    System.out.println("Your new balance is: " + player.getBal());
+  }
+
+  public boolean endgame(){
+    deck = new Deck();
+    hand.clear();
+    System.out.println("Do you want to play again? <y/n>");
+    String playAgain = in.nextLine();
+    if (playAgain.equals("n")) return false;
+    return true;
+  }
 
   public String indexsToString(ArrayList<Integer> ary){
     String output = "[";
