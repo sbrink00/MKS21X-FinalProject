@@ -6,8 +6,8 @@ public class SlotsTriple {
   private Player player;
   private double bet;
   private double payout;
-  private String unicode;
   private char[] reel;
+  private char unicode;
   private int[] spinG;
   private String EB = "Please enter your bet value: ";
   private String PA = "Would you like to play again? <y/n>";
@@ -17,10 +17,10 @@ public class SlotsTriple {
   C has four occurrences per reel.
   D has ten occurrences per reel.
   T is worthless and has 25 occurrences per reel. */
-  public SlotsTriple() {
+  public SlotsTriple(Player p) {
     in = new Scanner(System.in);
     r = new Random();
-    player = new Player(1000);
+    player = p;
     reel = new char[45];
     for (int i = 0; i < 45; i++) {
       if (i == 0) reel[i] = 'J';
@@ -73,7 +73,16 @@ public class SlotsTriple {
     }
   }
   public void run() {
+    System.out.println("You are now playing slots.");
+    System.out.println("Your balance is: " + player.getBal());
+    System.out.println("------------------------------------------------------");
     boolean done = false;
+    int count = 0;
+    while (count < 1) {
+      System.out.println("The descending order of value for each icon is : ");
+      System.out.println("\u265a, \u2660, \u2665, \u2663, \u2666, \u265f.");
+      count++;
+    }
     while (!done) {
       bet();
       spin();
@@ -93,25 +102,24 @@ public class SlotsTriple {
     else if (in.nextLine().equals("y")) output = false;
     return output;
   }
-  public String toUnicode(char input) {
-    String unicode = "";
-    if (input == 'J') unicode = "\u1F4B0";
-    else if (input == 'A') unicode = "\u1F352";
-    else if (input == 'B') unicode = "\u1F34C";
-    else if (input == 'C') unicode = "\u1F351";
-    else if (input == 'D') unicode = "\u1F345";
-    else unicode = "\u1F4A9";
+  public char toUnicode(char input) {
+    if (input == 'J') unicode = '\u265a';
+    else if (input == 'A') unicode = '\u2660';
+    else if (input == 'B') unicode = '\u2665';
+    else if (input == 'C') unicode = '\u2663';
+    else if (input == 'D') unicode = '\u2666';
+    else unicode = '\u265f';
     return unicode;
   }
   public String toString() {
     String output = "";
     for (char input:reel) {
-      if (input == 'J') unicode = "\u1F4B0";
-      else if (input == 'A') unicode = "\u1F352";
-      else if (input == 'B') unicode = "\u1F34C";
-      else if (input == 'C') unicode = "\u1F351";
-      else if (input == 'D') unicode = "\u1F345";
-      else unicode = "\u1F4A9";
+      if (input == 'J') unicode = '\u265a';
+      else if (input == 'A') unicode = '\u2660';
+      else if (input == 'B') unicode = '\u2665';
+      else if (input == 'C') unicode = '\u2663';
+      else if (input == 'D') unicode = '\u2666';
+      else unicode = '\u265f';
       output += unicode;
     }
     return output;
