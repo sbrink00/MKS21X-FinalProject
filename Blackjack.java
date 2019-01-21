@@ -99,7 +99,7 @@ public class Blackjack{
       }
       System.out.println("Your new hand is: " + phToString());
       if (playerHands.size() > 1){
-        for (int idx = 0; idx < 2; idx ++){
+        for (int idx = 0; idx < 2 && playerHands.size() < 4; idx ++){
           int handIndex;
           if (idx == 0) handIndex = 0;
           if (idx == 1) handIndex = playerHands.size() - 1;
@@ -264,6 +264,12 @@ public class Blackjack{
     for (int idx = 0; idx < playerHands.size(); idx ++){
       playerHands.get(idx).setBet(bet);
     }
+  }
+
+  public void splitAdd(){
+    playerHands.get(0).add(new Card(5, 'C'));
+    playerHands.get(0).add(new Card(5, 'D'));
+    System.out.println("Your hand is: " + phToString());
   }
 
 
