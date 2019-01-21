@@ -42,6 +42,7 @@ public class Poker {
         System.out.println("That is an invalid value to bet");
       }
     }
+    System.out.println("--------------------------------------------------------");
   }
 
   public void deal(){
@@ -49,6 +50,7 @@ public class Poker {
       hand.add(deck.remove(deck.getRandomCard()));
     }
     System.out.println("Your new hand is: " + hand);
+    System.out.println("------------------------------------------------------");
   }
 
   public void swap(){
@@ -81,6 +83,7 @@ public class Poker {
     for (int i = 0; i < indexs.size(); i ++){
       hand.set(indexs.get(i), deck.remove(deck.getRandomCard()));
     }
+    System.out.println("----------------------------------------------------");
     System.out.println("Your new hand is: " + hand);
   }
 
@@ -93,7 +96,7 @@ public class Poker {
     else if (hand.straight()) finalHand = "straight";
     else if (hand.three()) finalHand = "three of a kind";
     else if (hand.twoPair()) finalHand = "two pair";
-    else if (hand.pair()) finalHand = "jacks or better";
+    else if (hand.pairJs()) finalHand = "jacks or better";
     else finalHand = "nothing";
   }
 
@@ -120,8 +123,10 @@ public class Poker {
   public boolean endgame(){
     deck = new Deck();
     hand.clear();
+    System.out.println("--------------------------------------------------------");
     System.out.println("Do you want to play again? <y/n>");
     String playAgain = in.nextLine();
+    System.out.println("----------------------------------------------------------");
     if (playAgain.equals("n")) return false;
     return true;
   }
