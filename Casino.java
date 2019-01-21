@@ -26,7 +26,7 @@ public class Casino{
   public void run(){
     start();
     String instructions = "Which game would you like to play? Your options are:\n\n";
-    instructions += "blackjack\nroulette\npoker\nslots\nwar\n";
+    instructions += "blackjack\nroulette\npoker\nslots\nwar\n\n";
     instructions += "please enter your choice exactly as depicted above.\n";
     boolean done = false;
     while (!done){

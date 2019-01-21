@@ -16,6 +16,7 @@ public class Poker {
 
   public void run(){
     System.out.println("You are now playing poker.");
+    System.out.println("Your balance is: " + player.getBal());
     System.out.println("------------------------------------------------------");
     boolean done = false;
     while (!done){
@@ -33,7 +34,7 @@ public class Poker {
   public void bet(){
     boolean valid = false;
     while (!valid){
-      System.out.println("Please enter your bet. It must be a number with up to two decimals\n that is less than or equal to your balance");
+      System.out.println("Please enter your bet. It must be a number with up to two decimals\nthat is less than or equal to your balance");
       try{
         Double userBet = Double.parseDouble(in.nextLine());
         if (userBet < player.getBal()){

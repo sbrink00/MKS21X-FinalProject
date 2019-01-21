@@ -19,6 +19,7 @@ public class CasinoWar {
   }
   public void run() {
     System.out.println("You are now playing war.");
+    System.out.println("Your balance is: " + player.getBal());
     System.out.println("------------------------------------------------------");
     boolean done = false;
     while (!done) {
