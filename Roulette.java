@@ -12,6 +12,7 @@ public class Roulette {
   private int dozenID;
   private int columnID;
   private int numberBetLength;
+  private ArrayList<String> betOptions;
   private String EB = "Enter your bet value: ";
   private String PA = "Do you want to play again? <y/n>";
   private String BT = "Please enter your bet type: ";
@@ -41,6 +42,20 @@ public class Roulette {
       }
     }
     r = new Random();
+    betOptions.add("straight");
+    betOptions.add("split");
+    betOptions.add("street");
+    betOptions.add("square");
+    betOptions.add("sixline");
+    betOptions.add("red");
+    betOptions.add("black");
+    betOptions.add("green");
+    betOptions.add("dozen");
+    betOptions.add("column");
+    betOptions.add("high");
+    betOptions.add("low");
+    betOptions.add("even");
+    betOptions.add("odd");
   }
   public Tile spin() {
     int rando = r.nextInt(37);
@@ -54,7 +69,7 @@ public class Roulette {
     output += "Street (3 Numbers): Returns 12x your bet. Input: <street>\n";
     output += "Square (4 Numbers): Returns 9x your bet. Input: <square>\n";
     output += "Six Line (6 Numbers): Returns 6x. Input: <sixline>\n";
-    output += "Colors (18 Numbers): Returns 2x your bet, unless you bet green in which case it returns 36x your bet. Colors are (red, black, green). Input: <color>\n";
+    output += "Colors (18 Numbers): Returns 2x your bet, unless you bet green in which case it returns 36x your bet. Preferences are (red, black, green). Input: <Preference>\n";
     output += "Dozens (12 Numbers): Returns 3x your bet. DozenIDs are (1-12 is 0, 13-24 is 1, 25-36 is 2). Input: <dozen>\n";
     output += "Highs/Lows (18 Numbers): Returns 2x your bet. Preferences are (high, low). Input: <Preference>\n";
     output += "Odds/Evens (18 Numbers): Returns 2x your bet. Preferences are (odd, even). Input: <Preference>\n";
