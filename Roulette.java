@@ -197,7 +197,14 @@ public class Roulette {
   }
   public void betType() {
     System.out.println(BT);
-    betType = in.nextLine().toLowerCase();
+    boolean done  = false;
+    while (!done) {
+      betType = in.nextLine().toLowerCase();
+      if (betOptions.contains(betType)) done = true;
+      else {
+        System.out.println("Please enter a valid bet type as displayed in the directions.");
+      }
+    }
   }
   public void dozenBet() {
     System.out.println("Which dozenID would you like to bet on?");
