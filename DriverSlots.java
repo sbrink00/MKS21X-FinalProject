@@ -1,6 +1,7 @@
 public class DriverSlots {
   public static void main(String[] args) {
-    SlotsTriple test = new SlotsTriple();
+    Player p = new Player(1000);
+    SlotsTriple test = new SlotsTriple(p);
     test.run();
   }
 }
