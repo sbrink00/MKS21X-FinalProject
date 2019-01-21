@@ -42,6 +42,7 @@ public class Roulette {
       }
     }
     r = new Random();
+    betOptions = new ArrayList<String>();
     betOptions.add("straight");
     betOptions.add("split");
     betOptions.add("street");

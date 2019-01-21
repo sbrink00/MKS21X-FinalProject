@@ -104,6 +104,36 @@ public class CasinoWar {
     System.out.println("Type anything to reveal the results.");
     String check = in.nextLine();
   }
+  public void warTest() {
+    dealer.dealerHand.add(new Card(1, 'S'));
+    playerHand.add(new Card(1, 'S'));
+  }
+  public void warRun() {
+    System.out.println("Hey Mr. K, you are now playing the War Test!");
+    System.out.println("Your balance is: " + player.getBal());
+    System.out.println("------------------------------------------------------");
+    boolean done = false;
+    while (!done) {
+      bet();
+      warTest();
+      slowDown();
+      System.out.println("------------------------------------------------");
+      System.out.println("This is your card: " + playerHand.toString());
+      System.out.println("This is the dealer's card: " + dealer.dealerHand.toString());
+      interpretDeal();
+      playerHand.clear();
+      dealer.dealerHand.clear();
+      slowDown2();
+      System.out.println("------------------------------------------------");
+      if (payout > 0) System.out.println("You win!");
+      else System.out.println("The Dealer wins!");
+      System.out.println("Your balance has been changed by: " + payout);
+      player.changeBal(payout);
+      System.out.println("Your new balance is: " + player.getBal());
+      if (endgame()) done = true;
+      System.out.println("------------------------------------------------");
+    }
+  }
   public void war() {
     warBet = bet;
     boolean done = false;
