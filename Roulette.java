@@ -129,7 +129,10 @@ public class Roulette {
     }
   }
   public boolean endgame() {
-    if (player.getBal() == 0) return true;
+    if (player.getBal() == 0) {
+      System.out.println("You are out of money!");
+      return true;
+    }
     System.out.println(PA);
     String ans = in.nextLine();
     if (ans.equals("y")) return false;
@@ -141,8 +144,21 @@ public class Roulette {
   }
   public void bet() {
     System.out.println(EB);
-    betVal = Double.parseDouble(in.nextLine());
-    if (betVal > player.getBal()) betVal = player.getBal();
+    boolean done = false;
+    while (!done) {
+      try {
+        double terminalBet = Double.parseDouble(in.nextLine());
+        bet = terminalBet;
+        done = true;
+      }
+      catch (NumberFormatException e){
+        System.out.println("Please enter a number with up to two decimal points.");
+      }
+    }
+    if (bet > player.getBal() || bet <= 0) {
+      bet = player.getBal();
+      System.out.println("You entered an invalid bet value, so now you're betting all your money. Good luck!");
+    }
   }
   public void betType() {
     System.out.println(BT);
