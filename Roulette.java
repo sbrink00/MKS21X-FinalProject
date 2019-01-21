@@ -145,7 +145,7 @@ public class Roulette {
   }
   public int getNumBet() {
     System.out.println(GN);
-    int output;
+    int output = -1;
     boolean done = false;
     while (!done) {
       try {
@@ -168,15 +168,15 @@ public class Roulette {
     while (!done) {
       try {
         double terminalBet = Double.parseDouble(in.nextLine());
-        bet = terminalBet;
+        betVal = terminalBet;
         done = true;
       }
       catch (NumberFormatException e){
         System.out.println("Please enter a number with up to two decimal points.");
       }
     }
-    if (bet > player.getBal() || bet <= 0) {
-      bet = player.getBal();
+    if (betVal > player.getBal() || betVal <= 0) {
+      betVal = player.getBal();
       System.out.println("You entered an invalid bet value, so now you're betting all your money. Good luck!");
     }
   }
@@ -186,7 +186,7 @@ public class Roulette {
   }
   public void dozenBet() {
     System.out.println("Which dozenID would you like to bet on?");
-    int output;
+    int output = -1;
     boolean done = false;
     while (!done) {
       try {
@@ -205,7 +205,7 @@ public class Roulette {
   }
   public void columnBet() {
     System.out.println("Which columnID would you like to bet on?");
-    int output;
+    int output = -1;
     boolean done = false;
     while (!done) {
       try {
