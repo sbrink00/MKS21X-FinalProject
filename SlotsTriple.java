@@ -31,6 +31,7 @@ public class SlotsTriple {
       else reel[i] = 'T';
     }
   }
+  //Handles user bet input.
   public void bet() {
     System.out.println(EB);
     boolean done = false;
@@ -53,6 +54,7 @@ public class SlotsTriple {
     System.out.println("Type anything to spin!");
     String check = in.nextLine();
   }
+  //Results in three random ints, which correspond to a char.
   public void spin() {
     int reel1 = r.nextInt(45);
     int reel2 = r.nextInt(45);
@@ -60,6 +62,7 @@ public class SlotsTriple {
     int[] spin = new int[]{reel1, reel2, reel3};
     spinG = spin;
   }
+  //Prints the spin for the user.
   public String printSpin() {
     String output = "";
     output += toUnicode(reel[spinG[0]]);
@@ -67,6 +70,7 @@ public class SlotsTriple {
     output += ", " + toUnicode(reel[spinG[2]]);
     return output;
   }
+  //Determines the payout depending on what chars are rolled and in what order. There must be at least two in a row for there to be a chance of winning money.
   public void interpretSpin() {
     char x = reel[spinG[0]];
     char y = reel[spinG[1]];
@@ -114,6 +118,7 @@ public class SlotsTriple {
       if (endgame()) done = true;
     }
   }
+  //Asks the user if he is done. If so, instance of the game terminates.
   public boolean endgame() {
     System.out.println(PA);
     boolean output = true;
@@ -124,6 +129,7 @@ public class SlotsTriple {
     else if (in.nextLine().equals("y")) output = false;
     return output;
   }
+  //Next two methods just turn the chars into unicode characters to make things less ugly.
   public char toUnicode(char input) {
     if (input == 'J') unicode = '\u265a';
     else if (input == 'A') unicode = '\u2660';

@@ -58,10 +58,12 @@ public class Roulette {
     betOptions.add("even");
     betOptions.add("odd");
   }
+  //Simply selects a random number which corresponds to a random Tile.
   public Tile spin() {
     int rando = r.nextInt(37);
     return spinBoard.get(rando);
   }
+  //Displays only once per instance of the game, so that the user can learn how roulette betting works.
   public void displayOptions() {
     String output = "Here are your betting options for Roulette and how to Bet (Please input the bet exactly as shown inside the angle brackets): \n";
     output += "Please enter your bet value first, followed by what you are betting on, separated by a space.\n";
@@ -77,6 +79,7 @@ public class Roulette {
     output += "Columns (12 Numbers): Returns 3x your bet. columnIDs are (Column starting at 1 is 0, column starting at 2 is 1, Column starting at 3 is 2.) Input: <column>\n";
     System.out.println(output);
   }
+  //Results in an array, winners, that is used, based on bet type, to see if the spin is one of the numbers in the group.
   public void betWinsPossibilites() {
     winners = new int[0];
     if (betType.equals("high")) winners = new int[]{19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36};
@@ -112,6 +115,7 @@ public class Roulette {
       }
     }
   }
+  //Alters the payout value based on the number of winning numbers and whether or not the winners contains the winning Tile.
   public double interpretSpin(Tile winner) {
     boolean contains = false;
     for (int val:winners) {
@@ -149,6 +153,7 @@ public class Roulette {
     System.out.println("Type anything to spin!");
     String check = in.nextLine();
   }
+  //Determines whether or not the user wants to continue playing. If not, the instance of the game is terminated.
   public boolean endgame() {
     if (player.getBal() == 0) {
       System.out.println("You are out of money!");
@@ -159,6 +164,7 @@ public class Roulette {
     if (ans.equals("y")) return false;
     return true;
   }
+  //If the player wishes to bet on one or more specific numbers, this method gets his preferences and adds them to winners one at a time.
   public int getNumBet() {
     System.out.println(GN);
     int output = -1;
@@ -178,6 +184,7 @@ public class Roulette {
     }
     return output;
   }
+  //Handles the betValue user input at the beginning of each round.
   public void bet() {
     System.out.println(EB);
     boolean done = false;
@@ -196,6 +203,7 @@ public class Roulette {
       System.out.println("You entered an invalid bet value, so now you're betting all your money. Good luck!");
     }
   }
+  //Gets the betType, and determines if it is valid based on the list of betOptions.
   public void betType() {
     System.out.println(BT);
     boolean done  = false;
@@ -207,6 +215,7 @@ public class Roulette {
       }
     }
   }
+  //If the user wishes to bet on a specific dozen, this method gets the ID, between 0 and 2, that corresponds to the dozen they want to bet on.
   public void dozenBet() {
     System.out.println("Which dozenID would you like to bet on?");
     int output = -1;
@@ -226,6 +235,7 @@ public class Roulette {
     }
     dozenID = output;;
   }
+  //If the user wishes to bet on a specific column, this method gets the ID, between 0 and 2, that corresponds to the column they want to bet on.
   public void columnBet() {
     System.out.println("Which columnID would you like to bet on?");
     int output = -1;

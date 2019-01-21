@@ -1,4 +1,5 @@
 import java.util.*;
+//Game, based off the card game war, is designed to return 99.27% of the users input money.
 public class CasinoWar {
   private Hand playerHand;
   private Dealer dealer;
@@ -50,10 +51,12 @@ public class CasinoWar {
     in = new Scanner(System.in);
     playerHand = new Hand();
   }
+  //Deals one card to each entity.
   public void deal() {
     playerHand.add(shoe.remove(shoe.getRandomCard()));
     dealer.dealerHand.add(shoe.remove(shoe.getRandomCard()));
   }
+  //Handles the user bet input.
   public void bet() {
     System.out.println(EB);
     boolean done = false;
@@ -72,6 +75,7 @@ public class CasinoWar {
       System.out.println("You entered an invalid bet value, so now you're betting all your money. Good luck!");
     }
   }
+  //Asks if the user would like to keep playing. If not, this instance of the game is terminated.
   public boolean endgame() {
     if (player.getBal() == 0) {
       System.out.println("You're out of money!");
@@ -82,6 +86,7 @@ public class CasinoWar {
     if (in.nextLine().equals("y")) output = false;
     return output;
   }
+  //Determines the payout based on the winners' bet and occurrances of war(). It determines the winner, or if a war is necessary.
   public void interpretDeal() {
     int curP = playerHand.get(0).getwarV();
     int curD = dealer.dealerHand.get(0).getwarV();
@@ -89,6 +94,7 @@ public class CasinoWar {
     else if (curP > curD) payout = bet;
     else payout = bet * -1;
   }
+  //Determines payout if there is a war(), because the payouts change. A surrender causes the user to lose .5 of their bet, and a war win returns only their original bet.
   public void warDealInterpret() {
     int curP = playerHand.get(0).getwarV();
     int curD = dealer.dealerHand.get(0).getwarV();
@@ -96,6 +102,7 @@ public class CasinoWar {
     else if (curP > curD) payout = bet;
     else payout = warBet * -1;
   }
+  //Two methods to slow down the use of the user input.
   public void slowDown() {
     System.out.println("Type anything to be dealt a card.");
     String check = in.nextLine();
@@ -104,6 +111,7 @@ public class CasinoWar {
     System.out.println("Type anything to reveal the results.");
     String check = in.nextLine();
   }
+  //Next two methods are for demonstration of the war() method only.
   public void warTest() {
     dealer.dealerHand.add(new Card(1, 'S'));
     playerHand.add(new Card(1, 'S'));
@@ -134,6 +142,7 @@ public class CasinoWar {
       System.out.println("------------------------------------------------");
     }
   }
+  //Handles a tie in the original deal. Repeats depending on how many wars occur in sequence. It burns three cards before dealing one more.
   public void war() {
     warBet = bet;
     boolean done = false;
