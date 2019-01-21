@@ -15,11 +15,11 @@ public class Casino{
 
   public Casino(){
     player = new Player(1000);
-    blackjack = new Blackjack(1000);
-    war = new CasinoWar();
-    roulette = new Roulette();
-    slots = new SlotsTriple();
-    poker = new Poker();
+    blackjack = new Blackjack(player);
+    war = new CasinoWar(player);
+    roulette = new Roulette(player);
+    slots = new SlotsTriple(player);
+    poker = new Poker(player);
     in = new Scanner(System.in);
   }
 

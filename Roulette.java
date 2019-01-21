@@ -16,8 +16,8 @@ public class Roulette {
   private String PA = "Do you want to play again? <y/n>";
   private String BT = "Please enter your bet type: ";
   private String GN = "Please enter a number you would like to bet on: ";
-  public Roulette() {
-    player = new Player(1000);
+  public Roulette(Player p) {
+    player = p;
     in = new Scanner(System.in);
     board = new ArrayList<ArrayList<Tile>>();
     spinBoard = new ArrayList<Tile>();

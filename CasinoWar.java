@@ -37,8 +37,8 @@ public class CasinoWar {
       if (endgame()) done = true;
     }
   }
-  public CasinoWar() {
-    player = new Player(1000);
+  public CasinoWar(Player p) {
+    player = p;
     dealer = new Dealer();
     shoe = new Shoe(6);
     in = new Scanner(System.in);

@@ -17,10 +17,10 @@ public class SlotsTriple {
   C has four occurrences per reel.
   D has ten occurrences per reel.
   T is worthless and has 25 occurrences per reel. */
-  public SlotsTriple() {
+  public SlotsTriple(Player p) {
     in = new Scanner(System.in);
     r = new Random();
-    player = new Player(1000);
+    player = p;
     reel = new char[45];
     for (int i = 0; i < 45; i++) {
       if (i == 0) reel[i] = 'J';
