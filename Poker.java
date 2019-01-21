@@ -7,8 +7,8 @@ public class Poker {
   private Hand hand;
   private String finalHand;
 
-  public Poker() {
-    player = new Player(1000);
+  public Poker(Player p) {
+    player = p;
     deck = new Deck();
     in = new Scanner(System.in);
     hand = new Hand();
@@ -36,9 +36,11 @@ public class Poker {
       System.out.println("Please enter your bet. It must be a number with up to two decimals\n that is less than or equal to your balance");
       try{
         Double userBet = Double.parseDouble(in.nextLine());
-        if (userBet < player.getBal()) valid = true;
-        bet = userBet;
-        player.changeBal(-1 * bet);
+        if (userBet < player.getBal()){
+          valid = true;
+          bet = userBet;
+          player.changeBal(-1 * bet);
+        }
       }
       catch (NumberFormatException e){
         System.out.println("That is an invalid value to bet");
