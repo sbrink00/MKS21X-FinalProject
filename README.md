@@ -1,5 +1,5 @@
 # MKS21X-FinalProject
-Repo containing all the files for our final project
+Repo containing all the files for our final project.
 
 Samuel Brink and Elias Ferguson
 
