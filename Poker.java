@@ -132,7 +132,7 @@ public class Poker {
     System.out.println("Do you want to play again? <y/n>");
     String playAgain = in.nextLine();
     System.out.println("----------------------------------------------------------");
-    if (playAgain.equals("n")) return false;
+    if (playAgain.equals("n") || player.getBal() < 0) return false;
     return true;
   }
 
