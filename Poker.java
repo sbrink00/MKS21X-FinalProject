@@ -1,3 +1,4 @@
+//this is the poker class
 import java.util.*;
 public class Poker {
   private Player player;
@@ -14,6 +15,7 @@ public class Poker {
     hand = new Hand();
   }
 
+  //runs the game
   public void run(){
     System.out.println("You are now playing poker.");
     System.out.println("Your balance is: " + player.getBal());
@@ -31,6 +33,7 @@ public class Poker {
     }
   }
 
+  //prompts the user to enter a bet until a valid one is entered.
   public void bet(){
     boolean valid = false;
     while (!valid){
@@ -50,6 +53,7 @@ public class Poker {
     System.out.println("--------------------------------------------------------");
   }
 
+  //deals out 5 cards.
   public void deal(){
     for (int idx = 0; idx < 5; idx ++){
       hand.add(deck.remove(deck.getRandomCard()));
@@ -58,6 +62,7 @@ public class Poker {
     System.out.println("------------------------------------------------------");
   }
 
+  //allows the user to swap none, some, or all of his cards.
   public void swap(){
     String instructions = "It is now time to swap cards. You will be prompted to\n";
     instructions += "enter the indices of the cards you want to swap out one at a time.\n";
@@ -92,6 +97,8 @@ public class Poker {
     System.out.println("Your new hand is: " + hand);
   }
 
+
+  //uses methods in hand class to determine what hand the player has.
   public void determineHand(){
     if (hand.royalFlush()) finalHand = "royal flush";
     else if (hand.straightFlush()) finalHand = "straight flush";
@@ -125,6 +132,7 @@ public class Poker {
     System.out.println("Your new balance is: " + player.getBal());
   }
 
+  //ends/resets the game.
   public boolean endgame(){
     deck = new Deck();
     hand.clear();
@@ -132,10 +140,11 @@ public class Poker {
     System.out.println("Do you want to play again? <y/n>");
     String playAgain = in.nextLine();
     System.out.println("----------------------------------------------------------");
-    if (playAgain.equals("n") || player.getBal() < 0) return false;
+    if (playAgain.equals("n") || player.getBal() <= 0) return false;
     return true;
   }
 
+  //method used to test the swap method.
   public String indexsToString(ArrayList<Integer> ary){
     String output = "[";
     for (int idx = 0; idx < ary.size(); idx ++){

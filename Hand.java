@@ -5,11 +5,18 @@ public class Hand extends CardList{
   private boolean wasDoubled;
   private double bet;
 
-  //about to do poker hands. Will write functions
-  //that return booleans based on whether or not the
-  //hand contains/is the given pokerHand.
+  //constructor
+  public Hand(){
+    initializeCards();
+    wasDoubled = false;
+    bet = 0;
+  }
 
-
+  //the following methods return true if the hand that
+  //calls them is/contains the hand they are checking for.
+  //For example, if a royal flush called the royalFlush() method
+  //it would return true, but if it called the pair methods
+  //it would return false.
   public boolean royalFlush(){
     return straightFlush() && get(0).getNum() == 10;
   }
@@ -103,7 +110,8 @@ public class Hand extends CardList{
     return false;
   }
 
-
+  //generates a subhand based on indices given.
+  //used in fullHouse() method.
   public Hand subhand(int idx1, int idx2){//idx1 is inclusive, idx2 is exclusive.
     Hand output = new Hand();
     try{
@@ -118,33 +126,16 @@ public class Hand extends CardList{
     return output;
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-  public Hand(){
-    initializeCards();
-    wasDoubled = false;
-    bet = 0;
-  }
-  public boolean isFullHouse() {
-    return true;
-  }
+  //checks a hand to see if it's blackjack
   public boolean isBlackjack(){
     if (size() == 2 && sumValues() == 21) return true;
     return false;
   }
 
+  //returns the sum of the values of the cards in the hand.
   public int sum() {return sumValues();}
 
+  //returns whether or not the hand busted.
   public boolean bust(){
     if (size() > 21) return true;
     return false;
@@ -155,6 +146,8 @@ public class Hand extends CardList{
     return false;
   }
 
+  //the following methods are accessor and mutator methods for
+  //certain properties the hand has.
   public boolean wasDoubled() {return wasDoubled;}
   public void setWasDoubled(boolean arg) {wasDoubled = arg;}
   public void setBet(double newBal) {bet = newBal;}

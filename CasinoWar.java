@@ -10,7 +10,7 @@ public class CasinoWar {
   private double warBet;
   private double payout = 0;
   private String WAR = "Would you like to go to war (double your bet, but payout is only your original bet),  or surrender (forfeit half your bet) <war/surrender>: \n";
-  private String EB = "Please enter your bet value. It must be a number with up to two decimal points that is less than your balance";
+  private String EB = "Please enter your bet value. It must be a number with up to two decimal points that is less than or equal to your balance";
   private String PA = "Would you like to play again? <y/n>";
   private class Dealer {
     private Hand dealerHand;
@@ -75,7 +75,7 @@ public class CasinoWar {
   }
   //Asks if the user would like to keep playing. If not, this instance of the game is terminated.
   public boolean endgame() {
-    if (player.getBal() == 0) {
+    if (player.getBal() <= 0) {
       System.out.println("You're out of money!");
       return true;
     }

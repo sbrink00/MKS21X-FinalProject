@@ -15,6 +15,9 @@ public class Shoe extends CardList{
 
   private ArrayList<Deck> tempData;
 
+  //the constructor first fills tempData up with the desired
+  //number of decks. It then converts the ArrayList of decks into
+  //an ArrayList of cards and then shuffles them.
   public Shoe(int numDecks){
     initializeCards();
     initializeRandom();
@@ -26,6 +29,8 @@ public class Shoe extends CardList{
     shuffle();
   }
 
+  //takes all the cards in the decks in tempData
+  //and moves them into cards.
   public void convertToOneArray(){
     for (int idx = 0; idx < tempData.size(); idx ++){
       for (int idx2 = 0; idx2 < tempData.get(idx).size(); idx2 ++){

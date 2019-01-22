@@ -1,3 +1,4 @@
+//this is the master class that should be compiled and run to test the casino.
 import java.util.Scanner;
 public class Casino{
   public static void main(String[]args){
@@ -13,6 +14,7 @@ public class Casino{
   private Poker poker;
   private Scanner in;
 
+  //takes a player so the user's balance will stay with him
   public Casino(){
     player = new Player(1000);
     blackjack = new Blackjack(player);
@@ -23,6 +25,7 @@ public class Casino{
     in = new Scanner(System.in);
   }
 
+  //runs the whole casino experience.
   public void run(){
     start();
     String instructions = "Which game would you like to play? Your options are:\n\n";
@@ -42,10 +45,15 @@ public class Casino{
       System.out.println("Do you want to play a different game? <y/n>");
       String playMore = in.nextLine();
       if (!playMore.equals("y")) done = true;
+      if (player.getBal() <= 0){
+        System.out.println("Your balance is " + player.getBal() + ". You are being kicked out of the casino");
+        done = true;
+      }
     }
     System.out.println("Thank you for coming to the Java Casino.\nWe hope to see you again soon.");
   }
 
+  //series of print statements to start the casino experience.
   public void start(){
     System.out.println("WELCOME TO THE JAVA CASINO. HIT ENTER TO ENTER WITH 1000 DOLLARS!!!!");
     String enter = in.nextLine();

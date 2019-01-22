@@ -9,7 +9,7 @@ public class SlotsTriple {
   private char[] reel;
   private char unicode;
   private int[] spinG;
-  private String EB = "Please enter your bet value. It must be a number with up to two decimal points that is less than your balance";
+  private String EB = "Please enter your bet value. It must be a number with up to two decimal points that is less than or equal to your balance";
   private String PA = "Would you like to play again? <y/n>";
   /* J means Jackpot; one occurrence.
   A has two occurrences per reel.
@@ -120,7 +120,7 @@ public class SlotsTriple {
   public boolean endgame() {
     System.out.println(PA);
     boolean output = true;
-    if (player.getBal() == 0) {
+    if (player.getBal() <= 0) {
       output = true;
       System.out.println("You are out of money!");
     }

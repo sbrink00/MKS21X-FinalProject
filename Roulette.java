@@ -13,7 +13,7 @@ public class Roulette {
   private int columnID;
   private int numberBetLength;
   private ArrayList<String> betOptions;
-  private String EB = "Please enter your bet value. It must be a number with up to two decimal points that is less than your balance";
+  private String EB = "Please enter your bet value. It must be a number with up to two decimal points that is less than or equal to your balance";
   private String PA = "Do you want to play again? <y/n>";
   private String BT = "Please enter your bet type: ";
   private String GN = "Please enter a number you would like to bet on: ";
@@ -155,7 +155,7 @@ public class Roulette {
   }
   //Determines whether or not the user wants to continue playing. If not, the instance of the game is terminated.
   public boolean endgame() {
-    if (player.getBal() == 0) {
+    if (player.getBal() <= 0) {
       System.out.println("You are out of money!");
       return true;
     }

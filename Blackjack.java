@@ -1,3 +1,4 @@
+//this is the blackjack class
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Blackjack{
@@ -31,6 +32,7 @@ public class Blackjack{
     playerHands.add(new Hand());
   }
 
+  //runs the blackjack game
   public void run(){
     System.out.println("You are now playing blackjack.");
     System.out.println("Your balance is: " + player.getBal());
@@ -44,17 +46,21 @@ public class Blackjack{
         dealerPlay();
       }
       payout();
+      replaceShoe();
       if (!endGame()) done = true;
     }
   }
 
+  //replaces the shoe if it gets too small
   public void replaceShoe(){
-    if (shoe.size() < 1) shoe = new Shoe(6);
+    if (shoe.size() < 20) shoe = new Shoe(6);
   }
 
+
+  //prompts the user to enter a bet until a valid one is inputed.
   public void bet(){
     while (bet <= 0 || bet > player.getBal()){
-      System.out.println("Please enter your bet. It must be a positive number with up to two decimal points\nand must be less than your balance.");
+      System.out.println("Please enter your bet. It must be a positive number with up to two decimal points\nand must be less than or equal to your balance.");
       try {
         double terminalBet = Double.parseDouble(in.nextLine());
         bet = terminalBet;
@@ -67,6 +73,7 @@ public class Blackjack{
     System.out.println("Your balance is: " + player.getBal());
   }
 
+  //deals out the cards
   public void deal(){
     playerHands.get(0).add(shoe.remove(shoe.getRandomCard()));
     playerHands.get(0).add(shoe.remove(shoe.getRandomCard()));
@@ -78,6 +85,8 @@ public class Blackjack{
     System.out.println("--------------------------------------------------------------");
   }
 
+  //method that allows the player to hit, stand, double, or split
+  //according to their wishes and the rules of blackjack.
   public boolean playerBlackjack(){
     if (playerHands.get(0).isBlackjack()){
       System.out.println("You got blackjack, congrats!!");
@@ -156,6 +165,7 @@ public class Blackjack{
       System.out.println("--------------------------------------------------------------");
   }
 
+  //has the dealer hit until he hits a soft 17 (a 17 that can include an ace).
   public void dealerPlay(){
     dealerSum = dealer.hand.sumValues();
     for (int idx = 0; idx < dealer.hand.size(); idx ++){
@@ -192,6 +202,7 @@ public class Blackjack{
     System.out.println("--------------------------------------------------------------");
   }
 
+  //pays the user if they win.
   public void payout(){
     if (playerHands.size() == 1) System.out.println("player total: " + playerHands.get(0).sumValues());
     System.out.println("dealer total: " + dealer.hand.sumValues());
@@ -213,6 +224,7 @@ public class Blackjack{
     System.out.println("Your new balance is: " + player.getBal());
   }
 
+  //resets the game and asks if the player wants to play again
   public boolean endGame(){
     for (int idx = 0; idx < playerHands.size(); idx ++){
       playerHands.get(idx).clear();
@@ -225,10 +237,11 @@ public class Blackjack{
     System.out.println("Do you want to continue playing blackjack?");
     System.out.println("Enter y for yes and n for no");
     String continuE = in.nextLine();
-    if (continuE.equals("n") || player.getBal() < 0) return false;
+    if (continuE.equals("n") || player.getBal() <= 0) return false;
     return true;
   }
 
+  //if the player wishes to double this method is called
   public boolean Double(int index){
     if (playerHands.get(index).sum() > 11 || playerHands.get(index).size() > 2){
       System.out.println("You can't double if the total of your hand is over 11 or you have already hit.");
@@ -247,6 +260,8 @@ public class Blackjack{
     }
   }
 
+  //method containing a for loop that changes aces from 11 to 1 if
+  //the sum is over 21
   public void setAces(int index){
     Hand temp = playerHands.get(index);
     if (temp.sum() > 21){
@@ -260,19 +275,23 @@ public class Blackjack{
     }
   }
 
+  //sets the bet for each hand the player has.
+  //this method exists because multiple hands with different
+  //bet values can exist because of splitting and doubling.
   public void setHandBets(){
     for (int idx = 0; idx < playerHands.size(); idx ++){
       playerHands.get(idx).setBet(bet);
     }
   }
 
+  //method used in SplitTester
   public void splitAdd(){
     playerHands.get(0).add(new Card(5, 'C'));
     playerHands.get(0).add(new Card(5, 'D'));
     System.out.println("Your hand is: " + phToString());
   }
 
-
+  //prints out the players hand.
   public String phToString(){ //player hand toString.
     if (playerHands.size() == 0) return "[]";
     if (playerHands.size() == 1) return playerHands.get(0).toString();
