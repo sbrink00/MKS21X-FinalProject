@@ -1,6 +1,18 @@
 # MKS21X-FinalProject
 Repo containing all the files for our final project
 
+Samuel Brink and Elias Ferguson
+
+The Java Casino
+
+Instructions:
+-In order to run the Java Casino you only need to compile and run the Casino.java file. Once you run the game it will print out directions for you to follow. These directions are clear and easy to follow.
+-After you finish playing a game, you will be asked if you want to play again, followed by this string "<y/n>". When you see that simply enter the letter y if you want to play again and the letter n if you do not. There are other instances where angle brackets are used to denote what to enter. Just like as with the <y/n>, enter your choice exactly as it is written in angle brackets.
+-In blackjack, enter either 'hit', 'stand', or 'double' (without quotes) when it prompts you.
+-Blackjack tells you which hand you are playing on, starting with 1. There will more often than not only be one hand, but in the case of splitting there can be more than one.
+-In poker, when you are asked to enter the indices of the cards you want to swap out, the indices should start with 0 as they would in a normal array.
+-There are certain features that exist in our games but do not come up often, such as splitting in blackjack and going to war in war. In order to allow you to test these we created two test drivers called SplitTester.java and kWarDriver.java. You can compile and run these files to test these features if they don't come up while you are playing on the main Casino file. The SplitTester doesn't perfectly resemble the normal blackjack game as some parts of blackjack were too complex to integrate into the SplitTester, but it will show you how splitting works.
+
 The Developer Log:
 
 January 3:
@@ -82,7 +94,8 @@ January 20:
 
 January 21:
 -Elias Ferguson: I put the finishing touches on the aesthetic aspects of the games. I also implemented bad input handling into all the games I wrote, so that under no circumstances should the user ever see an error message that wasn't written by me. The instructions for each game should now be clear enough for everybody. I also wrote kWarDriver, which can be compiled and run to test the war() fme
--Samuel Brink: Almost everything was done by this point. I added all the other games to the casino file so that all the user needs to do is compile and run Casino.java and follow the directions in order to play any game they want. I also made each individual game take a player in their constructor so the player could remain consistent throughout the whole casino experience. Another thing I did is that I went through the games and added some print statements to make them more user friendly and to show the user their balance more often. In order to allow the user to test the splitting feature in blackjack without playing many hands in a row, I created the SplitTester class. When this class is compiled and run the user will be guaranteed a hand that is made up of two fives, so they can split it.
+
+-Samuel Brink: Almost everything was done by this point. I added all the other games to the casino file so that all the user needs to do is compile and run Casino.java and follow the directions in order to play any game they want. I also made each individual game take a player in their constructor so the player could remain consistent throughout the whole casino experience. Another thing I did is that I went through the games and added some print statements to make them more user friendly and to show the user their balance more often. In order to allow the user to test the splitting feature in blackjack without playing many hands in a row, I created the SplitTester class. When this class is compiled and run the user will be guaranteed a hand that is made up of two fives, so they can split it. I also went through all of the games and fixed the bet methods as well as made some directions more clear. Lastly, I fixed a bug in the payout method in Blackjack which had been bothering me for a week and a half.
 
 
 
