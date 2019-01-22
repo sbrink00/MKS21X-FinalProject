@@ -13,7 +13,7 @@ public class Roulette {
   private int columnID;
   private int numberBetLength;
   private ArrayList<String> betOptions;
-  private String EB = "Enter your bet value: ";
+  private String EB = "Please enter your bet value. It must be a number with up to two decimal points that is less than your balance";
   private String PA = "Do you want to play again? <y/n>";
   private String BT = "Please enter your bet type: ";
   private String GN = "Please enter a number you would like to bet on: ";
@@ -186,21 +186,19 @@ public class Roulette {
   }
   //Handles the betValue user input at the beginning of each round.
   public void bet() {
-    System.out.println(EB);
     boolean done = false;
     while (!done) {
+      System.out.println(EB);
       try {
         double terminalBet = Double.parseDouble(in.nextLine());
-        betVal = terminalBet;
-        done = true;
+        if (terminalBet > 0 && terminalBet < player.getBal()){
+          betVal = terminalBet;
+          done = true;
+        }
       }
       catch (NumberFormatException e){
-        System.out.println("Please enter a number with up to two decimal points.");
+        System.out.println("Please enter a number with up to two decimal points that is less than your balance");
       }
-    }
-    if (betVal > player.getBal() || betVal <= 0) {
-      betVal = player.getBal();
-      System.out.println("You entered an invalid bet value, so now you're betting all your money. Good luck!");
     }
   }
   //Gets the betType, and determines if it is valid based on the list of betOptions.
