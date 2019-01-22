@@ -54,7 +54,7 @@ public class Blackjack{
 
   public void bet(){
     while (bet <= 0 || bet > player.getBal()){
-      System.out.println("Please enter your bet. It must be a positive number with up to two decimal points\nand must be less than your balance ("+ player.getBal()+")");
+      System.out.println("Please enter your bet. It must be a positive number with up to two decimal points\nand must be less than your balance.");
       try {
         double terminalBet = Double.parseDouble(in.nextLine());
         bet = terminalBet;
@@ -157,6 +157,7 @@ public class Blackjack{
   }
 
   public void dealerPlay(){
+    dealerSum = dealer.hand.sumValues();
     for (int idx = 0; idx < dealer.hand.size(); idx ++){
       dealer.hand.get(idx).setHidden(false);
     }
@@ -207,7 +208,7 @@ public class Blackjack{
       else if (bj && !dealerBlackjack) player.changeBal(tempBet*2.5);
       else if (!dealerBust && psum < 22 && psum == dealerSum) player.changeBal(tempBet);
       else if (dealerBust && psum < 22) player.changeBal(tempBet*2);
-      else if (!dealerBust && psum < 22 && psum > dealerSum) player.changeBal(tempBet*2);
+      else if (!dealerBust && psum < 22 && (psum > dealerSum)) player.changeBal(tempBet*2);
     }
     System.out.println("Your new balance is: " + player.getBal());
   }
