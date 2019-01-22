@@ -9,7 +9,7 @@ public class SlotsTriple {
   private char[] reel;
   private char unicode;
   private int[] spinG;
-  private String EB = "Please enter your bet value: ";
+  private String EB = "Please enter your bet value. It must be a number with up to two decimal points that is less than your balance";
   private String PA = "Would you like to play again? <y/n>";
   /* J means Jackpot; one occurrence.
   A has two occurrences per reel.
@@ -33,21 +33,19 @@ public class SlotsTriple {
   }
   //Handles user bet input.
   public void bet() {
-    System.out.println(EB);
     boolean done = false;
     while (!done) {
+      System.out.println(EB);
       try {
         double terminalBet = Double.parseDouble(in.nextLine());
-        bet = terminalBet;
-        done = true;
+        if (terminalBet > 0 && terminalBet < player.getBal()){
+          bet = terminalBet;
+          done = true;
+        }
       }
       catch (NumberFormatException e){
         System.out.println("Please enter a number with up to two decimal points.");
       }
-    }
-    if (bet > player.getBal() || bet <= 0) {
-      bet = player.getBal();
-      System.out.println("You entered an invalid bet value, so now you're betting all your money. Good luck!");
     }
   }
   public void slowDown() {

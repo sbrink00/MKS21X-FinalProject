@@ -10,7 +10,7 @@ public class CasinoWar {
   private double warBet;
   private double payout = 0;
   private String WAR = "Would you like to go to war (double your bet, but payout is only your original bet),  or surrender (forfeit half your bet) <war/surrender>: \n";
-  private String EB = "Please enter your bet value: ";
+  private String EB = "Please enter your bet value. It must be a number with up to two decimal points that is less than your balance";
   private String PA = "Would you like to play again? <y/n>";
   private class Dealer {
     private Hand dealerHand;
@@ -58,21 +58,19 @@ public class CasinoWar {
   }
   //Handles the user bet input.
   public void bet() {
-    System.out.println(EB);
     boolean done = false;
-    while (!done) {
+    while (!done){
+      System.out.println(EB);
       try {
         double terminalBet = Double.parseDouble(in.nextLine());
-        bet = terminalBet;
-        done = true;
+        if (terminalBet < player.getBal() && terminalBet > 0){
+          bet = terminalBet;
+          done = true;
+        }
       }
       catch (NumberFormatException e){
         System.out.println("Please enter a number with up to two decimal points.");
       }
-    }
-    if (bet > player.getBal() || bet <= 0) {
-      bet = player.getBal();
-      System.out.println("You entered an invalid bet value, so now you're betting all your money. Good luck!");
     }
   }
   //Asks if the user would like to keep playing. If not, this instance of the game is terminated.
